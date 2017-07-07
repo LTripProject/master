@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :budgets
+  resources :notifications
+  resources :trips
   resources :regions
   resources :places
   resources :users
