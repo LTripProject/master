@@ -1,53 +1,24 @@
-# Homework 2 - Messenger
+# README
 
-LTrip is a Ruby on Rails blog application that allows users to send messages to each other that can only be read once.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Submitted by: group6
+Things you may want to cover:
 
-Time spent: ? hours
+* Ruby version
 
-URL: **heroku
+* System dependencies
 
-## User Stories
+* Configuration
 
-The following **required** functionality is complete:
+* Database creation
 
+* Database initialization
 
-* [ ] User can sign up by providing their email, password, and name. 
-* [ ] User can login using an email and password. 
+* How to run the test suite
 
+* Services (job queues, cache servers, search engines, etc.)
 
-The following **optional** functionality is complete:
+* Deployment instructions
 
-
-The following **additional** features are implemented:
-
-- [ ] (List anything else that you can get done to improve the app functionality!)
-
-## Video Walkthrough 
-
-Here's a walkthrough of implemented user stories:
-
-![Video Walkthrough](walkthrough.gif)
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
-## Notes
-
-Describe any challenges encountered while building the app.
-
-## License
-
-    Copyright [yyyy] [name of copyright owner]
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+* ...
