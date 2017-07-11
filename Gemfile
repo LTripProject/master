@@ -62,3 +62,8 @@ gem 'simple_form'
 
 # Paginate
 gem 'kaminari'
+
+# User authenticate
+gem 'devise'
+
+gem 'dotenv-rails', groups: [:development, :test]
