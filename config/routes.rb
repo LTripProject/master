@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   root 'pages#home'
   devise_for :users
 
+  resources :user_trips
+  resources :relations
+  resources :to_dos
+  resources :schedule_details
   resources :budgets
   resources :notifications
   resources :trips
