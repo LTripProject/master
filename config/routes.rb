@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :user_trips
+  resources :relations
+  resources :to_dos
+  resources :schedule_details
   resources :budgets
   resources :notifications
   resources :trips

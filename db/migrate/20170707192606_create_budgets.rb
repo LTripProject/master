@@ -1,8 +1,11 @@
-class CreateBudgets < ActiveRecord::Migration[5.1]
+class CreateUserBudgets < ActiveRecord::Migration
   def change
-    create_table :budgets do |t|
+    create_table :user_budgets do |t|
+      t.references :budget_item, index: true, foreign_key: true
+      t.references :user, index: true, foreign_key: true
+      t.integer :price
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
