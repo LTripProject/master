@@ -11,7 +11,6 @@
 users = []
 20.times do |index|
   users << User.create(
-      name: FFaker::Name.name,
       email: FFaker::Internet.email,
       password: "password-#{index}",
       description: FFaker::Lorem.paragraph(5),
