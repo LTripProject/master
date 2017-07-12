@@ -3,16 +3,16 @@
 </div>
 
 <div id="list_budget_items">
-  <%= render budget_trip.budget_items %>
+  <%= render budget_trip.budgets %>
 </div>
 
 <div class="budget-row section-budget-item budget-item-form" id="pre-trip-form">
-  <%= form_tag budget_path, remote: true do %>
+  <%= form_tag budgets_path, remote: true do %>
       <div class="col-md-3">
         <input type="text" class="form-control" id="title"
-               name="budget_item[name]" placeholder="Item">
+               name="budget[name]" placeholder="Item">
       </div>
-      <input type="hidden" value="<%= budget_trip.id %>" name="budget_item[budget_section_id]">
+      <input type="hidden" value="<%= budget_trip_id.id %>" name="budget[budget_trip_id]">
       <input type="hidden" value="<%= @trip.id %>" name="trip_id">
       <div class="col-md-3">
         <select class="form-control" name="assignee">
