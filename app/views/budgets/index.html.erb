@@ -1,0 +1,41 @@
+<h2 class="fs-title short-border">Budget Plan</h2>
+
+<div class="budget-plan">
+  <div class="budget-plan-split-individual col-md-4 col-sm-4 col-xs-12 pull-right">
+    <span class="budget-plan-split-individual-title">Personal Budget</span>
+    <div class="panel-group" id="accordion">
+      <%= render partial: 'users/user_with_budgets', collection: @user_with_budgets, as: :user %>
+    </div>
+  </div>
+  <div class="budget-plan-table col-md-8 col-sm-8 col-xs-12 pull-left">
+    <div class="budget-row header-budget">
+      <div class="col-md-3">
+        Item
+      </div>
+      <div class="col-md-3">
+        User
+      </div>
+      <div class="col-md-3">
+        Price
+      </div>
+      <div class="col-md-3">
+        Actions
+      </div>
+    </div>
+
+    <div id="list_budget_sections">
+      <%= render @budget_trips %>
+    </div>
+
+    <div class="budget-row total-budget">
+      <div class="col-md-3">Total Price:</div>
+      <div class="col-md-3">&nbsp;</div>
+      <div class="col-md-3">
+        <%= format_price(@total_money) %>
+      </div>
+      <div class="col-md-3">
+        &nbsp;
+      </div>
+    </div>
+  </div>
+</div>
