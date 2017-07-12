@@ -48,7 +48,8 @@ Here's a walkthrough of implemented user stories:
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
-
+Here's a mockup of application:
+![Mockup](https://app.moqups.com/tiendt2311@gmail.com/1Z1X4WxSQB/view/page/aa9df7b72)
 Describe any challenges encountered while building the app.
 
 ## License
