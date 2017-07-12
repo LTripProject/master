@@ -1,6 +1,6 @@
 # Homework 2 - Messenger
 
-LTrip is a Ruby on Rails blog application that allows users to send messages to each other that can only be read once.
+LTrip is a Ruby on Rails blog application that allows users to make a trip plan before travelling
 
 Submitted by: group6
 
@@ -15,14 +15,29 @@ The following **required** functionality is complete:
 
 * [ ] User can sign up by providing their email, password, and name. 
 * [ ] User can login using an email and password. 
+* [ ] User can create a new trip plan
+* [ ] User can update a new trip plan
+* [ ] User can invite friend to the plan
+* [ ] User can search locations/places when setting up plan
+* [ ] User can search set up the period for a plan
+* [ ] User can write the blog for the plan after traveled
+* [ ] The system can suggest the locations, restaurants.. for user when they're making a plan
+* [ ] User can vote the trip plan
+* [ ] User can pin the trip plan for themselves
+* [ ] User can clone an existing trip plan for updating
+* [ ] User can share the trip plan
 
 
 The following **optional** functionality is complete:
+
+* [ ] User can login by using Facebook, Google account
 
 
 The following **additional** features are implemented:
 
 - [ ] (List anything else that you can get done to improve the app functionality!)
+* [ ] System can suggest what they need to prepare when making a plan base on the type of plan 
+
 
 ## Video Walkthrough 
 
