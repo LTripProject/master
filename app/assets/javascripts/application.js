@@ -15,3 +15,13 @@
 //= require turbolinks
 //= require materialize-form
 //= require materialize-sprockets
+
+
+
+$(document).on('turbolinks:load', function(){
+  $(".button-collapse").sideNav();
+  $('select').material_select();
+
+  // # Working with nested form
+  window.materializeForm.init();
+}); 
