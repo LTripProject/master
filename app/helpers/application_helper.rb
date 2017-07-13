@@ -14,4 +14,10 @@ module ApplicationHelper
     session[:user_id] = nil
   end
   
+  def format_price(amount)
+    number_to_currency(amount, precision: 0, separator: '.',
+                       delimiter: '.', unit: '', format: '%n VNĐ')
+  end
+
+  
 end
