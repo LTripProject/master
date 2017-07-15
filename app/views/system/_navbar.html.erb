@@ -1,0 +1,13 @@
+<div class="home-top">
+  <% if signed_in? %>
+      <%= render 'system/login_user_menu' %>
+  <% else %>
+      <% if params[:controller] != 'home' %>
+      <div class="top-before-login text-right" style="margin-top: 8px">
+        <button type="button" class="btn" id="loginBtn" data-toggle="modal" data-target="#login-form">Login</button>
+        <button type="button" class="btn" id="registerBtn" data-toggle="modal" data-target="#register-form">Register</button>
+      </div>
+     
+    <% end %>
+  <% end %>
+</div>

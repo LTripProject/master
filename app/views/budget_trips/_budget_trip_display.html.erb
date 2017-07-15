@@ -1,0 +1,7 @@
+<div class="budget-row section-budget-header">
+  <%= budget_trip.title %>
+</div>
+
+<div id="list_budget_items">
+  <%= render partial: 'budget/budget_item_display', collection: budget.budgets, as: :budget_item %>
+</div>

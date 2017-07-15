@@ -1,14 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Master</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Let Trip</title>
+  <link rel="icon" href="<%= image_path 'logo.png' %>">
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>"></script>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "main" %>
+  <%= stylesheet_link_tag "slick" %>
+  <%= stylesheet_link_tag "slicknav" %>
+</head>
+<body>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<!-- FLASH -->
+<%= render 'system/error' %>
 
-  <body>
+    <div class="jumbotron image-search-home">
+      <div class="container">
+
+        <!-- NAV BAR -->
+        <%= render 'system/navbar' %>
+
+        <!-- CREATE ACTION -->
+        <div class="header text-center">
+          <h1>LTRIP</h1>
+          <h2>Let Travel</h2>
+          <% if signed_in? %>
+              <button type="button" class="btn" id="createTripBtn" data-toggle="modal" data-target="#trip-form">
+                Create a trip
+              </button>
+              <% else %>
+              <div class="middle-before-login">
+                <button type="button" class="btn" id="loginBtn" data-toggle="modal" data-target="#login-form">Login</button>
+                <button type="button" class="btn" id="registerBtn" data-toggle="modal" data-target="#register-form">Register</button>
+                
+              </div>
+
+          <% end %>
+        </div>
+      </div>
+
+      <!-- SEARCH ACTION -->
+      <div class="main-search">
+        <div class="col-sm-12">
+        <%= render 'system/search' %>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN ACTION -->
     <%= yield %>
-  </body>
+
+</body>
 </html>
