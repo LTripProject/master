@@ -15,39 +15,10 @@
 
 <!-- FLASH -->
 <%= render 'system/error' %>
-
-    <div class="jumbotron image-search-home">
-      <div class="container">
+<div id="page" class="hfeed site">
 
         <!-- NAV BAR -->
-        <%= render 'system/navbar' %>
-
-        <!-- CREATE ACTION -->
-        <div class="header text-center">
-          <h1>LTRIP</h1>
-          <h2>Let Travel</h2>
-          <% if signed_in? %>
-              <button type="button" class="btn" id="createTripBtn" data-toggle="modal" data-target="#trip-form">
-                Create a trip
-              </button>
-              <% else %>
-              <div class="middle-before-login">
-                <button type="button" class="btn" id="loginBtn" data-toggle="modal" data-target="#login-form">Login</button>
-                <button type="button" class="btn" id="registerBtn" data-toggle="modal" data-target="#register-form">Register</button>
-                
-              </div>
-
-          <% end %>
-        </div>
-      </div>
-
-      <!-- SEARCH ACTION -->
-      <div class="main-search">
-        <div class="col-sm-12">
-        <%= render 'system/search' %>
-        </div>
-      </div>
-    </div>
+      <%= render 'system/navbar' %>
 
     <!-- MAIN ACTION -->
     <%= yield %>
