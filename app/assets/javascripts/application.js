@@ -9,7 +9,13 @@
 //= require ./theme/jquery.slicknav.min4bf4
 //= require ./theme/css3-animate-itc5da
 //= require ./theme/bootstrap-datepicker8a54
-//= require ./theme/tropical8a54
+//= require ./theme/ltrip
+
+//= require jquery.easing
+//= require jquery-ui
+//= require tag-it
+//= require bootstrap-datetimepicker
+//= require twitter/typeahead.min
 
 //= require rails-ujs
 //= require bootstrap-sprockets

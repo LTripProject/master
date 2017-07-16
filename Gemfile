@@ -19,6 +19,12 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 
+gem 'jquery-ui-rails'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+gem 'twitter-typeahead-rails'
+gem 'jquery-easing-rails'
+gem 'tag-it-rails'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
