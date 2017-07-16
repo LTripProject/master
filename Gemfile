@@ -51,15 +51,17 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
+gem 'tag-it-rails'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'twitter-typeahead-rails'
+gem 'jquery-slick-rails'
 
 # Javascript library
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
-# Material Design
-gem 'materialize-sass'
-gem 'materialize-form'
-
+gem "font-awesome-rails"
 # Make form is easier
 gem 'simple_form'
 

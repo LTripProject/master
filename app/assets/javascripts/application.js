@@ -13,15 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require materialize-form
-//= require materialize-sprockets
-
-
-
-$(document).on('turbolinks:load', function(){
-  $(".button-collapse").sideNav();
-  $('select').material_select();
-
-  // # Working with nested form
-  window.materializeForm.init();
-}); 
+//= require bootstrap
+//= require moment
+//= require bootstrap-datetimepicker
+//= require respond.min8a54
+//= require select2.full.mincce7
+//= require slick.min91ce
+//= require owl.carousel
+//= require css3-animate-itc5da
+//= require jquery.slicknav
+//= require ltrip

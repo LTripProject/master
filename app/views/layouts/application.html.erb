@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Master</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Let Trip</title>
+  <link rel="icon" href="<%= image_path 'logo.png' %>">
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>"></script>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "main" %>
+  <%= stylesheet_link_tag "slick" %>
+  <%= stylesheet_link_tag "slicknav" %>
+</head>
+<body>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<!-- FLASH -->
+  <%= render 'system/error' %>
+  <div id="page" class="hfeed site">
+    <!-- NAV BAR -->
+  <%= render 'system/navbar' %>
 
-  <body>
-    <%= render  'layouts/nav' %>
-    <%= yield %>
-  </body>
+  <!-- MAIN ACTION -->
+  <%= yield %>
+
+</body>
 </html>
