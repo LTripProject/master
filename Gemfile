@@ -55,10 +55,13 @@ gem 'tag-it-rails'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem "select2-rails"
 gem 'twitter-typeahead-rails'
 gem 'jquery-slick-rails'
+gem 'fullcalendar-rails'
+gem 'owlcarousel-rails'
+gem 'jquery-ui-rails'
 
-# Javascript library
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 gem "font-awesome-rails"

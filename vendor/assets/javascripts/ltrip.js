@@ -1,4 +1,4 @@
-(function($) {
+(function(jQuery) {
 
     "use strict";
 
@@ -6,46 +6,45 @@
      * Adding Class in body
      * ....................................................................................*/
     jQuery.each( jQuery.browser, function( i, val ) {
-        $("body").addClass(i);
+        jQuery("body").addClass(i);
     });
 
-    $(window).on("load", function() {
-        
-        var headerHeight = $(".site-branding .container").outerHeight();
-        $(".main-menu .sub-menu,.main-menu  .mega-menu").animate({
+    jQuery(window).on("turbolinks:load", function() {
+        var headerHeight = jQuery(".site-branding .container").outerHeight();
+        jQuery(".main-menu .sub-menu,.main-menu  .mega-menu").animate({
             paddingTop: headerHeight
         });
 
-        $(".main-menu li,.main-menu li .sub-menu").on("hover", function () {
-            $(this).children(".sub-menu").stop(true, true).fadeToggle();
-            $(this).children(".inner-menu").stop(true, true).fadeToggle();
+        jQuery(".main-menu li,.main-menu li .sub-menu").on("hover", function () {
+            jQuery(this).children(".sub-menu").stop(true, true).fadeToggle();
+            jQuery(this).children(".inner-menu").stop(true, true).fadeToggle();
         });
 
-        $(".main-menu .mega-menu-nav").hover(function () {
-            $(this).children(".mega-menu").stop(true, true).fadeIn();
-            $(this).children(".mega-menu").css("display", "flex");
+        jQuery(".main-menu .mega-menu-nav").hover(function () {
+            jQuery(this).children(".mega-menu").stop(true, true).fadeIn();
+            jQuery(this).children(".mega-menu").css("display", "flex");
         }, function(){
-            $(this).children(".mega-menu").stop(true, true).fadeOut();
+            jQuery(this).children(".mega-menu").stop(true, true).fadeOut();
         });
 
-        $(".header-search").on("hover", function () {
-            $(this).children(".search").stop(true, true).slideToggle();
+        jQuery(".header-search").on("hover", function () {
+            jQuery(this).children(".search").stop(true, true).slideToggle();
         });
 
-        $(".header-tour-package").on("click", function () {
-            $(this).children(".header-tour-listing").stop(true, true).slideToggle();
+        jQuery(".header-tour-package").on("click", function () {
+            jQuery(this).children(".header-tour-listing").stop(true, true).slideToggle();
         });
 
-        if ($(window).width() < 992) {
-            $("#adv-search legend").on("click", function () {
-                $(".form-wrap").stop(true, true).slideToggle();
+        if (jQuery(window).width() < 992) {
+            jQuery("#adv-search legend").on("click", function () {
+                jQuery(".form-wrap").stop(true, true).slideToggle();
             });
         }
 
         window.onresize = function () {
-            if ($(window).width() < 992) {
-                $("#adv-search legend").on("click", function () {
-                    $(".form-wrap").stop(true, true).slideToggle();
+            if (jQuery(window).width() < 992) {
+                jQuery("#adv-search legend").on("click", function () {
+                    jQuery(".form-wrap").stop(true, true).slideToggle();
                 });
             }
         };
@@ -58,7 +57,7 @@
     if(jQuery().slick) {
 
         // Home page main slider and Tour by destination
-        $('.main-slider, .tour-by-destination').slick({
+        jQuery('.main-slider, .tour-by-destination').slick({
             dots: false,
             infinite: true,
             speed: 500,
@@ -70,7 +69,7 @@
         });
 
         // Tour Price Carousel
-        $('.tour-carousel').slick({
+        jQuery('.tour-carousel').slick({
             slidesToShow: 4,
             slidesToScroll: 4,
             dots: false,
@@ -102,7 +101,7 @@
         });
 
         // Partners Carousel
-        $('.partners-carousel').slick({
+        jQuery('.partners-carousel').slick({
             slidesToShow: 5,
             slidesToScroll: 1,
             dots: false,
@@ -136,7 +135,7 @@
             ]
         });
 
-        $('.tour-single-slider-for').slick({
+        jQuery('.tour-single-slider-for').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
             arrows: false,
@@ -145,7 +144,7 @@
             autoplay: true,
             adaptiveHeight: true
         });
-        $('.tour-single-slider-nav').slick({
+        jQuery('.tour-single-slider-nav').slick({
             slidesToShow: 3,
             slidesToScroll: 1,
             asNavFor: '.tour-single-slider-for',
@@ -160,27 +159,27 @@
      * Tabs Functions
      * ....................................................................................*/
 
-    $('#myTab a').click(function (e) {
+    jQuery('#myTab a').click(function (e) {
         e.preventDefault();
-        $(this).tab('show')
+        jQuery(this).tab('show')
     });
 
     /* ...................................................................................
      * Accordion Functions
      * ....................................................................................*/
-    $("#accordion .panel-title").click(function(){
-        if($(this).hasClass("current")){
-            $(this).closest(".panel-heading").removeClass("current");
+    jQuery("#accordion .panel-title").click(function(){
+        if(jQuery(this).hasClass("current")){
+            jQuery(this).closest(".panel-heading").removeClass("current");
         }else{
-            $(this).closest(".panel-heading").addClass("current");
+            jQuery(this).closest(".panel-heading").addClass("current");
         }
     });
 
     /* ...................................................................................
      * Tooltips Functions
      * ....................................................................................*/
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
+    jQuery(function () {
+        jQuery('[data-toggle="tooltip"]').tooltip()
     });
 
 
@@ -189,7 +188,7 @@
      * ....................................................................................*/
 
 
-    $('.skillbar').each(function(){
+    jQuery('.skillbar').each(function(){
         jQuery(this).find('.skillbar-bar').animate({
             width:jQuery(this).attr('data-percent')
         },2000);
@@ -200,7 +199,7 @@
      * Tooltips Functions
      * ....................................................................................*/
     if(jQuery().datepicker){
-        $('.date-picker')
+        jQuery('.date-picker')
             .datepicker({
                 format: 'mm/dd/yyyy'
             });
@@ -210,12 +209,12 @@
      * Tooltips Functions
      * ....................................................................................*/
     if(jQuery().select2) {
-        $("#adv-search select, .sorting select").select2({
+        jQuery("#adv-search select, .sorting select").select2({
             speed: 400
         });
         window.onresize = function() {
 
-            $("#adv-search select, .sorting select").select2({
+            jQuery("#adv-search select, .sorting select").select2({
                 speed: 400
             });
         };
@@ -224,14 +223,14 @@
     /* ...................................................................................
      * Tour
      * ....................................................................................*/
-    var tourItem =$(".tour-item"),
-        layoutLinks= $('.layout-control a'),
-        bookingLayout= $('.booking-layout a'),
-        listStyle= $('.tour-post'),
-        CalLayouts= $('.c-layouts');
+    var tourItem =jQuery(".tour-item"),
+        layoutLinks= jQuery('.layout-control a'),
+        bookingLayout= jQuery('.booking-layout a'),
+        listStyle= jQuery('.tour-post'),
+        CalLayouts= jQuery('.c-layouts');
 
     layoutLinks.on('click', function () {
-        var targetClass = 'col-xs-' + $(this).data('layout');
+        var targetClass = 'col-xs-' + jQuery(this).data('layout');
 
         tourItem.removeClass('col-md-4 col-xs-12 col-xs-4 col-md-4 col-sm-6');
         tourItem.addClass(targetClass);
@@ -242,25 +241,25 @@
             listStyle.removeClass('list-style');
         }
         layoutLinks.removeClass('active');
-        $(this).addClass('active');
+        jQuery(this).addClass('active');
         return false;
     });
 
-    $(".calender-show").on('click', function () {
-        var CalClass = $(this).data('layout');
+    jQuery(".calender-show").on('click', function () {
+        var CalClass = jQuery(this).data('layout');
         CalLayouts.removeClass('show');
-        $(".calender-layout").addClass(CalClass);
+        jQuery(".calender-layout").addClass(CalClass);
         bookingLayout.removeClass('active');
-        $(this).addClass('active');
+        jQuery(this).addClass('active');
         return false;
     });
 
-    $(".list-show").on('click', function () {
-        var CalClass = $(this).data('layout');
+    jQuery(".list-show").on('click', function () {
+        var CalClass = jQuery(this).data('layout');
         CalLayouts.removeClass('show');
-        $(".calender-listing").addClass(CalClass);
+        jQuery(".calender-listing").addClass(CalClass);
         bookingLayout.removeClass('active');
-        $(this).addClass('active');
+        jQuery(this).addClass('active');
         return false;
     });
 
@@ -268,7 +267,7 @@
     /* ...................................................................................
      * Advance Search Range Filter
      * ....................................................................................*/
-    var sliderRange = $( "#slider-range" );
+    var sliderRange = jQuery( "#slider-range" );
     if(jQuery().slider) {
         sliderRange.slider({
             range: true,
@@ -276,11 +275,11 @@
             max: 500,
             values: [75, 300],
             slide: function (event, ui) {
-                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                jQuery("#amount").val("jQuery" + ui.values[0] + " - jQuery" + ui.values[1]);
             }
         });
-        $("#amount").val("$" + sliderRange.slider("values", 0) +
-        " - $" + sliderRange.slider("values", 1));
+        jQuery("#amount").val("jQuery" + sliderRange.slider("values", 0) +
+        " - jQuery" + sliderRange.slider("values", 1));
 
     }
 
@@ -291,27 +290,15 @@
      * ....................................................................................*/
 
     if(jQuery().slicknav) {
-        $('.main-nav .main-menu').slicknav({
+        jQuery('.main-nav .main-menu').slicknav({
             prependTo: ".site-branding",
             allowParentLinks: true
         });
     }
 
-    /* ...................................................................................
-     * Google Map
-     * ....................................................................................*/
-
-    if($("#location-map").length > 0){
-
-        $(window).on("load", function(){
-            var mapOptions = {
-                center: { lat: -33.8818464, lng: 151.205348},
-                zoom: 18
-            };
-            var map = new google.maps.Map(document.getElementById('location-map'),  mapOptions);
-        });
-    }
+  
 
 
 
 })(jQuery);
+

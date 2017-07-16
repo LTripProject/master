@@ -12,7 +12,6 @@
  */
 (function($) {
   var selectors = [];
-
   var check_binded = false;
   var check_lock = false;
   var defaults = {

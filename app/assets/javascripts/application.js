@@ -12,14 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
-//= require bootstrap
+//= require bootstrap-sprockets
 //= require moment
 //= require bootstrap-datetimepicker
-//= require respond.min8a54
-//= require select2.full.mincce7
-//= require slick.min91ce
+//= require select2-full
+//= require jquery.slick
 //= require owl.carousel
 //= require css3-animate-itc5da
 //= require jquery.slicknav
+//= require fullcalendar
 //= require ltrip
