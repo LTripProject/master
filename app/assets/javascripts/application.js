@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require bootstrap
 //= require moment
@@ -22,4 +23,5 @@
 //= require owl.carousel
 //= require css3-animate-itc5da
 //= require jquery.slicknav
+//= require fullcalendar.min254d
 //= require ltrip

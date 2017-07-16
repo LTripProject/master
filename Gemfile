@@ -57,13 +57,11 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'twitter-typeahead-rails'
 gem 'jquery-slick-rails'
-
+gem 'jquery-ui-rails'
 # Javascript library
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 # Material Design
-gem 'materialize-sass'
-gem 'materialize-form'
 gem "font-awesome-rails"
 # Make form is easier
 gem 'simple_form'
