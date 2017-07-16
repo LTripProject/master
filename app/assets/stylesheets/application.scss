@@ -1,9 +1,10 @@
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+/*
+  *= require vendor
+  *= require_self
+*/
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "toastr";
-@import 'bootstrap-datetimepicker';
 @import "font-awesome";
-@import "select2-bootstrap";
-@import 'slick';
-@import 'slick-theme';
+@import "main";
+@import "responsive";
