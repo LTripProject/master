@@ -1,0 +1,7 @@
+<% if object && !object.errors.empty? %>
+    <% object.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger" role="alert">
+          <%= msg %>
+        </div>
+    <% end %>
+<% end %>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  root 'home#index'
   devise_for :users
-
+  
   resources :user_trips
   resources :relations
   resources :to_dos
@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :trips
   resources :regions
   resources :places
+
+  post 'trips/invite' => 'trips#invite'
   # resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

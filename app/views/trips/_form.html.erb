@@ -1,0 +1,64 @@
+
+  <%= simple_form_for(@trip) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+
+      <div class="row">
+          <div class="col-md-6">
+            <fieldset class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="title" value="<%= @trip.title %>" placeholder="Enter title">
+            </fieldset>
+          </div>
+          <div class="col-md-6">
+            <fieldset class="form-group">
+              <label for="expected_budget">Expected Budget (VND)</label>
+              <input type="number" class="form-control" id="expected_budget" min="0" value="<%= @trip.expected_budget.to_i %>"
+                     placeholder="Enter expected budget" name="trip[expected_budget]">
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <fieldset class="form-group">
+              <label for="departures">Starting Location</label>
+              <div id="trip-departure-id">
+                <input class="typeahead form-control" type="text" value=""
+                       name="trip[departure]" placeholder="From Location" id="departure">
+              </div>
+            </fieldset>
+          </div>
+            <div class="col-md-6">
+              <fieldset class="form-group">
+                <label for="start-date">Start Date</label>
+                <input title="Start Date" type="text" class="form-control datetimepicker"
+                      value="<%= @trip.start_date.try(:strftime, '%d-%m-%Y') %>"
+                      name="trip[start_date]" id="" placeholder="Enter Start Date"/>
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+          <div class="col-md-12">
+            <fieldset class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" id="description" rows="3" name="trip[description]"
+                        placeholder="Enter description"><%= @trip.description %></textarea>
+            </fieldset>
+            </div>
+          </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+<% end %>
+
+<script>
+ // datetime picker
+  $('.datetimepicker').datetimepicker({
+    format: 'DD-MM-YYYY'
+  });
+
+</script>

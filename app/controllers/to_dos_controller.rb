@@ -1,2 +1,0 @@
-class ToDosController < ApplicationController
-end

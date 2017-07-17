@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Master</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Ltrip</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %>
 
-  <body>
-    <%= yield %>
-  </body>
+</head>
+<body>
+  <div id="page" class="hfeed site">
+    <%= render 'system/navbar' %>
+    <%= render 'system/login_user_menu' %>
+    <%= render 'system/error' %>
+    <div id="content" class="site-content"><%= yield %></div>
+    <%= render 'system/footer' %>
+  </div>
+</body>
 </html>
