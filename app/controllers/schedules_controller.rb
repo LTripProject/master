@@ -6,9 +6,11 @@ class SchedulesController < ApplicationController
 
 	def create
 		@trip = Trip.find(:trip_id)
-		schedule = @trip.build(schedule_params)
-		if schedule.save then
-			
+		@schedule = @trip.build(schedule_params)
+		if @schedule.save 
+			flash[:notice] = 'The schedule is successfully saved!'
+		end
+		
 	end
 
 	def
