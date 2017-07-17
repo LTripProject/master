@@ -1,1 +1,6 @@
-<%= form_for @schedule %>
+<div class="container">
+	<%= simple_form_for [@trip, Schedule.new] do |f| %>
+		<%= f.input  :title %>
+	  <%= f.button :submit %>
+	<% end %>
+</div>
