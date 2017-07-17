@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :regions
   resources :places
 
-  post 'trips/invite' => 'trips#invite'
+  post 'trips/:id/invite' => 'trips#invite', as: :trip_invite
   # resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

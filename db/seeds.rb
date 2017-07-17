@@ -13,7 +13,6 @@ users = []
   users << User.create(
       email: FFaker::Internet.email,
       password: "password-#{index}",
-      description: FFaker::Lorem.paragraph(5),
       password_confirmation: "password-#{index}"
   )
 end

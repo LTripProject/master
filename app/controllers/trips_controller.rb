@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy, :invite]
 
   # GET /trips
   # GET /trips.json
@@ -11,6 +11,7 @@ class TripsController < ApplicationController
   # GET /trips/1
   # GET /trips/1.json
   def show
+    @user_emails = User.all.map(&:email)
   end
 
   # GET /trips/new
@@ -41,7 +42,11 @@ class TripsController < ApplicationController
   end
 
   def invite
-    
+    user = User.find_by_email(params[:trips][:email])
+    @trip.users << user unless @trip.users.include? user
+
+    flash[:notice] = 'Invited.'
+    redirect_to @trip
   end
 
   # PATCH/PUT /trips/1
