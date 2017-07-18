@@ -12,7 +12,6 @@
 //= require ./theme/ltrip
 
 //= require jquery.easing
-//= require jquery-ui
 //= require tag-it
 //= require bootstrap-datetimepicker
 //= require twitter/typeahead.min
@@ -20,3 +19,4 @@
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require_tree .
+//= require cocoon

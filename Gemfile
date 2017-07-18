@@ -52,4 +52,6 @@ gem 'kaminari'
 
 gem 'devise'
 
+gem 'cocoon'
+
 gem 'dotenv-rails', groups: [:development, :test]
