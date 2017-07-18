@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   resources :budgets
   resources :notifications
   resources :trips
-  resources :regions
+  resources :regions do
+    collection do
+      get :all
+    end
+  end
   resources :places
 
   post 'trips/invite' => 'trips#invite'
