@@ -3,7 +3,7 @@
     <div class="container header-user h-card">
       <% if signed_in? %>
         <div class="header-user-name pull-left">
-          <span class="p-name"><%= current.email %> </span>
+          <span class="p-name"><%= current_user.email %> </span>
           <i class="fa fa-user"></i>
         </div>
       <% end %>

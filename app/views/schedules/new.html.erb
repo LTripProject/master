@@ -1,6 +1,13 @@
 <div class="container">
-	<%= simple_form_for [@trip, Schedule.new] do |f| %>
-		<%= f.input  :title %>
+	<%= simple_form_for @schedule do |f| %>
+		<%= f.input  :title, input_html: {value: @trip.title} %>
+		<%= f.input  :created_at, :as => :date, :default => @trip.start_date  %>
+		<%= f.simple_fields_for :schedule_details do |d| %>
+        <%= d.input :hour_spend %>
+      <% end %>
 	  <%= f.button :submit %>
+	  <%= submit_tag "Cancel" %>
 	<% end %>
+
+
 </div>
