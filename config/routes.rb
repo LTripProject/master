@@ -5,10 +5,14 @@ Rails.application.routes.draw do
   resources :user_trips
   resources :relations
   resources :to_dos
-  resources :schedule_details
+#  resources :schedule_details
   resources :budgets
   resources :notifications
-  resources :trips
+  resources :trips do
+    resources :schedules do
+      resources :schedule_details
+    end
+  end 
   resources :regions do
     collection do
       get :all
