@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_trip, only: [:show, :edit, :update, :destroy, :invite]
+  before_action :check_permission, only: [:edit, :update, :edit]
 
   # GET /trips
   # GET /trips.json
@@ -11,7 +12,7 @@ class TripsController < ApplicationController
   # GET /trips/1
   # GET /trips/1.json
   def show
-    @user_emails = User.all.map(&:email)
+    @user_emails = User.where.not(id: current_user.id).map(&:email)
   end
 
   # GET /trips/new
@@ -85,5 +86,11 @@ class TripsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
       params.require(:trip).permit(:start_date, :title, :description, :expected_budget)
+    end
+
+    def check_permission
+      unless @trip.users.include? currsent_user
+        redirect_to root_path, alert: "You have no permission"
+      end
     end
 end
