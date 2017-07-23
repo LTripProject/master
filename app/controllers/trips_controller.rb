@@ -42,6 +42,7 @@ class TripsController < ApplicationController
 
     if !@trip.users.include? user
       current_user.send_invite_mail(user, @trip)
+
       flash[:notice] = 'Your invite mail was sent.'
     else
       flash[:alert] = "User is in your trip group"
@@ -52,11 +53,12 @@ class TripsController < ApplicationController
 
   def confirm_invite
     user = User.find(params[:user_id])
-
-    if @trip.users.include? user
+    invite_token = params[:invite_token]
+    if @trip.users.include? user && user.check_valid_token?(@trip, invite_token)
       flash[:notice] = "Your have already in group of this trip"
     else
       @trip.users << user
+
       flash[:notice] = "Now, you have been member of group of this trip"
     end
 

@@ -5,10 +5,11 @@ class TripMailer < ApplicationMailer
   #
   #   en.trip_mailer.trip_invitation.subject
   #
-  def trip_invitation(inviter, receiver , trip)
+  def trip_invitation(inviter, receiver , trip, invite_token)
     @receiver = receiver
     @inviter = inviter
     @trip = trip
+    @invite_token = invite_token
 
     mail to: receiver.email, subject: "Invitation"
   end
