@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   has_many :user_trips
   has_many :trips, through: :user_trips
+
+  def send_invite_mail(user, trip)
+    TripMailer.trip_invitation(self, user, trip).deliver_now
+  end
 end

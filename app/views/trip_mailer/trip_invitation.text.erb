@@ -1,0 +1,8 @@
+Hi, <%= @receiver.email %>
+
+You have a invition to trip name <%=link_to @trip.title, trip_url(@trip) %> 
+by <%= @inviter.email %>
+
+Click <%= link_to "here",  trip_confirm_invite_url(id: @trip.id, user_id: @receiver.id) %> to accept a invition
+
+<p><b>Thanks for reading</b>, Sorry for bothering</p>

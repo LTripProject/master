@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_trip, only: [:show, :edit, :update, :destroy, :invite]
-  before_action :check_permission, only: [:edit, :update, :edit]
+  before_action :authenticate_user!, except: [:index, :show, :confirm_invite]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy, :invite, :confirm_invite]
+  before_action :check_permission, only: [:edit, :update, :destroy, :invite]
 
   def index
     @trips = Trip.all
@@ -39,14 +39,30 @@ class TripsController < ApplicationController
 
   def invite
     user = User.find_by_email(params[:trips][:email])
-    @trip.users << user unless @trip.users.include? user
 
-    flash[:notice] = 'Invited.'
+    if !@trip.users.include? user
+      current_user.send_invite_mail(user, @trip)
+      flash[:notice] = 'Your invite mail was sent.'
+    else
+      flash[:alert] = "User is in your trip group"
+    end
+
     redirect_to @trip
   end
 
-  # PATCH/PUT /trips/1
-  # PATCH/PUT /trips/1.json
+  def confirm_invite
+    user = User.find(params[:user_id])
+
+    if @trip.users.include? user
+      flash[:notice] = "Your have already in group of this trip"
+    else
+      @trip.users << user
+      flash[:notice] = "Now, you have been member of group of this trip"
+    end
+
+    redirect_to @trip
+  end
+
   def update
     @trip.departure = Region.find_by(name: params[:trip][:departure])
 
