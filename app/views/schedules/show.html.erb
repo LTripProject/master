@@ -1,0 +1,11 @@
+<div class="schedule-title">
+	<%= @schedule.title %>
+</div>
+<div class="schedule-container">
+	<%= @schedule.schedule_details.each do |sd| %>
+		<div class="index">
+			<%= sd.index %>
+		</div>
+	<% end %>
+</div>
+

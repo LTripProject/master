@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719135426) do
+ActiveRecord::Schema.define(version: 20170723032054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20170719135426) do
   end
 
   create_table "schedule_details", force: :cascade do |t|
-    t.bigint "schedules_id"
+    t.bigint "schedule_id"
     t.bigint "place_id"
     t.integer "index"
     t.decimal "hour_spend", default: "1.0"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20170719135426) do
     t.datetime "updated_at", null: false
     t.index ["index"], name: "index_schedule_details_on_index"
     t.index ["place_id"], name: "index_schedule_details_on_place_id"
-    t.index ["schedules_id"], name: "index_schedule_details_on_schedules_id"
+    t.index ["schedule_id"], name: "index_schedule_details_on_schedule_id"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 20170719135426) do
   add_foreign_key "budget_trips", "schedule_details"
   add_foreign_key "budget_trips", "trips"
   add_foreign_key "schedule_details", "places"
-  add_foreign_key "schedule_details", "schedules", column: "schedules_id"
+  add_foreign_key "schedule_details", "schedules"
   add_foreign_key "schedules", "trips"
   add_foreign_key "user_notifications", "notifications"
   add_foreign_key "user_notifications", "users"
