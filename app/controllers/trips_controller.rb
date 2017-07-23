@@ -31,13 +31,14 @@ class TripsController < ApplicationController
 
     respond_to do |format|
       @trip.departure = Region.find_by(name: params[:trip][:departure])
+      
       if @trip.save
         @trip.users << current_user
         
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
+        format.html { redirect_to new_trip_schedule_path(@trip), notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }
       else
-        format.html { render :new, aletriprt: "#{@trip.errors.full_messages.to_sentence }" }
+        format.html { render :new, alert: "#{@trip.errors.full_messages.to_sentence }" }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
     end
