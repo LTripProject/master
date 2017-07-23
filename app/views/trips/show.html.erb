@@ -24,8 +24,10 @@
             <header class="entry-header animatedParent clearfix">
                 <h3 class="pull-left tour-single-title animated growIn slower"><%= @trip.title %></h3>
                 <span class="tour-price-single t-btn btn-red pull-right animated growIn slower">$<%= @trip.expected_budget %></span>
-                <%= link_to 'Edit', edit_trip_path(@trip) %> |
-<%= link_to 'Back', trips_path %>
+                <% if user_signed_in? && @trip.users.include?(current_user) %>
+                  <%= link_to 'Edit', edit_trip_path(@trip) %> |
+                <% end %>
+                <%= link_to 'Back', trips_path %>
             
             </header>
             <article class="tour-post-single clearfix">
@@ -234,6 +236,7 @@
                 </section>
                 <section class="widget recent-post-widget animatedParent">
                     <h5 class="widget-title animated fadeInDownShort">Recent Blog Post</h5>
+                    <% if user_signed_in? && @trip.users.include?(current_user) %>
                       <%= simple_form_for :trips, url: trip_invite_path(id: @trip.id),
                         html: { autocomplete: "off" } do |f| %>
                         <div class="row">
@@ -241,6 +244,7 @@
                           <%= f.submit "Invite", class: "btn btn-primary" %>
                         </div>
                       <% end %>
+                    <% end %>
                 </section>
                 <section class="widget widget-text animatedParent">
                     <h5 class="widget-title animated fadeInDownShort">LTRIP</h5>

@@ -1,46 +1,39 @@
 class TripsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_trip, only: [:show, :edit, :update, :destroy, :invite]
   before_action :check_permission, only: [:edit, :update, :edit]
 
-  # GET /trips
-  # GET /trips.json
   def index
     @trips = Trip.all
   end
 
-  # GET /trips/1
-  # GET /trips/1.json
+
   def show
-    @user_emails = User.where.not(id: current_user.id).map(&:email)
+    if user_signed_in?
+      @user_emails = User.where.not(id: @trip.user_ids).map(&:email)
+    end
   end
 
-  # GET /trips/new
   def new
     @trip = Trip.new
   end
 
-  # GET /trips/1/edit
   def edit
   end
 
-  # POST /trips
-  # POST /trips.json
+
   def create
     @trip = Trip.new(trip_params)
 
-    respond_to do |format|
-      @trip.departure = Region.find_by(name: params[:trip][:departure])
+    @trip.departure = Region.find_by(name: params[:trip][:departure])
 
-      if @trip.save
-        @trip.users << current_user
-        
-        format.html { redirect_to new_trip_schedule_path(@trip), notice: 'Trip was successfully created. Please set your schedule' }
-        format.json { render :show, status: :created, location: @trip }
-      else
-        format.html { render :new, alert: "#{@trip.errors.full_messages.to_sentence }" }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
-      end
+    if @trip.save
+      @trip.users << current_user
+      flash[:notice] = 'Trip was successfully created. Please set your schedule'
+     redirect_to new_trip_schedule_path(@trip)
+    else
+      flash.now[:alert] = "Create trip errors"
+      render :new
     end
   end
 
@@ -55,27 +48,22 @@ class TripsController < ApplicationController
   # PATCH/PUT /trips/1
   # PATCH/PUT /trips/1.json
   def update
-    respond_to do |format|
-      @trip.departure = Region.find_by(name: params[:trip][:departure])
-      if @trip.update(trip_params)
-        
-        format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
-        format.json { render :show, status: :ok, location: @trip }
-      else
-        format.html { render :edit }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
-      end
+    @trip.departure = Region.find_by(name: params[:trip][:departure])
+
+    if @trip.update(trip_params)
+      flash[:notice]= 'Trip was successfully updated.'
+      redirect_to @trip
+    else
+      flash[:alert] = "Update trip errors"
+      render :edit
     end
   end
 
-  # DELETE /trips/1
-  # DELETE /trips/1.json
   def destroy
     @trip.destroy
-    respond_to do |format|
-      format.html { redirect_to trips_url, notice: 'Trip was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    
+    flash[:notice] =  "Trip was deleted"
+    redirect_to root_path
   end
 
   private
@@ -90,7 +78,7 @@ class TripsController < ApplicationController
     end
 
     def check_permission
-      unless @trip.users.include? currsent_user
+      unless @trip.users.include? current_user
         redirect_to root_path, alert: "You have no permission"
       end
     end
