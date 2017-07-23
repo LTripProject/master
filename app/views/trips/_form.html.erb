@@ -1,5 +1,5 @@
 
-  <%= simple_form_for(@trip) do |f| %>
+<%= simple_form_for(@trip) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
@@ -25,7 +25,7 @@
             <fieldset class="form-group">
               <label for="departures">Starting Location</label>
               <div id="trip-departure-id">
-                <input class="typeahead form-control" type="text" value=""
+                <input class="typeahead form-control" type="text" value="<%= @trip.departure.try(:name) %>"
                        name="trip[departure]" placeholder="From Location" id="departure">
               </div>
             </fieldset>
@@ -56,9 +56,31 @@
 <% end %>
 
 <script>
- // datetime picker
+  // datetime picker
   $('.datetimepicker').datetimepicker({
-    format: 'DD-MM-YYYY'
+      format: 'DD-MM-YYYY'
   });
-
+  // load departure
+  $.ajax({
+    method: 'GET',
+    url: '/regions/all',
+    success: function (data) {
+      var states = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: data.map(function (region) {
+          return region.name;
+        })
+      });
+      $('#departure').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+          },
+          {
+            name: 'states',
+            source: states
+          });
+    }
+  });
 </script>

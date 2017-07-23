@@ -29,12 +29,13 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
 
     respond_to do |format|
+      @trip.departure = Region.find_by(name: params[:trip][:departure])
       if @trip.save
         @trip.users << current_user
+        
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }
       else
-        adda
         format.html { render :new, aletriprt: "#{@trip.errors.full_messages.to_sentence }" }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
@@ -53,7 +54,9 @@ class TripsController < ApplicationController
   # PATCH/PUT /trips/1.json
   def update
     respond_to do |format|
+      @trip.departure = Region.find_by(name: params[:trip][:departure])
       if @trip.update(trip_params)
+        
         format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
         format.json { render :show, status: :ok, location: @trip }
       else

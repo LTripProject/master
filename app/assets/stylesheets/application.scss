@@ -9,3 +9,48 @@
 @import "main";
 @import "responsive";
 @import 'bootstrap-datetimepicker';
+
+
+
+/*typeahead*/
+.tt-menu {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #BBBBBB;
+  background-color: #EFEFEF;
+  font-size: 20px;
+  padding: 8px 5px;
+  .tt-suggestion {
+    cursor: pointer;
+  }
+}
+
+.short-border {
+  display: inline-block;
+  padding: 0 80px;
+}
+
+/*itinerary*/
+.panel.with-nav-tabs {
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  font-size: 24px;
+  border-color: transparent;
+  background: transparent;
+}
+
+.panel.with-nav-tabs .panel-heading {
+  padding: 5px 5px 0 5px;
+  background: transparent;
+}
+
+.panel.with-nav-tabs .nav-tabs {
+  border-bottom: none;
+}
+
+.panel.with-nav-tabs .nav-justified {
+  margin-bottom: -1px;
+}

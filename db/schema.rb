@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712110127) do
+ActiveRecord::Schema.define(version: 20170719135426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,21 +25,22 @@ ActiveRecord::Schema.define(version: 20170712110127) do
     t.index ["trip_id"], name: "index_budget_trips_on_trip_id"
   end
 
-  create_table "budgets", force: :cascade do |t|
-    t.bigint "budget_trip_id"
-    t.integer "price"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["budget_trip_id"], name: "index_budgets_on_budget_trip_id"
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.bigint "place_id"
+    t.string "photo_reference"
+    t.integer "height"
+    t.integer "width"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_photos_on_place_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -148,7 +149,6 @@ ActiveRecord::Schema.define(version: 20170712110127) do
 
   add_foreign_key "budget_trips", "schedule_details"
   add_foreign_key "budget_trips", "trips"
-  add_foreign_key "budgets", "budget_trips"
   add_foreign_key "schedule_details", "places"
   add_foreign_key "schedule_details", "schedules", column: "schedules_id"
   add_foreign_key "schedules", "trips"

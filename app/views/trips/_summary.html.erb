@@ -1,0 +1,34 @@
+<div class="col-md-4 col-sm-6 col-xs-12">
+  <div class="card">
+    <%= link_to trip, id: "trip_sum_#{trip.id}" do %>
+        <div class="card-image">
+          <img height="300" style="width: 100%" src="<%= trip.display_photo %>">
+          <span class="card-title"><%= trip.title %></span>
+        </div>
+    <% end %>
+
+
+    <script>
+      $('#trip_sum<%= trip.id %>').click(function () {
+        showLoading();
+      })
+    </script>
+
+    <div class="card-content">
+      <h4><%= trip.departure.try(:name) %></h4>
+      <p><%= truncate(trip.description, :length => 40, :separator => ' ') %></p>
+      <span class="trip-budget">Total budget: <%= format_price(trip.total_money) %></span>
+    </div>
+
+    <% if sign_in? %>
+
+        <div class="card-action">
+          <% if trip.is_owner?(current_user_id) %>
+              <%= link_to edit_trip_path(trip), class: 'btn btn-primary' do %>
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit
+              <% end %>
+          <% else %>
+        </div>
+    <% end %>
+  </div>
+</div>
