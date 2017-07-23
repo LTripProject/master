@@ -1,0 +1,18 @@
+<div class="container">
+	<%= simple_form_for [@trip, @schedule] do |f| %>
+		<%= f.input  :title, input_html: {value: @trip.title} %>
+		<div class="input-form">
+			<%= f.simple_fields_for :schedule_details do |sd| %>
+        <%= render "schedule_detail_fields", :f => sd %>
+    	<% end %>
+    	<div class="links">
+    		<%= link_to_add_association "Add schedule detail", f, :schedule_details, class: "btn btn-primary"%>
+    	</div>
+		</div>
+		
+	  <%= f.button :submit , class: "btn btn-primary" %>
+	  <%= link_to "Cancel", @trip, class: "btn btn-danger" %>
+	<% end %>
+
+
+</div>
