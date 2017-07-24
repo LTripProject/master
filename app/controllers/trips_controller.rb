@@ -1,79 +1,87 @@
 class TripsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_trip, only: [:show, :edit, :update, :destroy, :invite]
+  before_action :authenticate_user!, except: [:index, :show, :confirm_invite]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy, :invite, :confirm_invite]
+  before_action :check_permission, only: [:edit, :update, :destroy, :invite]
 
-  # GET /trips
-  # GET /trips.json
   def index
     @trips = Trip.all
   end
 
-  # GET /trips/1
-  # GET /trips/1.json
+
   def show
-    @user_emails = User.all.map(&:email)
+    if user_signed_in?
+      @user_emails = User.where.not(id: @trip.user_ids).map(&:email)
+    end
   end
 
-  # GET /trips/new
   def new
     @trip = Trip.new
   end
 
-  # GET /trips/1/edit
   def edit
   end
 
-  # POST /trips
-  # POST /trips.json
+
   def create
     @trip = Trip.new(trip_params)
 
-    respond_to do |format|
-      @trip.departure = Region.find_by(name: params[:trip][:departure])
-      if @trip.save
-        @trip.users << current_user
-        
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
-        format.json { render :show, status: :created, location: @trip }
-      else
-        format.html { render :new, aletriprt: "#{@trip.errors.full_messages.to_sentence }" }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
-      end
+    @trip.departure = Region.find_by(name: params[:trip][:departure])
+
+    if @trip.save
+      @trip.users << current_user
+      flash[:notice] = 'Trip was successfully created. Please set your schedule'
+     redirect_to new_trip_schedule_path(@trip)
+    else
+      flash.now[:alert] = "Create trip errors"
+      render :new
     end
   end
 
   def invite
     user = User.find_by_email(params[:trips][:email])
-    @trip.users << user unless @trip.users.include? user
 
-    flash[:notice] = 'Invited.'
+    if !@trip.users.include? user
+      current_user.send_invite_mail(user, @trip)
+
+      flash[:notice] = 'Your invite mail was sent.'
+    else
+      flash[:alert] = "User is in your trip group"
+    end
+
     redirect_to @trip
   end
 
-  # PATCH/PUT /trips/1
-  # PATCH/PUT /trips/1.json
+  def confirm_invite
+    user = User.find(params[:user_id])
+    invite_token = params[:invite_token]
+    if @trip.users.include? user && user.check_valid_token?(@trip, invite_token)
+      flash[:notice] = "Your have already in group of this trip"
+    else
+      @trip.users << user
+
+      flash[:notice] = "Now, you have been member of group of this trip"
+    end
+
+    redirect_to @trip
+  end
+
   def update
-    respond_to do |format|
-      @trip.departure = Region.find_by(name: params[:trip][:departure])
-      if @trip.update(trip_params)
-        
-        format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
-        format.json { render :show, status: :ok, location: @trip }
-      else
-        format.html { render :edit }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
-      end
+    @trip.departure = Region.find_by(name: params[:trip][:departure])
+
+    if @trip.update(trip_params)
+      flash[:notice]= 'Trip was successfully updated.'
+      redirect_to @trip
+    else
+      flash[:alert] = "Update trip errors"
+      render :edit
     end
   end
 
-  # DELETE /trips/1
-  # DELETE /trips/1.json
   def destroy
     @trip.destroy
-    respond_to do |format|
-      format.html { redirect_to trips_url, notice: 'Trip was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    
+    flash[:notice] =  "Trip was deleted"
+    redirect_to root_path
   end
 
   private
@@ -85,5 +93,11 @@ class TripsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
       params.require(:trip).permit(:start_date, :title, :description, :expected_budget)
+    end
+
+    def check_permission
+      unless @trip.users.include? current_user
+        redirect_to root_path, alert: "You have no permission"
+      end
     end
 end

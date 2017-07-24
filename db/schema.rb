@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723032054) do
+ActiveRecord::Schema.define(version: 20170723135126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20170723032054) do
     t.datetime "updated_at", null: false
     t.index ["schedule_detail_id"], name: "index_budget_trips_on_schedule_detail_id"
     t.index ["trip_id"], name: "index_budget_trips_on_trip_id"
+  end
+
+  create_table "invite_tokens", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "trip_id"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_invite_tokens_on_trip_id"
+    t.index ["user_id"], name: "index_invite_tokens_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -149,6 +159,8 @@ ActiveRecord::Schema.define(version: 20170723032054) do
 
   add_foreign_key "budget_trips", "schedule_details"
   add_foreign_key "budget_trips", "trips"
+  add_foreign_key "invite_tokens", "trips"
+  add_foreign_key "invite_tokens", "users"
   add_foreign_key "schedule_details", "places"
   add_foreign_key "schedule_details", "schedules"
   add_foreign_key "schedules", "trips"
