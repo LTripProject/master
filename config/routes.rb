@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :to_dos
 #  resources :schedule_details
   resources :budgets
+  resources :searchs
   resources :notifications
   resources :trips do
     resources :schedules do
