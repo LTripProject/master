@@ -45,6 +45,7 @@ gem 'tag-it-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 
+gem 'omniauth-facebook'
 #####
 gem 'simple_form'
 

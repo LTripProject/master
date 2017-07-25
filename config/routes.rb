@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     end
   end
 
+ resources :schedules, only: [] do
+    resources :schedule_details, only: [:create, :destroy]
+  end
+
   resources :places
 
   post 'trips/:id/invite' => 'trips#invite', as: :trip_invite
