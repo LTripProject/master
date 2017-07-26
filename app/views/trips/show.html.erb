@@ -19,43 +19,41 @@
 <section class="tour-single clearfix">
   <div class="container">
 
-    <div class="row">
-      <div class="col-lg-9 col-sm-8">
-        <header class="entry-header animatedParent clearfix">
-          <h3 class="pull-left tour-single-title animated growIn slower"><%= @trip.title %></h3>
-          <span class="tour-price-single t-btn btn-red pull-right animated growIn slower">$<%= @trip.expected_budget %></span>
-          <% if user_signed_in? && @trip.users.include?(current_user) %>
-            <%= link_to 'Edit', edit_trip_path(@trip) %> |
-          <% end %>
-          
-          <%= link_to 'Back', trips_path %>
+<<<<<<< HEAD
+<div class="row">
+  <div class="col-lg-9 col-sm-8">
+    <header class="entry-header animatedParent clearfix">
+      <h3 class="pull-left tour-single-title animated growIn slower"><%= @trip.title %></h3>
+      <span class="tour-price-single t-btn btn-red pull-right animated growIn slower">$<%= @trip.expected_budget %></span>
+      <%= link_to 'Edit', edit_trip_path(@trip) %> 
+      <%= link_to 'Back', trips_path %>
+    </header>
+    <article class="tour-post-single clearfix">
+      <div class="tour-single-slider animatedParent clearfix">
+        <div class="slier tour-single-slider-for animated fadeInUpShort">
+          <div class="item"><%= image_tag('where-we-go-single-img-2.jpg') %></div>
+          <div class="item"><%= image_tag('where-we-go-single-img-1.jpg') %></div>
+          <div class="item"><%= image_tag('where-we-go-single-img-3.jpg') %></div>
+        </div>
+        <div class="slider tour-single-slider-nav animated fadeInUpShort">
+          <div class="item slick-active"><%= image_tag('where-we-go-single-img-2.jpg') %></div>
+          <div class="item"><%= image_tag('where-we-go-single-img-1.jpg') %></div>
 
-        </header>
-        <article class="tour-post-single clearfix">
-          <div class="tour-single-slider animatedParent clearfix">
-            <div class="slier tour-single-slider-for animated fadeInUpShort">
-              <div class="item"><%= image_tag('where-we-go-single-img-2.jpg') %></div>
-              <div class="item"><%= image_tag('where-we-go-single-img-1.jpg') %></div>
-              <div class="item"><%= image_tag('where-we-go-single-img-3.jpg') %></div>
-            </div>
-            <div class="slider tour-single-slider-nav animated fadeInUpShort">
-              <div class="item slick-active"><%= image_tag('where-we-go-single-img-2.jpg') %></div>
-              <div class="item"><%= image_tag('where-we-go-single-img-1.jpg') %></div>
-              <div class="item"><%= image_tag('where-we-go-single-img-3.jpg') %></div>
-            </div>
-          </div>
-          <div class="tour-single-contents animatedParent clearfix">
-            <div class="tour-post-meta pull-right animated fadeInUpShort clearfix">
-              <span><i class="fa fa-map-marker"></i><strong>Destination : &nbsp;</strong>Asia</span>
-              <span><i class="fa fa-clock-o"></i><strong>Duration : &nbsp;</strong>3 days</span>
-              <span><i class="fa fa-tags"></i><strong>Price : &nbsp;</strong>&#36;547</span>
-            </div>
-            <p> <%= @trip.description %></p>
-            <footer class="tour-contents-footer clearfix">
-              <%= link_to "Join the trip", "#", class: "t-btn btn-red"%>
-              <a class="t-btn btn-black-border pull-right" href="#" data-toggle="modal" data-target="#ask-q-popup">Ask Question</a>
-            </footer>
-          </div>
+          <div class="item"><%= image_tag('where-we-go-single-img-3.jpg') %></div>
+        </div>
+      </div>
+      <div class="tour-single-contents animatedParent clearfix">
+        <div class="tour-post-meta pull-right animated fadeInUpShort clearfix">
+          <span><i class="fa fa-map-marker"></i><strong>Destination : &nbsp;</strong>Asia</span>
+          <span><i class="fa fa-clock-o"></i><strong>Duration : &nbsp;</strong>3 days</span>
+          <span><i class="fa fa-tags"></i><strong>Price : &nbsp;</strong>&#36;547</span>
+        </div>
+        <p> <%= truncate(@trip.description, :length => 50, :separator => ' ') %></p>
+        <footer class="tour-contents-footer clearfix">
+          <a class="t-btn btn-red pull-right" href="#" data-toggle="modal" data-target="#booking-popup">Booking Now</a>
+          <a class="t-btn btn-black-border pull-right" href="#" data-toggle="modal" data-target="#ask-q-popup">Ask Question</a>
+        </footer>
+      </div>
           <div class="tour-single-schedule animatedParent clearfix">
             <ul class="nav nav-tabs animated fadeInUpShort" role="tablist">
               <li role="presentation" class="active">
@@ -185,7 +183,6 @@
                   </figure>
                   <h5 class="entry-title p-name">Thai island hopper east</h5>
                   <a class="more-details u-url" href="#">See tour details <i class="dashicons dashicons-arrow-right-alt2"></i></a>
-                </div>
               </article>
             </div>
             <div class="col-md-4 col-xs-6 animatedParent">
