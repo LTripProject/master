@@ -24,7 +24,8 @@ class SchedulesController < ApplicationController
 
 	def show
 		@schedule = Schedule.find(params[:id])
-
+		@data = GoogleApiClient.search_address("Ho Chi Minh")
+		puts @data
 	end
 
 	def schedule_params
