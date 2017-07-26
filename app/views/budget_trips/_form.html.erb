@@ -1,0 +1,14 @@
+<%= simple_form_for [@trip, @budget_trip] do |f|%>
+  <%=f.input :title %>
+  <div class="budgets">
+    <%= f.simple_fields_for :budgets do |budget| %>
+      <%= render 'budget_fields', f: budget %>
+    <% end %>
+
+    <div class="links">
+      <%= link_to_add_association "Add budget", f, :budgets, class: "btn btn-primary"%>
+    </div>
+  </div>
+
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

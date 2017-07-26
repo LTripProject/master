@@ -1,10 +1,10 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :confirm_invite]
-  before_action :set_trip, only: [:show, :edit, :update, :destroy, :invite, :confirm_invite]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy, :invite, :confirm_invite, :join]
   before_action :check_permission, only: [:edit, :update, :destroy, :invite]
 
   def index
-    @trips = Trip.all
+    @trips = Trip.includes(:users).all
   end
 
 
@@ -65,6 +65,17 @@ class TripsController < ApplicationController
     redirect_to @trip
   end
 
+  def join
+    if @trip.users.include?(current_user)
+      flash[:alert] = "You have already in trip group"
+    else
+      @trip.users << current_user
+      flash[:notice] = "You are in trip group now"
+    end
+
+    redirect_to @trip
+  end
+
   def update
     @trip.departure = Region.find_by(name: params[:trip][:departure])
 
@@ -87,7 +98,7 @@ class TripsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
-      @trip = Trip.find(params[:id])
+      @trip = Trip.includes(:users).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
