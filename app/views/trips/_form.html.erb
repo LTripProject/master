@@ -8,9 +8,10 @@
           <div class="col-md-6">
             <fieldset class="form-group">
               <label for="title">Title</label>
-              <input type="text" class="form-control" id="title" value="<%= @trip.title %>" placeholder="Enter title">
+              <input type="text" class="form-control" id="title" value="<%= @trip.title %>" placeholder="Enter title" name="trip[title]">
             </fieldset>
           </div>
+          
           <div class="col-md-6">
             <fieldset class="form-group">
               <label for="expected_budget">Expected Budget (VND)</label>

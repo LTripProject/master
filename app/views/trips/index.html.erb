@@ -32,6 +32,8 @@
                                     <option>North America</option>
                                     <option>South America</option>
                                 </select>
+                                
+                                <%= link_to 'New Trip', new_trip_path, class: "t-btn btn-black-border" %>
                             </div>
                             <div class="layout-control pull-right clearfix">
                                 <a data-layout="4" href="#"><i class="fa fa-th"></i></a>
@@ -151,26 +153,3 @@
         </section>
 
 
-
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @trips.each do |trip| %>
-      <tr>
-        <td><%= link_to 'Show', trip %></td>
-        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Trip', new_trip_path %>
