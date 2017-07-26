@@ -21,25 +21,19 @@
     </div>
   </div>
 
-  <form id="adv-search" action="#">
+  <form class="form-inline form-search" id="adv-search" method="get" action="/searchs">
     <div class="container">
       <fieldset>
         <legend><span>Find the Tour</span></legend>
         <div class="form-wrap clearfix">
-          <select class="form-control" id="places" name="departure">
-            <option>From Location</option>
-            <option>Africa</option>
-            <option>India</option>
-            <option>America</option>
-            <option>Russia</option>
-          </select>
-          <select class="form-control" id="places_destination" name="destination">
-            <option>Destination Location</option>
-            <option>Africa</option>
-            <option>India</option>
-            <option>America</option>
-            <option>Russia</option>
-          </select>
+        <div class="form-group">
+          <label class="sr-only" for="fromPlace">From</label>
+          <input type="text" class="form-control home-search-box" id="fromPlace" name="departure" placeholder="Departure">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="toPlace">To</label>
+            <input type="text" class="form-control home-search-box" id="toPlace" name="destination" placeholder="Destination">
+          </div>
           <div class="input-group input-append date date-picker" >
             <input type="text" class="form-control" name="date" value="Start DATE">
             <span class="input-group-addon add-on"><i class="fa fa-calendar"></i></span>

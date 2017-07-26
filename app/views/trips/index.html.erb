@@ -41,6 +41,32 @@
         <div class="row">
          <% @trips.each do |trip| %>
 
+<<<<<<< HEAD
+=======
+                <div class="row">
+                    <div class="col-md-9 col-sm-8">
+                        <header class="section-header clearfix">
+                            <div class="sorting pull-left">
+                                <select class="form-control" >
+                                    <option>Sort Destination By</option>
+                                    <option>Africa</option>
+                                    <option>Australia</option>
+                                    <option>Asia</option>
+                                    <option>Europe</option>
+                                    <option>North America</option>
+                                    <option>South America</option>
+                                </select>
+                                
+                                <%= link_to 'New Trip', new_trip_path, class: "t-btn btn-black-border" %>
+                            </div>
+                            <div class="layout-control pull-right clearfix">
+                                <a data-layout="4" href="#"><i class="fa fa-th"></i></a>
+                                <a data-layout="12" href="#"><i class="fa fa-th-list"></i></a>
+                            </div>
+                        </header>
+                <div class="row">
+                         <% @trips.each do |trip| %>
+>>>>>>> a53d7e0329820eeabbbdeb187042a4af39ac5a56
 
          <div class="tour-item col-md-4 col-sm-6 animatedParent">
           <article class="tour-post animated fadeInDownShort">
@@ -64,6 +90,7 @@
                 </div>
               <% end %>
             </div>
+<<<<<<< HEAD
           </article>
         </div>
         <% end %>
@@ -152,4 +179,8 @@
     </div>
   </div>
 </section>
+=======
+        </section>
+
+>>>>>>> a53d7e0329820eeabbbdeb187042a4af39ac5a56
 

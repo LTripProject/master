@@ -1,34 +1,30 @@
-<div class="col-md-4 col-sm-6 col-xs-12">
-  <div class="card">
-    <%= link_to trip, id: "trip_sum_#{trip.id}" do %>
-        <div class="card-image">
-          <img height="300" style="width: 100%" src="<%= trip.display_photo %>">
-          <span class="card-title"><%= trip.title %></span>
-        </div>
-    <% end %>
+<div class="row">
+                         <% @trips.each do |trip| %>
 
-
-    <script>
-      $('#trip_sum<%= trip.id %>').click(function () {
-        showLoading();
-      })
-    </script>
-
-    <div class="card-content">
-      <h4><%= trip.departure.try(:name) %></h4>
-      <p><%= truncate(trip.description, :length => 40, :separator => ' ') %></p>
-      <span class="trip-budget">Total budget: <%= format_price(trip.total_money) %></span>
-    </div>
-
-    <% if sign_in? %>
-
-        <div class="card-action">
-          <% if trip.is_owner?(current_user_id) %>
-              <%= link_to edit_trip_path(trip), class: 'btn btn-primary' do %>
-                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit
-              <% end %>
-          <% else %>
-        </div>
-    <% end %>
-  </div>
-</div>
+                          
+                            <div class="tour-item col-md-4 col-sm-6 animatedParent">
+                                <article class="tour-post animated fadeInDownShort">
+                                    <header class="tour-post-header clearfix">
+                                        <span class="tour-price pull-left"><%= trip.expected_budget %></span>
+                                        <span class="tour-days pull-right"><i class="fa fa-clock-o"></i>&nbsp; 3 days</span>
+                                    </header>
+                                    <div class="tour-contents clearfix">
+                                        <figure class="tour-feature-img">
+                                            <a href="single-where-we-go.html"> <img src="images/tour-carousel-img-1.jpg" alt="Image"/></a>
+                                        </figure>
+                                        <h5 class="entry-title p-name"><a href="single-where-we-go.html"><%= trip.title %></a></h5>
+                                        <div class="entry-contents hide clearfix">
+                                            <p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremo emque laudantium, totam rem aperiam, eaqueipsa quae ab illo inventore veritatis et oquasi architecto beatae vitae dicta sunt explicabo. </p>
+                                        </div>
+                                        <div class="row">
+                                        <%= link_to 'See tour detailsShow', trip , class: "more-details u-url" %>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6" style="margin-left: -7px;"><%= link_to 'Edit', edit_trip_path(trip) , class: "t-btn btn-black-border pull-right" %></div>
+                                            <div class="col-md-6"><%= link_to 'Destroy',   trip,  class: "t-btn btn-black-border pull-right",method: :delete, data: { confirm: 'Are you sure?' } %></div>
+                                        </div>
+                                   </div>
+                                </article>
+                            </div>
+                          <% end %>
+                        </div>

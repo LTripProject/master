@@ -12,11 +12,17 @@ class Trip < ApplicationRecord
   validates_presence_of :title
   validates_numericality_of :expected_budget
 
-  def self.search(departure, destination)
+  DEFAULT_PHOTO = 'https://media-cdn.tripadvisor.com/media/photo-o/05/c5/a3/bf/tropica-island-resort.jpg'
+
+  def self.search_trips(departure, destination, start_date)
     @departure = Region.find_by(name: departure)
     @destination = Region.find_by(name: destination)
     if @departure != nil && @destination == nil
-      Trip.where(departure_id: @departure.id, is_published: true)
+      Trip.where(departure_id: @departure.id)
+    end
+
+    if start_date != nil
+      Trip.where("DATE(created_at) <= ?" , start_date)
     end
   end
 
