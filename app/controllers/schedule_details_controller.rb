@@ -1,24 +1,28 @@
 class ScheduleDetailsController < ApplicationController
 	
-  before_action :require_login
   before_action :get_schedule, only: [:destroy, :create]
 
   def show
 		
   end
 
+  def title
+    schedule_detail.place.name
+  end
+
   def create
-    @schedule_details = Schedule.find(@params[:schedule_id]).schedule_details
-	schedule_details = @schedule_details.new(schedule_detail_params)
-    schedule_details.index = @schedule_details.count + 1
-    if schedule_details.save
-      calculate_distance(schedule_details)
+
+    @attractions = Schedule.find(@params[:schedule_id]).schedule_details
+    attraction = @attractions.new(attraction_params)
+    attraction.index = @attractions.count + 1
+    if attraction.save
+      attraction.decorate
     end
     respond_to :js
   end
 
+  
   def destroy
-    
     respond_to :js
   end
 

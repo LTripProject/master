@@ -1,13 +1,18 @@
 class SchedulesController < ApplicationController
 	def index
 		@trip = Trip.find(params[:trip_id])
-		@schedule = @trip.schedules.build
+		@schedule = @trip.schedules.last
+		@places = Place.all
 	end
 
 	def new
 		@trip = Trip.find(params[:trip_id])
 		@schedule = @trip.schedules.build
 		@schedule.schedule_details.build
+	end
+
+	def places
+		@place = Place.all
 	end
 
 	def create

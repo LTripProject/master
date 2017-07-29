@@ -10,7 +10,7 @@ $("#li-day<%= @schedule_day.index %>").addClass('active');
 $("#day<%= @schedule_day.index %>").addClass('active');
 
 // map
-var map = maps["li_tab<%= @schedule_day.index %>"][0];
+var map = maps["li_tab<%= @schedule.index %>"][0];
 google.maps.event.trigger(map, 'resize');
 map.setZoom(5);
 map.setCenter(new google.maps.LatLng(DEFAULT_LAT_AVG, DEFAULT_LNG_AVG));

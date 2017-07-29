@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20170724140503) do
     t.index ["trip_id"], name: "index_budget_trips_on_trip_id"
   end
 
+  create_table "budgets", force: :cascade do |t|
+    t.bigint "budget_trip_id"
+    t.integer "price"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["budget_trip_id"], name: "index_budgets_on_budget_trip_id"
+  end
+
   create_table "invite_tokens", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "trip_id"
@@ -163,6 +172,7 @@ ActiveRecord::Schema.define(version: 20170724140503) do
 
   add_foreign_key "budget_trips", "schedule_details"
   add_foreign_key "budget_trips", "trips"
+  add_foreign_key "budgets", "budget_trips"
   add_foreign_key "invite_tokens", "trips"
   add_foreign_key "invite_tokens", "users"
   add_foreign_key "schedule_details", "places"
