@@ -7,6 +7,7 @@ class Trip < ApplicationRecord
   has_many :places, through: :schedule_detail
   has_many :invite_tokens, dependent: :destroy
   belongs_to :departure, class_name: "Region", foreign_key: :departure_id, optional: true
+  has_one :budget_trip
 
   validates_presence_of :title
   validates_numericality_of :expected_budget

@@ -11,9 +11,16 @@
         <span>TOUR PACKAGE</span>
         <i class="fa fa-bars"></i>
         <section class="header-tour-listing clearfix" style="display: none;">
-            <ul class="sub-menu" style="padding-top: 61px; display: none;">
-                <li><a href="home-var-two.html">Home two</a></li>
-                <li><a href="home-var-three.html">Home three</a></li>
+            <ul class="sub-menu" style="padding-top: 61px">
+              <li><%= link_to "Trips available", trips_path %></li>
+              <% if user_signed_in? %>
+                <li><%= link_to('My Account', edit_user_registration_path) %></li>
+                <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+                <li><%= link_to "Create trip", new_trip_path %></li>
+              <% else %>
+                <li><%= link_to('Sign in', new_user_session_path) %></li>
+                <li><%= link_to('Sign up', new_user_registration_path) %></li>
+              <% end %>
             </ul>
         </section>
       </div>

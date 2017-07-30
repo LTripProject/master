@@ -1,17 +1,16 @@
 class SchedulesController < ApplicationController
+	before_action :set_trip
+
 	def index
-		@trip = Trip.find(params[:trip_id])
-		@schedules = @trip.schedules
+		@schedule = @trip.schedules.build
 	end
 
 	def new
-		@trip = Trip.find(params[:trip_id])
 		@schedule = @trip.schedules.build
 		@schedule.schedule_details.build
 	end
 
 	def create
-		@trip = Trip.find(params[:trip_id])
 		@schedule = @trip.schedules.build(schedule_params)
 		if @schedule.save 
 			flash[:notice] = 'The schedule is saved successfully!'
@@ -36,7 +35,12 @@ class SchedulesController < ApplicationController
 		@data = GoogleApiClient.search_address("Ho Chi Minh")
 	end
 
-	def schedule_params
-		params.require(:schedule).permit(:title, :schedule_details_attributes => [:hour_spend, :_destroy])
-	end
+	private
+		def set_trip
+			@trip = Trip.find(params[:trip_id])
+		end
+
+		def schedule_params
+			params.require(:schedule).permit(:title, :schedule_details_attributes => [:hour_spend, :_destroy])
+		end
 end
