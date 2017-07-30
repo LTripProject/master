@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :confirm_invite]
-  before_action :set_trip, only: [:show, :edit, :update, :destroy, :invite, :confirm_invite, :join]
-  before_action :check_permission, only: [:edit, :update, :destroy, :invite]
+  before_action :set_trip, except: [:index, :new, :create]
+  before_action :check_permission, only: [:edit, :update, :destroy, :invite, :upload_gallery]
 
   def index
     @trips = Trip.includes(:users).all
@@ -51,6 +51,10 @@ class TripsController < ApplicationController
     redirect_to @trip
   end
 
+  def upload_gallery
+    # @trip.photos.build
+  end
+
   def confirm_invite
     user = User.find(params[:user_id])
     invite_token = params[:invite_token]
@@ -78,11 +82,11 @@ class TripsController < ApplicationController
 
   def update
     @trip.departure = Region.find_by(name: params[:trip][:departure])
-
     if @trip.update(trip_params)
       flash[:notice]= 'Trip was successfully updated.'
       redirect_to @trip
     else
+      sasa
       flash[:alert] = "Update trip errors"
       render :edit
     end
@@ -103,7 +107,7 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:start_date, :title, :description, :expected_budget)
+      params.require(:trip).permit(:start_date, :title, :description, :expected_budget, {photos: []})
     end
 
     def check_permission

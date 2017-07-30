@@ -48,16 +48,17 @@ gem 'yaml_db'
 ####
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
-
-gem 'omniauth'
-gem 'omniauth-facebook', '~> 3.0.0'
 #####
 gem 'simple_form'
 
 gem 'kaminari'
 
 gem 'devise'
+gem 'omniauth-facebook'
+
 
 gem 'cocoon'
+gem 'carrierwave'
+gem 'carrierwave-aws'
 
 gem 'dotenv-rails', groups: [:development, :test]

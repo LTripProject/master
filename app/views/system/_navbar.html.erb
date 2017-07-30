@@ -45,9 +45,9 @@
       <div class="header-search pull-right clearfix">
         <i class="fa fa-search"></i>
         <div class="search clearfix">
-          <form method="get"  class="search-form" action="#">
+          <form method="get"  class="search-form" action="<%= searchs_path %>">
             <div>
-              <input type="text" placeholder="Search" name="s" class="search-text" >
+              <input type="text" placeholder="Search" name="departure" class="search-text" >
               <input type="submit" class="search-submit" value="" >
             </div>
           </form>
@@ -57,26 +57,15 @@
         <div class="menu-primary-menu-container">
           <ul id="menu-primary-menu" class="main-menu">
             <li>
-              <a href="index-2.html">Home</a>
+              <%= link_to "Home", root_path %>
             </li>
             <li class="mega-menu-nav">
-              <a href="where-we-go.html">Where we go</a>
+              <%= link_to "Where we go", trips_path %>
             </li>
-            <li>
-              <a href="#">Tours</a>
-              <ul class="sub-menu">
-                <li><a href="beach-holidays.html">beach holidays</a></li>
-                <li><a href="city-breaks.html">City breaks</a></li>
-                <li><a href="tropical-island.html">Tropical Island</a></li>
-                <li><a href="resorts.html">Resorts</a></li>
-                <li><a href="single-where-we-go.html">Asian Adventure</a></li>
-              </ul>
-            </li>
-            <li><a href="special-offers.html">About us</a></li>
-            <li> <a href="contact.html">Contact</a> </li>
+            <li><a href="#">About us</a></li>
           </ul>
         </div>
       </nav>
     </div><!-- .container -->
   </div><!-- .site-branding -->
-    </header><!-- .site-header -->
+</header><!-- .site-header -->
