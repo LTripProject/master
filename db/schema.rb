@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170724132456) do
-=======
 ActiveRecord::Schema.define(version: 20170724140503) do
->>>>>>> GOOGLE
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +31,9 @@ ActiveRecord::Schema.define(version: 20170724140503) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "trip_id"
     t.index ["budget_trip_id"], name: "index_budgets_on_budget_trip_id"
+    t.index ["trip_id"], name: "index_budgets_on_trip_id"
   end
 
   create_table "invite_tokens", force: :cascade do |t|
@@ -177,10 +175,7 @@ ActiveRecord::Schema.define(version: 20170724140503) do
   add_foreign_key "budget_trips", "schedule_details"
   add_foreign_key "budget_trips", "trips"
   add_foreign_key "budgets", "budget_trips"
-<<<<<<< HEAD
   add_foreign_key "budgets", "trips"
-=======
->>>>>>> GOOGLE
   add_foreign_key "invite_tokens", "trips"
   add_foreign_key "invite_tokens", "users"
   add_foreign_key "schedule_details", "places"
