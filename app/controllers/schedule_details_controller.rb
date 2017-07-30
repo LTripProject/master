@@ -11,10 +11,13 @@ class ScheduleDetailsController < ApplicationController
   end
 
   def create
-    get_attractions
-    create_attraction
+    @attractions = Schedule.find(params[:schedule_id]).schedule_details
+    @attraction = @attractions.new(schedule_detail_params)
+    @attraction.index = @attractions.count + 1
+    if @attraction.save
+      respond_to :js
+    end
     
-    respond_to :js
   end
 
   def image_url
@@ -22,11 +25,9 @@ class ScheduleDetailsController < ApplicationController
 
   
   def destroy
-    puts params[:id]
-     @attraction = ScheduleDetail.find(params[:id])
-     @schedule_day.schedule_details.each do |attraction|
-        attraction.decrement!(:index, by = 1) if attraction.index > @attraction.index
-      end
+     @schedule = ScheduleDetail.find(params[:id]).schedule
+     @attraction = ScheduleDetail.find(params[:id]).destroy
+     
     respond_to :js
   end
 
@@ -35,20 +36,9 @@ class ScheduleDetailsController < ApplicationController
     @schedule_day = Schedule.find(params[:schedule_id])
   end
 
-  def get_attractions
-    @attractions = Schedule.find(@params[:schedule_id]).schedule_details
-  end
-
-  def create_attraction
-    attraction = @attractions.new(schedule_detail_params)
-    attraction.index = @attractions.count + 1
-    if attraction.save
-      calculate_distance(attraction)
-    end
-  end
 
   def calculate_distance(schedule_details)
-    last_attraction = @attractions.find_by(index: schedule_details.index - 1)
+    
   end
 
   def schedule_detail_params

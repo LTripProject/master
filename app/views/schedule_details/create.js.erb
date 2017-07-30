@@ -1,7 +1,9 @@
-
+console.log('<%= @attraction.hour_spend %>');
+<% if @attraction %>
   $("#place_<%= @attraction.schedule.index %>").val('');
   $("#add-to-itinerary-form_<%= @attraction.schedule.index %>").modal('hide');
   $("#sortable_<%= @attraction.schedule.index %>").append(
       '<%= j(render 'schedule_details/schedule_detail', schedule_detail: @attraction) %>'
   );
   <%= render(:partial => 'schedules/mapapi', locals: {schedule: @attraction.schedule}, :formats => [:js] ) %>
+<% end %>

@@ -50,10 +50,11 @@
               <label for="attraction_<%= schedule.index %>" class="form-control-label">
                 Tourist Suggestion:
               </label>
-              <input class="typeahead form-control" name="schedule_detail[place_id]" type="text" placeholder="Where you love to visit"
-                     id="attraction_<%= schedule.index %>" autofocus>
-              <input type="hidden" name="schedule_detail[place_id]" id="place_<%= schedule.index %>" value="">
-            </div>
+              <!-- <input class="typeahead form-control" type="text" placeholder="Where you love to visit"
+                     id="attraction_<%= schedule.index %>" autofocus> -->
+
+                     <%= select(:schedule_detail, :place_id, @places.map {|v| [ v['name'], v['id'] ] }) %>
+           </div>
 
             <!-- Spending hours -->
             <div class="form-group">
@@ -84,38 +85,26 @@
    <%= render(:partial => 'schedules/mapapi', locals: {schedule: schedule}, :formats => [:js] ) %>
   // End Include Google Map to system
   // Typehead
-  $('#attraction_<%= schedule.index %>').bind('typeahead:select', function (ev, suggestion) {
-    console.log(suggestion.id);
-    $("#place_<%= schedule.index %>").val(suggestion.id);
-  });
+
   $('.hot-action-button').click(function(){
     var form_popup = $(this).data('target');
     $(form_popup).modal('toggle');
   });
-
-   $.ajax({
-    method: 'GET',
-    url: '/places/all',
-    success: function (data) {
-      var states = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.whitespace,
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: data.map(function (place) {
-          return place.name;
-        })
-      });
-     $('#attraction_<%= schedule.index %>').typeahead({
-            hint: true,
-            highlight: true,
-            minLength: 1
-          },
-          {
-            name: 'states',
-            source: states
-          });
-    }
-  });
   
+  $('#attraction_<%= schedule.index %>').typeahead(
+      {
+        hint: true,
+        highlight: true,
+        minLength: 1
+      },
+      {
+        name: 'states',
+        limit: 50,
+        source: placeEngine,
+        display: 'name',
+      }
+  );
+ 
   // Sort attractions
   $("#sortable_<%= schedule.index %>").sortable();
   $("#sortable_<%= schedule.index %>").disableSelection();
