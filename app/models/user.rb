@@ -11,6 +11,10 @@ class User < ApplicationRecord
   has_many :trips, through: :user_trips
   has_many :invite_tokens, dependent: :destroy
 
+  mount_uploader :image, PhotoUploader
+
+
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
