@@ -1,12 +1,13 @@
 class SchedulesController < ApplicationController
+	before_action :get_trip, only: [:index, :new,:create, :destroy]
+	before_action :get_schedule_day, only: [:sort, :destroy]
+
 	def index
-		@trip = Trip.find(params[:trip_id])
-		@schedule = @trip.schedules.last
-		@places = Place.all
+		@schedules = @trip.schedules
+		@places = Place.all.preload(:region)
 	end
 
 	def new
-		@trip = Trip.find(params[:trip_id])
 		@schedule = @trip.schedules.build
 		@schedule.schedule_details.build
 	end
@@ -16,16 +17,25 @@ class SchedulesController < ApplicationController
 	end
 
 	def create
-		@trip = Trip.find(params[:trip_id])
-		@schedule = @trip.schedules.build(schedule_params)
-		if @schedule.save 
-			flash[:notice] = 'The schedule is saved successfully!'
-			redirect_to [@trip, @schedule]
-		else
-			flash[:error] = 'Cannot save the schedule!'
-			render :new
-		end
+		@schedule = @trip.schedules.create(index: next_index)
+		respond_to :js
 	end
+
+	def destroy
+		Schedule.transaction do
+		@trip.schedules.each do |day|
+			day.decrement!(:index, by = 1) if day.index > @schedule.index
+		end
+		@schedule.destroy
+		end
+		prepare_data
+		respond_to :js
+	end
+
+	def sort
+		respond_to :js
+  	end
+
 
 	def show
 		@schedule = Schedule.find(params[:id])
@@ -33,5 +43,24 @@ class SchedulesController < ApplicationController
 
 	def schedule_params
 		params.require(:schedule).permit(:title, :schedule_details_attributes => [:hour_spend, :_destroy])
+	end
+
+	private
+	def get_trip
+		@trip = Trip.find(params[:trip_id])
+	end
+
+	def next_index
+		@trip.schedules.count + 1
+	end
+
+	def get_schedule_day
+		@schedule = Schedule.find(params[:id])
+	end
+
+	def prepare_data
+		@schedule = @trip.schedules.last
+		@schedules = @trip.schedules
+		@places = Place.all.preload(:region)
 	end
 end

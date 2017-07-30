@@ -11,18 +11,23 @@ class ScheduleDetailsController < ApplicationController
   end
 
   def create
-
-    @attractions = Schedule.find(@params[:schedule_id]).schedule_details
-    attraction = @attractions.new(attraction_params)
+    @attractions = Schedule.find(params[:schedule_id]).schedule_details
+    attraction = @attractions.new(schedule_detail_params)
     attraction.index = @attractions.count + 1
+    puts 'ok'
     if attraction.save
-      attraction.decorate
+      @attraction = attraction
+      puts 'ok'
     end
     respond_to :js
   end
 
   
   def destroy
+     @attraction = Attraction.find(params[:id])
+     @schedule_day.schedule_details.each do |attraction|
+        attraction.decrement!(:index, by = 1) if attraction.index > @attraction.index
+      end
     respond_to :js
   end
 
@@ -36,6 +41,6 @@ class ScheduleDetailsController < ApplicationController
   end
 
   def schedule_detail_params
-    @params.require(:schedule_detail).permit(:place_id, :hour_spend)
+    params.require(:schedule_detail).permit(:place_id, :hour_spend)
   end
 end

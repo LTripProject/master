@@ -4,10 +4,10 @@ for (var i = 1; i <= day_count; i++) {
   $("#day" + i).removeClass('active');
 }
 
-$("#day-left-panel").append("<%= j(render 'schedules/li_schedule_day', schedule_day: @schedule_day) %>");
-$("#itinerary-content").append("<%= j(render @schedule_day) %>");
-$("#li-day<%= @schedule_day.index %>").addClass('active');
-$("#day<%= @schedule_day.index %>").addClass('active');
+$("#day-left-panel").append("<%= j(render 'schedules/schedule_day', schedule: @schedule) %>");
+$("#itinerary-content").append("<%= j(render @schedule) %>");
+$("#li-day<%= @schedule.index %>").addClass('active');
+$("#day<%= @schedule.index %>").addClass('active');
 
 // map
 var map = maps["li_tab<%= @schedule.index %>"][0];

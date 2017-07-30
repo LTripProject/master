@@ -42,17 +42,17 @@
     // Place engine
     places = <%= raw @places.to_json %>;
     placeEngine = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('suggest_title'),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      identify: function (obj) {
-        return obj.id;
-      },
-      local: places
+       datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: places.map(function (place) {
+          console.log(place.name);
+          return place.name;
+        })
     });
   </script>
   <div class="panel-body">
     <div class="tab-content" id="itinerary-content">
-      <%= render @schedule %>
+      <%= render @schedules %>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="tab-pane fade in <%= schedule.index == 1 && 'active' %> days-tab" id="day<%= schedule.index %>">
-  <!-- Schedule Detail -->
+<!-- Schedule Detail -->
   <div class="col-md-3">
     <div class="schedule-form">
       <div class="schedule-content" style="margin-top: 24px">
@@ -9,12 +9,10 @@
           </ul>
 
           <!-- Add button -->
-          <button type="button" data-backdrop="true" data-keyboard="true" type="button" class="btn hot-action-button" id="addAttractionItineraryBtn" 
+          <button type="button" data-backdrop="true" data-keyboard="true" type="button" class="btn hot-action-button" id="addAttractionItineraryBtn<%= schedule.index %>" 
                   data-target="#add-to-itinerary-form_<%= schedule.index %>" onclick="javascript: return false;" >
             Add Details
           </button>
-
-          <a href="#"  data-dismiss="modal" class="btn btn-primary" data-toggle="modal" data-target="#add-to-itinerary-form_<%= schedule.index %>">Add </a>
 
           <!-- Delete button -->
           <%= link_to [@trip, schedule], class: 'btn delete-day-btn',
@@ -41,9 +39,9 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h2 class="modal-title" id="addToItineraryFormLabel">Add Schedule Detail</h2>
+          <h2 class="modal-title" id="addToItineraryFormLabel">Add Location</h2>
         </div>
-        <%= form_tag schedule_schedule_details_path(@schedule), remote: true, method: :post,
+        <%= form_tag schedule_schedule_details_path(schedule), remote: true, method: :post,
                      class: 'form-horizontal form-schedule form-card',
                      id: "form-schedule_#{schedule.index}" do %>
 
@@ -80,16 +78,18 @@
     </div>
   </div>
 </div>
+
 <script>
   // Include Google Map to system
-   <%= render(:partial => 'schedules/mapapi', locals: {schedule: @schedule}, :formats => [:js] ) %>
+   <%= render(:partial => 'schedules/mapapi', locals: {schedule: schedule}, :formats => [:js] ) %>
   // End Include Google Map to system
   // Typehead
   $('#attraction_<%= schedule.index %>').bind('typeahead:select', function (ev, suggestion) {
     $("#place_<%= schedule.index %>").val(suggestion.id);
   });
-  $('#addAttractionItineraryBtn').click(function(){
-    $('#add-to-itinerary-form_1').modal('toggle');
+  $('.hot-action-button').click(function(){
+    var form_popup = $(this).data('target');
+    $(form_popup).modal('toggle');
   });
   console.log(placeEngine);
   $('#attraction_<%= schedule.index %>').typeahead(
@@ -102,9 +102,9 @@
         name: 'states',
         limit: 50,
         source: placeEngine,
-        display: 'name'
       }
-  ); // Sort attractions
+  ); 
+  // Sort attractions
   $("#sortable_<%= schedule.index %>").sortable();
   $("#sortable_<%= schedule.index %>").disableSelection();
   $("#sortable_<%= schedule.index %>").sortable({

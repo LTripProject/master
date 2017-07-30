@@ -1,5 +1,5 @@
-<li class="<%= schedule.default_active %>" id="li-day<%= schedule.index %>">
+<li class="<%= schedule.index == 1 %>" id="li-day<%= schedule.index %>">
   <a href="#day<%= schedule.index %>" data-toggle="tab" id="li_tab<%= schedule.index %>">
-    <%= schedule.title %>
+    Day <%= schedule.index %>
   </a>
 </li>
