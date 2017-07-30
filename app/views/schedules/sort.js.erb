@@ -1,0 +1,2 @@
+$('#sortable_<%= @schedule.index %>').html('<%= j(render @schedule.schedule_details) %>');
+ <%= render(:partial => 'schedules/mapapi', locals: {schedule: @schedule}, :formats => [:js] ) %>

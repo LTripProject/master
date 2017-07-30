@@ -1,22 +1,22 @@
 <div class="row form-group">
-            <div class="col-xs-12">
-                <ul class="nav nav-pills nav-justified thumbnail setup-panel">
-                    <li class="active"><a href="#step-1">
-                        <h4 class="list-group-item-heading">Trip Information</h4>
-                        <p class="list-group-item-text">Fill Information</p>
-                    </a></li>
-                    <li class="disabled"><a href="#step-2">
-                        <h4 class="list-group-item-heading">Schedule</h4>
-                        <p class="list-group-item-text">Update Schedule (Day by day)</p>
-                    </a></li>
-                    <li class="disabled"><a href="#step-3">
-                        <h4 class="list-group-item-heading">Budget</h4>
-                        <p class="list-group-item-text">Manage budget</p>
-                    </a></li>
-                    <li class="disabled"><a href="#step-4">
-                        <h4 class="list-group-item-heading">Gallery</h4>
-                        <p class="list-group-item-text">Update Gallery of Trip</p>
-                    </a></li>    
-                </ul>
-            </div>
-	    </div>
+  <div class="col-xs-12">
+    <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+      <li class="<%= params[:controller]== "trips" ? 'active' : 'disabled' %>"><a href="#step-1">
+        <h4 class="list-group-item-heading">Trip Information</h4>
+        <p class="list-group-item-text">Fill Information</p>
+      </a></li>
+      <li class="<%= params[:controller] == "schedules" ? 'active' : 'disabled' %>"><a href="#step-2">
+        <h4 class="list-group-item-heading">Schedule</h4>
+        <p class="list-group-item-text">Update Schedule (Day by day)</p>
+      </a></li>
+      <li class="<%= params[:controller] == "budget_trips" ? 'active' : 'disabled' %>"><a href="#step-3">
+        <h4 class="list-group-item-heading">Budget</h4>
+        <p class="list-group-item-text">Manage budget</p>
+      </a></li>
+      <li class=""><a href="#step-4">
+        <h4 class="list-group-item-heading">Gallery</h4>
+        <p class="list-group-item-text">Update Gallery of Trip</p>
+      </a></li>    
+    </ul>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :confirm_invite]
-  before_action :set_trip, only: [:show, :edit, :update, :destroy, :invite, :confirm_invite, :join]
-  before_action :check_permission, only: [:edit, :update, :destroy, :invite]
+  before_action :set_trip, except: [:index, :new, :create]
+  before_action :check_permission, only: [:edit, :update, :destroy, :invite, :upload_gallery]
 
   def index
     @trips = Trip.includes(:users).all
@@ -30,7 +30,7 @@ class TripsController < ApplicationController
     if @trip.save
       @trip.users << current_user
       flash[:notice] = 'Trip was successfully created. Please set your schedule'
-     redirect_to new_trip_schedule_path(@trip)
+      redirect_to trip_schedules_path(@trip)
     else
       flash.now[:alert] = "Create trip errors"
       render :new
@@ -49,6 +49,10 @@ class TripsController < ApplicationController
     end
 
     redirect_to @trip
+  end
+
+  def upload_gallery
+    
   end
 
   def confirm_invite
