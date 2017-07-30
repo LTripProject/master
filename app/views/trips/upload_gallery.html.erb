@@ -1,14 +1,6 @@
 <div class="container">
   <%= simple_form_for @trip do |f| %>
-   <div class="photos">
-    <%= f.simple_fields_for :photos do |photo| %>
-      <%= render 'photo_fields', f: photo  %>
-    <% end %>
-    <div class="links">
-       <%= link_to_add_association "Add image", f, :photos, class: "btn
-        btn-primary" %>
-    </div>
-  </div>
+    <%= f.input :photos, as: :file, input_html: {multiple: true} %>
 
     <%= f.submit "Upload", class: "btn btn-primary"%>
   <% end %>

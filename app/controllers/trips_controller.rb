@@ -53,7 +53,7 @@ class TripsController < ApplicationController
   end
 
   def upload_gallery
-    @trip.photos.build
+    # @trip.photos.build
   end
 
   def confirm_invite
@@ -108,7 +108,7 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:start_date, :title, :description, :expected_budget, photos_attributes: [:image, :_destroy])
+      params.require(:trip).permit(:start_date, :title, :description, :expected_budget, {photos: []})
     end
 
     def check_permission
