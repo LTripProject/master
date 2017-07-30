@@ -60,6 +60,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (1.1.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     childprocess (0.7.1)
       ffi (~> 1.0, >= 1.0.11)
     cocoon (1.2.10)
@@ -90,7 +94,6 @@ GEM
     ffi (1.9.18-x86-mingw32)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
-    geocoder (1.4.4)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     handlebars_assets (0.23.2)
@@ -275,6 +278,7 @@ DEPENDENCIES
   bootstrap3-datetimepicker-rails (~> 4.17.37)
   byebug
   capybara (~> 2.13)
+  carrierwave
   cocoon
   coffee-rails (~> 4.2)
   devise
@@ -308,4 +312,4 @@ DEPENDENCIES
   yaml_db
 
 BUNDLED WITH
-   1.15.1
+   1.15.3

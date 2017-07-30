@@ -58,5 +58,5 @@ gem 'kaminari'
 gem 'devise'
 
 gem 'cocoon'
-
+gem 'carrierwave'
 gem 'dotenv-rails', groups: [:development, :test]
