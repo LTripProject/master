@@ -25,10 +25,17 @@ Rails.application.routes.draw do
   end
 
  resources :schedules, only: [] do
-    resources :schedule_details, only: [:create, :destroy]
+    resources :schedule_details, only: [:create, :destroy, :delete]
+    member do
+      post :sort
+    end
   end
 
-  resources :places
+  resources :places do
+    collection do
+      get :all
+    end
+  end
 
   post 'trips/:id/invite' => 'trips#invite', as: :trip_invite
   get "trips/:id/confirm_invite" => 'trips#confirm_invite', as: :trip_confirm_invite

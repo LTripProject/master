@@ -30,7 +30,7 @@ class TripsController < ApplicationController
     if @trip.save
       @trip.users << current_user
       flash[:notice] = 'Trip was successfully created. Please set your schedule'
-      redirect_to trip_schedule_path(@trip)
+      redirect_to trip_schedules_path(@trip)
     else
       flash.now[:alert] = "Create trip errors"
       render :new

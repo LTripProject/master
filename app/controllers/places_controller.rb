@@ -2,7 +2,8 @@ class PlacesController < ApplicationController
     def index
 	end
 
-	def show
-		@place = Place.find(params[:id])
-	end
+	def all
+        render json: Place.all
+    end
+
 end

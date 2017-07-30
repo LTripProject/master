@@ -1,6 +1,6 @@
 <div class="tab-pane fade in <%= schedule.index == 1 && 'active' %> days-tab" id="day<%= schedule.index %>">
 <!-- Schedule Detail -->
-  <div class="col-md-3">
+  <div class="col-md-4">
     <div class="schedule-form">
       <div class="schedule-content" style="margin-top: 24px">
         <div id="schedule_<%= schedule.index %>" class="schedule">
@@ -25,7 +25,7 @@
   </div>
 
   <!-- Map -->
-  <div class="col-md-9">
+  <div class="col-md-8">
     <div id="map<%= schedule.index %>" style="width: 100%; height: 400px"></div>
   </div>
 
@@ -48,9 +48,9 @@
             <!-- Where to go to -->
             <div class="form-group">
               <label for="attraction_<%= schedule.index %>" class="form-control-label">
-                Tourist Attraction:
+                Tourist Suggestion:
               </label>
-              <input class="typeahead form-control" type="text" placeholder="Where you love to visit"
+              <input class="typeahead form-control" name="schedule_detail[place_id]" type="text" placeholder="Where you love to visit"
                      id="attraction_<%= schedule.index %>" autofocus>
               <input type="hidden" name="schedule_detail[place_id]" id="place_<%= schedule.index %>" value="">
             </div>
@@ -85,25 +85,37 @@
   // End Include Google Map to system
   // Typehead
   $('#attraction_<%= schedule.index %>').bind('typeahead:select', function (ev, suggestion) {
+    console.log(suggestion.id);
     $("#place_<%= schedule.index %>").val(suggestion.id);
   });
   $('.hot-action-button').click(function(){
     var form_popup = $(this).data('target');
     $(form_popup).modal('toggle');
   });
-  console.log(placeEngine);
-  $('#attraction_<%= schedule.index %>').typeahead(
-      {
-        hint: true,
-        highlight: true,
-        minLength: 1
-      },
-      {
-        name: 'states',
-        limit: 50,
-        source: placeEngine,
-      }
-  ); 
+
+   $.ajax({
+    method: 'GET',
+    url: '/places/all',
+    success: function (data) {
+      var states = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: data.map(function (place) {
+          return place.name;
+        })
+      });
+     $('#attraction_<%= schedule.index %>').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+          },
+          {
+            name: 'states',
+            source: states
+          });
+    }
+  });
+  
   // Sort attractions
   $("#sortable_<%= schedule.index %>").sortable();
   $("#sortable_<%= schedule.index %>").disableSelection();

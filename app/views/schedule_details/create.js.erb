@@ -1,9 +1,7 @@
 
-<% if @attraction && @attraction.persisted? %>
   $("#place_<%= @attraction.schedule.index %>").val('');
   $("#add-to-itinerary-form_<%= @attraction.schedule.index %>").modal('hide');
-  $("#sortable_<%= @attraction.schedule_day.index %>").append(
-      '<%= j(render 'schedule_detail/schedule_detail', attraction: @attraction) %>'
+  $("#sortable_<%= @attraction.schedule.index %>").append(
+      '<%= j(render 'schedule_details/schedule_detail', schedule_detail: @attraction) %>'
   );
-  <%= render(:partial => 'schedules/mapapi', locals: {schedule: @schedule}, :formats => [:js] ) %>
-<% end %>
+  <%= render(:partial => 'schedules/mapapi', locals: {schedule: @attraction.schedule}, :formats => [:js] ) %>

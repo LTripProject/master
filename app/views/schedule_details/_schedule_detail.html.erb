@@ -13,11 +13,10 @@
         </div>
 
         <div class="pull-right remove-itinerary col-remove">
-          <%= link_to schedule_schedule_detail_path(schedule_detail.schedule_id, schedule_detail),
-                      id: "remove-itinerary_#{schedule_detail.index}", rel: "day-detail_#{schedule_detail.index}",
-                      remote: true, method: :delete do %>
-              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          <% end %>
+
+        <%= link_to 'Delete', { :controller => 'schedule_details', :action => 'destroy', :id => schedule_detail.index },
+               data:  { :confirm => 'Are you sure?', :method => :delete, :remote => true} %>
+
         </div>
       </div>
     </li>
