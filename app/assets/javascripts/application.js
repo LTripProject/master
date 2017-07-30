@@ -1,3 +1,6 @@
+//= require jquery
+//= require jquery_ujs
+//= require jquery.remotipart
 //= require ./theme/jquery-2.1.3.min4c71
 //= require ./theme/jquery-migrate-1.2.11576
 //= require ./theme/respond.min8a54
@@ -8,15 +11,14 @@
 //= require ./theme/fullcalendar.min254d
 //= require ./theme/jquery.slicknav.min4bf4
 //= require ./theme/css3-animate-itc5da
-//= require ./theme/bootstrap-datepicker8a54
 //= require ./theme/ltrip
 
 //= require jquery.easing
+//= require jquery-ui
 //= require tag-it
 //= require bootstrap-datetimepicker
 //= require twitter/typeahead.min
-
-//= require rails-ujs
-//= require bootstrap-sprockets
+//= require handlebars
+//= require bootstrap
 //= require_tree .
 //= require cocoon

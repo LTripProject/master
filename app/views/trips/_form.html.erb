@@ -49,10 +49,17 @@
             </fieldset>
             </div>
           </div>
+          <div class="row">
+            <%#= image_tag(@trip.thumbnail_image_url) if @trip.thumbnail_image? %>
+            <%#= f.file_field :thumbnail_image %>
+            <%#= f.hidden_field :thumbnail_image_cache %>
+          </div>
     </div>
-
+    
     <div class="form-actions">
       <%= f.button :submit %>
+      
+      <%= link_to 'Back', trips_path , class: "btn btn-default" %>
     </div>
 <% end %>
 

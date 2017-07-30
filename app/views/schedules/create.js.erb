@@ -1,0 +1,16 @@
+var day_count = $(".days-tab").length;
+for (var i = 1; i <= day_count; i++) {
+  $("#li-day" + i).removeClass('active');
+  $("#day" + i).removeClass('active');
+}
+
+$("#day-left-panel").append("<%= j(render 'schedules/schedule_day', schedule: @schedule) %>");
+$("#itinerary-content").append("<%= j(render @schedule) %>");
+$("#li-day<%= @schedule.index %>").addClass('active');
+$("#day<%= @schedule.index %>").addClass('active');
+
+// map
+var map = maps["li_tab<%= @schedule.index %>"][0];
+google.maps.event.trigger(map, 'resize');
+map.setZoom(5);
+map.setCenter(new google.maps.LatLng(DEFAULT_LAT_AVG, DEFAULT_LNG_AVG));

@@ -1,6 +1,6 @@
 <div class="container">
 	<%= simple_form_for [@trip, @schedule] do |f| %>
-		<%= f.input  :title, input_html: {value: @trip.title} %>
+		<%= f.input  :title, input_html: {value: "New Day"} %>
 		<div class="input-form">
 			<%= f.simple_fields_for :schedule_details do |sd| %>
         <%= render "schedule_detail_fields", :f => sd %>
@@ -11,7 +11,7 @@
 		</div>
 		
 	  <%= f.button :submit , class: "btn btn-primary" %>
-	  <%= link_to "Cancel", @trip, class: "btn btn-danger" %>
+	  <%= link_to "Cancel", :back, class: "btn btn-danger" %>
 	<% end %>
 
 

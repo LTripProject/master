@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170730041032) do
+ActiveRecord::Schema.define(version: 20170730072003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,10 @@ ActiveRecord::Schema.define(version: 20170730041032) do
     t.integer "width"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "trip_id"
+    t.string "image"
     t.index ["place_id"], name: "index_photos_on_place_id"
+    t.index ["trip_id"], name: "index_photos_on_trip_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -124,6 +127,7 @@ ActiveRecord::Schema.define(version: 20170730041032) do
     t.decimal "expected_budget"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
     t.index ["departure_id"], name: "index_trips_on_departure_id"
   end
 
@@ -165,6 +169,8 @@ ActiveRecord::Schema.define(version: 20170730041032) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
+    t.string "name"
+    t.text "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -176,6 +182,7 @@ ActiveRecord::Schema.define(version: 20170730041032) do
   add_foreign_key "budgets", "trips"
   add_foreign_key "invite_tokens", "trips"
   add_foreign_key "invite_tokens", "users"
+  add_foreign_key "photos", "trips"
   add_foreign_key "schedule_details", "places"
   add_foreign_key "schedule_details", "schedules"
   add_foreign_key "schedules", "trips"
