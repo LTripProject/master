@@ -1,0 +1,85 @@
+
+function initialize(mapId) {
+  var mapCanvas = document.getElementById(mapId);
+  var directionsService = new google.maps.DirectionsService;
+  var latCenter = parseFloat("<%= schedule.check[:latitude] %>");
+  var lngCenter = parseFloat("<%= schedule.check[:longitude] %>");
+  var mapOptions = {
+    center: new google.maps.LatLng(latCenter, lngCenter),
+    zoom: 15,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  addToMap(map);
+  calculateAndDisplayRoute(map, directionsService);
+}
+
+function addToMap(map) {
+
+  var markers = [];
+  <% if (!schedule.schedule_details.nil?) %>
+    <% schedule.schedule_details.each do |attraction| %>
+      var lat = parseFloat("<%= attraction.place.latitude %>");
+      var lng = parseFloat("<%= attraction.place.longitude %>");
+      var marker = new CustomMarker(
+          new google.maps.LatLng(lat, lng), map, "<%= attraction.image_url(50) %>", "<%= attraction.place.name %>"
+      );
+      markers.push(marker);
+  <% end %>
+  <% end %>
+  // bounds
+  var bounds = new google.maps.LatLngBounds();
+  for (var i = 0; i < markers.length; i++) {
+    bounds.extend(markers[i].getPosition());
+  }
+  maps["li_tab<%= schedule.index %>"] = [map, bounds];
+  if (bounds.isEmpty()) {
+    map.setZoom(5);
+    map.setCenter(new google.maps.LatLng(DEFAULT_LAT_AVG, DEFAULT_LNG_AVG));
+  } else {
+    map.fitBounds(bounds);
+  }
+}
+
+function calculateAndDisplayRoute(map, directionsService) {
+  <% schedule.pairs_of_schedule_details.each do |first, second| %>
+    directionsService.route({
+      origin: new google.maps.LatLng(
+          parseFloat("<%= first.place.latitude %>"),
+          parseFloat("<%= first.place.longitude %>")
+      ),
+      destination: new google.maps.LatLng(
+          parseFloat("<%= second.place.latitude %>"),
+          parseFloat("<%= second.place.longitude %>")
+      ),
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: google.maps.UnitSystem.METRIC
+    }, function (response, status) {
+      if (status === google.maps.DirectionsStatus.OK) {
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+          polylineOptions: {
+            strokeColor: "red"
+          },
+          preserveViewport: true,
+          suppressMarkers: true
+        });
+        directionsDisplay.setMap(map);
+        directionsDisplay.setDirections(response);
+      } else {
+        console.log('Directions request failed due to ' + status);
+      }
+    });
+  <% end %>
+}
+
+function getImage(url) {
+  return {
+    url: url,
+    size: new google.maps.Size(50, 50),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(25, 25)
+  };
+}
+
+// Initialize here
+google.maps.event.addDomListener(window, 'load', initialize('map<%= schedule.index %>'));

@@ -1,1 +1,25 @@
-<%= schedule_detail.to_json %>
+<%= link_to schedule_detail.place do %>
+    <li class="day_detail" id="day-detail_<%= schedule_detail.index %>">
+      <% if schedule_detail.index != 1 %>
+          <div class="transport-time">
+          </div>
+      <% end %>
+      <input type="hidden" id="schedule_detail_index" value="<%= schedule_detail.index %>">
+      <div class="day-place-detail">
+        <div class="col-img"></div>
+
+        <div class="day-place-detail-middle col-name">
+          <h3 class="tag"><%= schedule_detail.hour_spend %> HOURs</h3>
+        </div>
+
+        <div class="pull-right remove-itinerary col-remove">
+          <%= link_to schedule_schedule_detail_path(schedule_detail.schedule_id, schedule_detail),
+                      id: "remove-itinerary_#{schedule_detail.index}", rel: "day-detail_#{schedule_detail.index}",
+                      remote: true, method: :delete do %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          <% end %>
+        </div>
+      </div>
+    </li>
+
+<% end %>

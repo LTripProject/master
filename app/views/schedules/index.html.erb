@@ -1,6 +1,59 @@
-<h1>Schedule</h1>
-<%  @schedules.each do |s|%>
-	<%= render "schedule", trip: @trip, schedule: s %>
-<% end %>
+<div class="container">
+<h2 class="fs-title short-border">Schedule</h2>
+<div class="panel with-nav-tabs panel-default ">
+  <div class="panel-heading">
+    <ul class="nav nav-tabs" id="day-left-panel">
+      <li>
+        <%= link_to trip_schedules_path(@trip), method: :post,
+                    remote: true, class: 'btn-add-schedule' do %>
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add Schedule Detail
+        <% end %>
+      </li>
 
-<%= link_to 'Back', trips_path %>
+     <%= render partial: 'schedules/schedule_day', collection: @schedules, as: :schedule %>
+    </ul>
+  </div>
+  <script>
+    DEFAULT_LAT_AVG = 14.0583;
+    DEFAULT_LNG_AVG = 108.2772;
+
+    maps = {};
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      resumeMap(e.target.id);
+    });
+
+    setTimeout(function() {
+      resumeMap("li_tab1");
+    }, 1200);
+
+    resumeMap = function (id) {
+      var map = maps[id][0];
+      var bounds = maps[id][1];
+      google.maps.event.trigger(map, 'resize');
+      map.setZoom(15);
+      if (bounds.isEmpty()) {
+        map.setZoom(5);
+        map.setCenter(new google.maps.LatLng(DEFAULT_LAT_AVG, DEFAULT_LNG_AVG));
+      } else {
+        map.fitBounds(bounds);
+      }
+    };
+
+    // Place engine
+    places = <%= raw @places.to_json %>;
+    placeEngine = new Bloodhound({
+       datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: places.map(function (place) {
+          console.log(place.name);
+          return place.name;
+        })
+    });
+  </script>
+  <div class="panel-body">
+    <div class="tab-content" id="itinerary-content">
+      <%= render @schedules %>
+    </div>
+  </div>
+</div>
+</div>

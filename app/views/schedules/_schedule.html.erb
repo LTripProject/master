@@ -1,31 +1,128 @@
-<div class="container">
-	<div class="col-md-4">
-	<h2><%= schedule.title %></h2>
-		<div class="schedule-form">
-		<div class="schedule-content" style="margin-top: 24px">
-			<div id="schedule_<%= schedule.index %>" class="schedule">
-			<ul class="sortable" id="sortable_<%= schedule.index %>">
-				<%= render schedule.schedule_details %>
-			</ul>
-			<%= link_to edit_trip_schedule_path(trip, schedule), class: 'btn hot-action-button' do %>
-				<span class="glyphicon glyphicon-pencil">Edit</span>
-			<% end %>
-		
-			<!-- Delete button -->
-			<%= link_to [trip, schedule], class: 'btn delete-day-btn',
-						id: 'deleteDayBtn', remote: true, method: :delete do %>
-				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Schedule
-			<% end %>
-			
-			</div>
-		</div>
-		</div>
-	</div>
+<div class="tab-pane fade in <%= schedule.index == 1 && 'active' %> days-tab" id="day<%= schedule.index %>">
+<!-- Schedule Detail -->
+  <div class="col-md-3">
+    <div class="schedule-form">
+      <div class="schedule-content" style="margin-top: 24px">
+        <div id="schedule_<%= schedule.index %>" class="schedule">
+          <ul class="sortable" id="sortable_<%= schedule.index %>">
+            <%= render schedule.schedule_details %>
+          </ul>
+
+          <!-- Add button -->
+          <button type="button" data-backdrop="true" data-keyboard="true" type="button" class="btn hot-action-button" id="addAttractionItineraryBtn<%= schedule.index %>" 
+                  data-target="#add-to-itinerary-form_<%= schedule.index %>" onclick="javascript: return false;" >
+            Add Details
+          </button>
+
+          <!-- Delete button -->
+          <%= link_to [@trip, schedule], class: 'btn delete-day-btn',
+                      id: 'deleteDayBtn', remote: true, method: :delete do %>
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Schedule Detail
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Map -->
-  <div class="col-md-8">
+  <div class="col-md-9">
     <div id="map<%= schedule.index %>" style="width: 100%; height: 400px"></div>
   </div>
 
-	
+  <!-- Schedule Detail Form -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="add text for disabled people here" aria-hidden="true" id="add-to-itinerary-form_<%= schedule.index %>">
+    
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h2 class="modal-title" id="addToItineraryFormLabel">Add Location</h2>
+        </div>
+        <%= form_tag schedule_schedule_details_path(schedule), remote: true, method: :post,
+                     class: 'form-horizontal form-schedule form-card',
+                     id: "form-schedule_#{schedule.index}" do %>
+
+            <!-- Where to go to -->
+            <div class="form-group">
+              <label for="attraction_<%= schedule.index %>" class="form-control-label">
+                Tourist Attraction:
+              </label>
+              <input class="typeahead form-control" type="text" placeholder="Where you love to visit"
+                     id="attraction_<%= schedule.index %>" autofocus>
+              <input type="hidden" name="schedule_detail[place_id]" id="place_<%= schedule.index %>" value="">
+            </div>
+
+            <!-- Spending hours -->
+            <div class="form-group">
+              <label for="spendingTime_<%= schedule.index %>" class="form-control-label">
+                Hours spending:
+              </label>
+              <select class="form-control" name="schedule_detail[hour_spend]" id="spendingTime_<%= schedule.index %>">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+
+            <!-- Submit button -->
+            <div class="form-group">
+              <button type="submit" class="btn addItineraryBtn" id="add_itinerary_btn">Add to Schedules</button>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  // Include Google Map to system
+   <%= render(:partial => 'schedules/mapapi', locals: {schedule: schedule}, :formats => [:js] ) %>
+  // End Include Google Map to system
+  // Typehead
+  $('#attraction_<%= schedule.index %>').bind('typeahead:select', function (ev, suggestion) {
+    $("#place_<%= schedule.index %>").val(suggestion.id);
+  });
+  $('.hot-action-button').click(function(){
+    var form_popup = $(this).data('target');
+    $(form_popup).modal('toggle');
+  });
+  console.log(placeEngine);
+  $('#attraction_<%= schedule.index %>').typeahead(
+      {
+        hint: true,
+        highlight: true,
+        minLength: 1
+      },
+      {
+        name: 'states',
+        limit: 50,
+        source: placeEngine,
+      }
+  ); 
+  // Sort attractions
+  $("#sortable_<%= schedule.index %>").sortable();
+  $("#sortable_<%= schedule.index %>").disableSelection();
+  $("#sortable_<%= schedule.index %>").sortable({
+    update: function (event, ui) {
+      var indexes = $('#sortable_<%= schedule.index %> #attraction_index')
+          .toArray()
+          .map(function (ui) {
+            return ui.value
+          });
+      showLoading();
+      $.ajax({
+        method: 'POST',
+        data: {'indexes': indexes},
+        url: '/schedules/<%= schedule.id %>/sort.js',
+        success: function (data) {
+          hideLoading();
+        }
+      });
+    }
+  });
+</script>

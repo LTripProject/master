@@ -17,18 +17,17 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-
-
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# remotipart
+gem 'remotipart', '~> 1.2'
 gem 'jquery-ui-rails'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'twitter-typeahead-rails'
 gem 'jquery-easing-rails'
 gem 'tag-it-rails'
-
-gem 'geocoder'
-gem 'google_places'
-gem 'gmaps-autocomplete-rails'
-
+# handlebars
+gem 'handlebars_assets'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
@@ -44,11 +43,13 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'tag-it-rails'
-
+gem 'yaml_db'
 ####
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 
+gem 'omniauth'
+gem 'omniauth-facebook', '~> 3.0.0'
 #####
 gem 'simple_form'
 

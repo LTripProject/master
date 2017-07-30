@@ -16,7 +16,7 @@ users = []
 end
 
 unless Region.any?
-  Region_BMV = Region.create(name: 'Buôn Ma Thuột')
+  Region_BMV = Region.create(name: 'An Giang', latitude: 10.5215836, longitude: 105.1258955)
   Region_CAH = Region.create(name: 'Cà Mau')
   Region_VCA = Region.create(name: 'Cần Thơ')
   Region_VCS = Region.create(name: 'Côn Đảo')
@@ -33,8 +33,10 @@ unless Region.any?
   Region_PQC = Region.create(name: 'Phú Quốc')
   Region_UIH = Region.create(name: 'Quy Nhơn')
   Region_VKG = Region.create(name: 'Rạch Giá')
-  Region_SGN = Region.create(name: 'Hồ Chí Minh')
+  Region_SGN = Region.create(name: 'Hồ Chí Minh' , longitude: '', latitude: '')
   Region_VII = Region.create(name: 'Vinh')
   Region_TBB = Region.create(name: 'Tuy Hòa')
   Region_THD = Region.create(name: 'Thanh Hóa')
 end
+
+  Place.create(name: 'Trà Sữa KN', location_id: 'ChIJDTv6_P71CTERgQ_AI_bUi38', latitude: 10.529531, longitude: 105.0292207, region_id: Region_BMV.id)

@@ -1,3 +1,6 @@
+//= require jquery
+//= require jquery_ujs
+//= require jquery.remotipart
 //= require ./theme/jquery-2.1.3.min4c71
 //= require ./theme/jquery-migrate-1.2.11576
 //= require ./theme/respond.min8a54
@@ -12,11 +15,11 @@
 //= require ./theme/ltrip
 
 //= require jquery.easing
+//= require jquery-ui
 //= require tag-it
 //= require bootstrap-datetimepicker
 //= require twitter/typeahead.min
-
-//= require rails-ujs
-//= require bootstrap-sprockets
+//= require handlebars
+//= require bootstrap
 //= require_tree .
 //= require cocoon
