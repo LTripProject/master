@@ -1,24 +1,20 @@
 <div class="container">
-<h1>Schedule</h1>
 	<div class="col-md-4">
-	<h2><%= @schedule.title %></h2>
+	<h2><%= schedule.title %></h2>
 		<div class="schedule-form">
 		<div class="schedule-content" style="margin-top: 24px">
-			<div id="schedule_<%= @schedule.index %>" class="schedule">
-			<ul class="sortable" id="sortable_<%= @schedule.index %>">
-				<%= render @schedule.schedule_details %>
+			<div id="schedule_<%= schedule.index %>" class="schedule">
+			<ul class="sortable" id="sortable_<%= schedule.index %>">
+				<%= render schedule.schedule_details %>
 			</ul>
-
-			<!-- Add button -->
-			<button type="button" class="btn hot-action-button" id="addAttractionItineraryBtn" data-toggle="modal"
-					>
-				Add Schedule Detail
-			</button>
-
+			<%= link_to edit_trip_schedule_path(trip, schedule), class: 'btn hot-action-button' do %>
+				<span class="glyphicon glyphicon-pencil">Edit</span>
+			<% end %>
+		
 			<!-- Delete button -->
-			<%= link_to [@trip, @schedule], class: 'btn delete-day-btn',
+			<%= link_to [trip, schedule], class: 'btn delete-day-btn',
 						id: 'deleteDayBtn', remote: true, method: :delete do %>
-				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Day
+				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Schedule
 			<% end %>
 			
 			</div>
@@ -28,7 +24,7 @@
 
   <!-- Map -->
   <div class="col-md-8">
-    <div id="map<%= @schedule.index %>" style="width: 100%; height: 400px"></div>
+    <div id="map<%= schedule.index %>" style="width: 100%; height: 400px"></div>
   </div>
 
 	

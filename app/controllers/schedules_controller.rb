@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
 	def index
 		@trip = Trip.find(params[:trip_id])
-		@schedule = @trip.schedules.build
+		@schedules = @trip.schedules
 	end
 
 	def new
@@ -22,10 +22,18 @@ class SchedulesController < ApplicationController
 		end
 	end
 
+	def edit
+		@trip = Trip.find(params[:trip_id])
+		@schedule = Schedule.find(params[:id])
+	end
+
+	def update
+		
+	end
+
 	def show
 		@schedule = Schedule.find(params[:id])
 		@data = GoogleApiClient.search_address("Ho Chi Minh")
-		puts @data
 	end
 
 	def schedule_params
