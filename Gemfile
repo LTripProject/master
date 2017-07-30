@@ -58,4 +58,6 @@ gem 'omniauth-facebook'
 
 gem 'cocoon'
 gem 'carrierwave'
+gem 'carrierwave-aws'
+
 gem 'dotenv-rails', groups: [:development, :test]

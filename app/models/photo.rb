@@ -1,5 +1,7 @@
 class Photo < ApplicationRecord
-  belongs_to :place
+  belongs_to :trip
 
-  validates_presence_of :place_id, :photo_reference
+  belongs_to :place, optional: true
+
+  mount_uploader :image, PhotoUploader
 end

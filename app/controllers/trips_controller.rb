@@ -16,6 +16,7 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    @trip.thumbnail_image = PhotoUploader.new 
   end
 
   def edit
@@ -52,7 +53,7 @@ class TripsController < ApplicationController
   end
 
   def upload_gallery
-    
+    @trip.photos.build
   end
 
   def confirm_invite
@@ -82,11 +83,11 @@ class TripsController < ApplicationController
 
   def update
     @trip.departure = Region.find_by(name: params[:trip][:departure])
-
     if @trip.update(trip_params)
       flash[:notice]= 'Trip was successfully updated.'
       redirect_to @trip
     else
+      sasa
       flash[:alert] = "Update trip errors"
       render :edit
     end
@@ -107,7 +108,7 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:start_date, :title, :description, :expected_budget)
+      params.require(:trip).permit(:start_date, :title, :description, :expected_budget, photos_attributes: [:image, :_destroy])
     end
 
     def check_permission
