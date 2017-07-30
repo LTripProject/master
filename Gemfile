@@ -55,6 +55,8 @@ gem 'simple_form'
 gem 'kaminari'
 
 gem 'devise'
+gem 'omniauth-facebook'
+
 
 gem 'cocoon'
 
