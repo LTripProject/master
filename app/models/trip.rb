@@ -16,6 +16,7 @@ class Trip < ApplicationRecord
   validates_numericality_of :expected_budget
   after_create :create_default
   mount_uploaders :photos, PhotoUploader
+  serialize :photos, JSON
   DEFAULT_PHOTO = 'https://media-cdn.tripadvisor.com/media/photo-o/05/c5/a3/bf/tropica-island-resort.jpg'
 
   def self.search_trips(departure, destination, start_date)

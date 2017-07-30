@@ -13,7 +13,7 @@
         <h4 class="list-group-item-heading">Budget</h4>
         <p class="list-group-item-text">Manage budget</p>
       </a></li>
-      <li class=""><a href="#step-4">
+      <li class="<%=  params[:controller] == "trips" && params[:action] == "upload_gallery" ? 'active' : 'disabled' %>"><a href="#step-4">
         <h4 class="list-group-item-heading">Gallery</h4>
         <p class="list-group-item-text">Update Gallery of Trip</p>
       </a></li>    
