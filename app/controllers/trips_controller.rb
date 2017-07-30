@@ -16,6 +16,7 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    @trip.thumbnail_image = PhotoUploader.new 
   end
 
   def edit

@@ -59,4 +59,5 @@ gem 'devise'
 
 gem 'cocoon'
 gem 'carrierwave'
+gem 'fog'
 gem 'dotenv-rails', groups: [:development, :test]
