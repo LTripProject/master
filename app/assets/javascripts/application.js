@@ -11,7 +11,6 @@
 //= require ./theme/fullcalendar.min254d
 //= require ./theme/jquery.slicknav.min4bf4
 //= require ./theme/css3-animate-itc5da
-//= require ./theme/bootstrap-datepicker8a54
 //= require ./theme/ltrip
 
 //= require jquery.easing
