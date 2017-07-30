@@ -1,12 +1,13 @@
 <div class="container">
+
 <h2 class="fs-title short-border">Schedule</h2>
+<%= render 'system/trip' %>
 <div class="panel with-nav-tabs panel-default ">
   <div class="panel-heading">
     <ul class="nav nav-tabs" id="day-left-panel">
       <li>
         <%= link_to trip_schedules_path(@trip), method: :post,
-                    remote: true, class: 'btn-add-schedule' do %>
-            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add Schedule Detail
+                    remote: true, class: 'btn-add-schedule' do %> Add Schedule Detail
         <% end %>
       </li>
 

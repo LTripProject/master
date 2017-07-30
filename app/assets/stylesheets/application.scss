@@ -15,6 +15,9 @@ footer{
 }.modal {
   -webkit-transform: translate3d(0, 0, 0);
 }
+.tab-pane{
+  border: none;
+}
 .modal-content {
     padding: 30px;
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);

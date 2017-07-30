@@ -50,8 +50,8 @@
               <label for="attraction_<%= schedule.index %>" class="form-control-label">
                 Tourist Suggestion:
               </label>
-              <!-- <input class="typeahead form-control" type="text" placeholder="Where you love to visit"
-                     id="attraction_<%= schedule.index %>" autofocus> -->
+              <input class="typeahead form-control" type="text" placeholder="Where you love to visit"
+                     id="attraction_<%= schedule.index %>" autofocus>
 
                      <%= select(:schedule_detail, :place_id, @places.map {|v| [ v['name'], v['id'] ] }) %>
            </div>
@@ -88,7 +88,8 @@
 
   $('.hot-action-button').click(function(){
     var form_popup = $(this).data('target');
-    $(form_popup).modal('toggle');
+
+    setTimeout(function(){ $(form_popup).modal('toggle'); }, 1200);
   });
   
   $('#attraction_<%= schedule.index %>').typeahead(

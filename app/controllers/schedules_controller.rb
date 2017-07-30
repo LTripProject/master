@@ -18,6 +18,7 @@ class SchedulesController < ApplicationController
 
 	def create
 		@schedule = @trip.schedules.create(index: next_index)
+		@place = Place.all
 		respond_to :js
 	end
 

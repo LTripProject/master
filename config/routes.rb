@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # resources :to_dos
 #  resources :schedule_details
   resources :searchs
-  
+  resources :home
   resources :notifications
   resources :trips do
     post "join" => "trips#join_trip"
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :places do
     collection do
       get :all
+      get :loadDatabase
     end
   end
 
