@@ -1,7 +1,16 @@
 <div class="container">
+	<div class="upload-gallery row">
+		<% @trip.photos.each do |img| %>
+			<div class="col-md-6">
+				<a href="<%= img.url %>" title="photo" data-gallery>
+					<%= image_tag(img.url) %>
+	    	</a>
+			</div>
+				
+		<% end %>
+	</div>
   <%= simple_form_for @trip do |f| %>
     <%= f.input :photos, as: :file, input_html: {multiple: true} %>
-
     <%= f.submit "Upload", class: "btn btn-primary"%>
   <% end %>
 </div>
