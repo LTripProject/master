@@ -8,6 +8,7 @@ class SchedulesController < ApplicationController
 	end
 
 	def new
+		@places = Place.all.preload(:region)
 		@schedule = @trip.schedules.build
 		@schedule.schedule_details.build
 	end
@@ -18,7 +19,7 @@ class SchedulesController < ApplicationController
 
 	def create
 		@schedule = @trip.schedules.create(index: next_index)
-		@place = Place.all
+		@places = Place.all.preload(:region)
 		respond_to :js
 	end
 

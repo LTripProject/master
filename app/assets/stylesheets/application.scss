@@ -1,11 +1,11 @@
 /*
   *= require vendor
   *= require_self
-  *= require bootstrap-material-design
 */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-material-design";
 @import "font-awesome";
 @import "main";
 @import "responsive";
@@ -13,10 +13,25 @@
 body{
   background: white;
 }
+.nav-tabs li.active{
+  background: #ec3f3f;
+  padding-right: 10px;
+}
+.nav-tabs {
+    background: #f16161 !important;
+}
 footer{
   
 }.modal {
   -webkit-transform: translate3d(0, 0, 0);
+}
+.btn:not(.btn-link):not(.btn-flat), .btn-default:not(.btn-link):not(.btn-flat) {
+    background-color: gainsboro;
+    color: rgba(255, 255, 255, 0.84);
+    color: rgba(0, 0, 0, 0.84);
+}
+.form-inline .form-control{
+  padding-left: 5px;
 }
 .tab-pane{
   border: none;
@@ -313,6 +328,7 @@ footer{
 
 .tt-menu {
   background-color: #616161;
+  color:white;
   font-family: Arial, Helvetica, sans-serif;
 }
 
