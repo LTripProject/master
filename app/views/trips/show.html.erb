@@ -50,7 +50,10 @@
         </div>
         <p> <%= truncate(@trip.description, :length => 50, :separator => ' ') %></p>
         <footer class="tour-contents-footer clearfix">
-          <a class="t-btn btn-red pull-right" href="#" data-toggle="modal" data-target="#booking-popup">Booking Now</a>
+          <% if user_signed_in? && !@trip.users.include?(current_user)%>
+            <%= link_to ">Booking Now", trip_join_path(trip_id: @trip.id), 
+            class: "t-btn btn-red pull-right"%>
+          <% end %>
           <a class="t-btn btn-black-border pull-right" href="#" data-toggle="modal" data-target="#ask-q-popup">Ask Question</a>
         </footer>
       </div>

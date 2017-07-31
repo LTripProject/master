@@ -5,6 +5,9 @@
     <%= f.input :name %>
     <%= f.input :email, disabled: true %>
     <%= f.input :phone_number %>
+    <% unless @user.provider %>
+      <%= f.input :image, as: :file%>
+    <% end %>
 
     <%= f.submit class: "btn btn-primary" %>
   <% end %>
