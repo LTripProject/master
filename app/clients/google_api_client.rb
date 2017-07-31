@@ -13,6 +13,7 @@ class GoogleApiClient
   def self.search_place_detail(place_id)
     params = "?placeid=#{place_id}&key=#{API_KEY_3}"
     get_method('https://maps.googleapis.com/maps/api/place/details/json' + params)
+    puts 'https://maps.googleapis.com/maps/api/place/details/json' + params
   end
 
   def self.get_all_regions

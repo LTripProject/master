@@ -22,7 +22,7 @@ function addToMap(map) {
       var lat = parseFloat("<%= attraction.place.latitude if attraction.place  %>");
       var lng = parseFloat("<%= attraction.place.longitude if attraction.place %>");
       var marker = new CustomMarker(
-          new google.maps.LatLng(lat, lng), map, "<%= attraction.image_url(50) %>", "LTRIP"
+          new google.maps.LatLng(lat, lng), map, "<%= attraction.image_url(50) %>", "<%= attraction.place.name %>"
       );
       markers.push(marker);
   <% end %>

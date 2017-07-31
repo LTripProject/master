@@ -9,6 +9,7 @@
 @import "font-awesome";
 @import "main";
 @import "responsive";
+@import "select2-bootstrap";
 @import "trips";
 body{
   background: white;
@@ -172,11 +173,6 @@ footer{
   box-shadow: none;
   background: transparent;
 
-  select {
-    width: 324px;
-    height: 30px;
-    margin: 0 auto;
-  }
   label {
     font-size: 20px;
     display: block;
