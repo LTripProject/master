@@ -4,7 +4,7 @@ class SchedulesController < ApplicationController
 
 	def index
 		@schedules = @trip.schedules
-		@places = Place.all.limit(50).preload(:region).decorate
+		@places = Place.all.preload(:region).decorate
 	end
 
 	def new
