@@ -53,6 +53,12 @@ class TripsController < ApplicationController
     redirect_to @trip
   end
 
+  def add_photos
+    @trip.photos += trip_params[:new_photos]
+    @trip.update_attributes(:photos => @trip.photos)
+    redirect_to :upload_gallery
+  end
+
   def upload_gallery
     # @trip.photos.build
   end
@@ -108,7 +114,7 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:start_date, :title, :description, :expected_budget, {photos: []})
+      params.require(:trip).permit(:start_date, :title, :description, :expected_budget, {new_photos: []})
     end
 
     def check_permission
