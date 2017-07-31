@@ -8,7 +8,7 @@ class Trip < ApplicationRecord
   has_many :invite_tokens, dependent: :destroy
   # has_many :photos, dependent: :destroy
   belongs_to :departure, class_name: "Region", foreign_key: :departure_id, optional: true
-  has_one :budget_trip
+  has_one :budget_trip, dependent: :destroy
 
   # accepts_nested_attributes_for :photos, :reject_if => :all_blank
 

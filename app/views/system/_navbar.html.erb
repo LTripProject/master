@@ -4,8 +4,14 @@
     <div class="container header-user h-card">
       <% if signed_in? %>
         <div class="header-user-name pull-left">
-          <span class="p-name"><%= current_user.email %> </span>
-          <i class="fa fa-user"></i>
+          <%= link_to current_user do %>
+            <span class="p-name"><%= current_user.email %> </span>
+            <% if current_user.image  %>
+              <%= image_tag current_user.image_url, style: "width: 20px; height: 20px;" %>
+            <% else %>
+              <i class="fa fa-user"></i>
+            <% end %>
+          <% end %>
         </div>
       <% end %>
       <div class="header-tour-package pull-right">
@@ -17,7 +23,7 @@
             <ul class="sub-menu" style="padding-top: 61px">
               <li><%= link_to "Trips available", trips_path %></li>
               <% if user_signed_in? %>
-                <li><%= link_to('My Account', edit_user_registration_path) %></li>
+                <li><%= link_to('My Account', current_user) %></li>
                 <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
                 <li><%= link_to "Create trip", new_trip_path %></li>
               <% else %>

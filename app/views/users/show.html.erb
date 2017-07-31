@@ -1,11 +1,13 @@
 <div class="container">
-<% if @user.provider %>
-  <%= image_tag @user.image.url.gsub(/\A.+?image\/\w.+?\//, "").gsub(/\%3A/,":")%>
-<% else %>
-  <%= image_tag @user.image if @user.image %>
-<% end %>
-<p><strong>Name:</strong> <%= @user.name %></p>
-<p><strong>Email:</strong> <%= @user.email %></p>
-<p><strong>Phone number:</strong> <%= @user.phone_number %></p>
-
+  <%= image_tag @user.image_url if @user.image %>
+  <% if user_signed_in? && current_user == @user %>
+    <div class="btn-group">
+      <%= link_to "Change password", edit_user_registration_path, class: "btn btn-primary" %>
+      <%= link_to "Edit infor", edit_user_path(@user), class: "btn btn-primary"%>
+    </div>
+  <% end %>
+  
+  <p><strong>Name:</strong> <%= @user.name %></p>
+  <p><strong>Email:</strong> <%= @user.email %></p>
+  <p><strong>Phone number:</strong> <%= @user.phone_number %></p>
 </div>
