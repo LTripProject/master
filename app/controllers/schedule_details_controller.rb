@@ -37,15 +37,15 @@ class ScheduleDetailsController < ApplicationController
   end
 
 
-  def calculate_distance(current_attraction, attraction)
-    current_place, place = current_attraction.place, attraction.place
+  def calculate_distance(current_schedule_detail, schedule_detail)
+    current_place, place = current_schedule_detail.place, schedule_detail.place
     response = GoogleApiClient.calculate_distance(
-        current_place.latitude,
-        current_place.longitude,
-        place.latitude,
-        place.longitude
+        current_schedule_detail.latitude,
+        current_schedule_detail.longitude,
+        schedule_detail.latitude,
+        schedule_detail.longitude
     )
-    attraction.update_attributes(
+    schedule_detail.update_attributes(
         distance: response['distance']['text'],
         duration: response['duration']['text']
     )

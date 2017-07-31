@@ -1,11 +1,48 @@
-<form class="form-inline form-search" method="get" action="/searchs">
-  <div class="form-group">
-    <label class="sr-only" for="fromPlace">From</label>
-    <input type="text" class="form-control home-search-box" id="fromPlace" name="departure" placeholder="Departure">
-  </div>
-  <div class="form-group">
-    <label class="sr-only" for="toPlace">To</label>
-    <input type="text" class="form-control home-search-box" id="toPlace" name="destination" placeholder="Destination">
-  </div>
-  <button type="submit" class="btn btn-primary" style="height: 48px; font-size: 20px">Search</button>
-</form>
+  <form class="form-inline form-search" id="adv-search" method="get" action="/searchs">
+    <div class="container">
+      <fieldset>
+        <legend><span>Find the Tour</span></legend>
+        <div class="form-wrap clearfix">
+        <div class="form-group">
+          <label class="sr-only" for="fromPlace">From</label>
+          <input type="text" class="form-control home-search-box" id="from" name="departure" placeholder="Departure">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="toPlace">To</label>
+            <input type="text" class="form-control home-search-box" id="toPlace" name="destination" placeholder="Destination">
+          </div>
+          <div class="input-group input-append date date-picker" >
+            <input type="text" class="form-control" name="date" value="Start DATE">
+            <span class="input-group-addon add-on"><i class="fa fa-calendar"></i></span>
+          </div>
+          <input name="search-tour" type="submit" value="Search Tours">
+        </div>
+
+      </fieldset>
+    </div>
+  </form>
+
+  <script>
+  $.ajax({
+    method: 'GET',
+    url: '/regions/get_regions',
+    success: function (data) {
+      var states = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: data.map(function (region) {
+          return region.name;
+        })
+      });
+      $('#from').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+          },
+          {
+            name: 'states',
+            source: states
+          });
+    }
+  });
+  </script>

@@ -15,6 +15,6 @@ class PlaceDecorator < Draper::Decorator
 
   def display_image_url(height = nil)
       'https://www.mariecuriealumni.eu/sites/default/files/styles/50x50_avatar/public/pictures/picture-default.jpg?itok=uk4ugbrt'
-  
   end
+  
 end

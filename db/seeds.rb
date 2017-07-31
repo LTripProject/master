@@ -39,4 +39,4 @@ unless Region.any?
   Region_THD = Region.create(name: 'Thanh Hóa')
 end
 
-  Place.create(name: 'Trà Sữa KN', location_id: 'ChIJDTv6_P71CTERgQ_AI_bUi38', latitude: 10.529531, longitude: 105.0292207, region_id: Region_BMV.id)
+  Place.create(name: 'Cafe Mai Trang', location_id: 'ChIJf6_Hqy_2CTERIVHg1TNB7AI', latitude: 10.492539, longitude: 105.023724, region_id: 1)

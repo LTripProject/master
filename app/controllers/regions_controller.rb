@@ -5,4 +5,10 @@ class RegionsController < ApplicationController
     def all
         render json: Region.all
     end
+
+    def get_regions
+        render json: Region.get_regions
+    end
+
+
 end

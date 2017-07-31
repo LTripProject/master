@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :regions do
     collection do
       get :all
+      get :get_regions
     end
   end
 
