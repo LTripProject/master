@@ -14,7 +14,7 @@
             <ul class="sub-menu" style="padding-top: 61px">
               <li><%= link_to "Trips available", trips_path %></li>
               <% if user_signed_in? %>
-                <li><%= link_to('My Account', edit_user_registration_path) %></li>
+                <li><%= link_to('My Account', current_user) %></li>
                 <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
                 <li><%= link_to "Create trip", new_trip_path %></li>
               <% else %>
