@@ -3,11 +3,13 @@
     <div class="container header-user h-card">
       <% if signed_in? %>
         <div class="header-user-name pull-left">
-          <span class="p-name"><%= current_user.email %> </span>
-          <% if current_user.image  %>
-            <%= image_tag current_user.image_url, style: "width: 20px; height: 20px;" %>
-          <% else %>
-            <i class="fa fa-user"></i>
+          <%= link_to current_user do %>
+            <span class="p-name"><%= current_user.email %> </span>
+            <% if current_user.image  %>
+              <%= image_tag current_user.image_url, style: "width: 20px; height: 20px;" %>
+            <% else %>
+              <i class="fa fa-user"></i>
+            <% end %>
           <% end %>
         </div>
       <% end %>

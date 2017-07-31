@@ -60,7 +60,6 @@ class TripsController < ApplicationController
   end
 
   def upload_gallery
-    # @trip.photos.build
   end
 
   def confirm_invite
