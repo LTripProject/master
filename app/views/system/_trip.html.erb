@@ -7,22 +7,23 @@
         <h4 class="list-group-item-heading">Trip Information</h4>
         <p class="list-group-item-text">Fill Information</p>
       </a></li>
-      <li class="<%= params[:controller] == "schedules" ? 'active' : '';
-         'disabled' unless session[:trip_id].present? %>">
+      <li class="<%= params[:controller] == "schedules" ? 'active' : ''%> 
+        <%= 'disabled' unless session[:trip_id].present? %>">
         <a href='<%= session[:trip_id].present? ? 
           "#{trip_schedules_path(trip_id: session[:trip_id])}" : "#" %>'>
           <h4 class="list-group-item-heading">Schedule</h4>
           <p class="list-group-item-text">Update Schedule (Day by day)</p>
         </a></li>
-      <li class="<%= params[:controller] == "budget_trips" ? 'active' : '';
-        'disabled' unless session[:trip_id].present?%>">
+      <li class="<%= params[:controller] == "budget_trips" ? 'active' : '' %>
+        <%='disabled' unless session[:trip_id].present?%>">
+        
          <a href="<%= session[:trip_id].present? ? 
         "#{new_trip_budget_trip_path(trip_id: session[:trip_id])}" : "#" %>">
         <h4 class="list-group-item-heading">Budget</h4>
         <p class="list-group-item-text">Manage budget</p>
       </a></li>
-      <li class="<%=  params[:controller] == "trips" && params[:action] == "upload_gallery" ? 'active' : '';
-         'disabled' unless session[:trip_id].present?%>">
+      <li class="<%=  params[:controller] == "trips" && params[:action] == "upload_gallery" ? 'active' : '' %>
+        <%='disabled' unless session[:trip_id].present?%>">
         <a href="<%= session[:trip_id].present? ? 
         "#{trips_upload_gallery_path(id: session[:trip_id])}" : "#" %>">
         <h4 class="list-group-item-heading">Gallery</h4>
