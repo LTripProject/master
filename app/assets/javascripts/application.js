@@ -10,7 +10,7 @@
 //= require ./theme/fullcalendar.min254d
 //= require ./theme/jquery.slicknav.min4bf4
 //= require ./theme/css3-animate-itc5da
-//= require select2
+//= require ./theme/select2.full.mincce7
 //= require ./theme/ltrip
 //= require bootstrap-material-design
 
