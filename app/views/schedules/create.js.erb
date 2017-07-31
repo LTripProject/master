@@ -5,7 +5,7 @@ for (var i = 1; i <= day_count; i++) {
 }
 
 $("#day-left-panel").append("<%= j(render 'schedules/schedule_day', schedule: @schedule) %>");
-$("#itinerary-content").append("<%= j(render @schedule) %>");
+$("#itinerary-content").append("<%= j(render @schedule , places: @places) %>");
 $("#li-day<%= @schedule.index %>").addClass('active');
 $("#day<%= @schedule.index %>").addClass('active');
 

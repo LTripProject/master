@@ -19,10 +19,10 @@ function addToMap(map) {
   var markers = [];
   <% if (!schedule.schedule_details.nil?) %>
     <% schedule.schedule_details.each do |attraction| %>
-      var lat = parseFloat("<%= attraction.place.latitude %>");
-      var lng = parseFloat("<%= attraction.place.longitude %>");
+      var lat = parseFloat("<%= attraction.place.latitude if attraction.place  %>");
+      var lng = parseFloat("<%= attraction.place.longitude if attraction.place %>");
       var marker = new CustomMarker(
-          new google.maps.LatLng(lat, lng), map, "<%= attraction.image_url(50) %>", "<%= attraction.place.name %>"
+          new google.maps.LatLng(lat, lng), map, "<%= attraction.image_url(50) %>", "LTRIP"
       );
       markers.push(marker);
   <% end %>

@@ -15,6 +15,9 @@ footer{
 }.modal {
   -webkit-transform: translate3d(0, 0, 0);
 }
+.tab-pane{
+  border: none;
+}
 .modal-content {
     padding: 30px;
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
@@ -187,7 +190,7 @@ footer{
   text-align: left;
   height: auto;
   overflow: hidden;
-  font-size: 18px;
+  font-size: 14px;
   .col-img {
     float: left;
     padding: 0;
@@ -218,7 +221,7 @@ footer{
     line-height: 14px;
     margin: 10px 3px 4px 0;
     padding: 8px 4px;
-    font-size: 18px;
+    font-size: 14px;
     width: 90px;
   }
   .remove-itinerary {
