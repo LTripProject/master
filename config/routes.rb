@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   get "trips/:id/confirm_invite" => 'trips#confirm_invite', as: :trip_confirm_invite
 
   get 'trips/:id/upload_gallery' => 'trips#upload_gallery', as: :trips_upload_gallery
-
+  post 'trips/:id/add_photos' => 'trips#add_photos', as: :trips_add_photos
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
