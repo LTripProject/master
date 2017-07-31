@@ -51,12 +51,13 @@ class PlacesController < ApplicationController
             rating: result['rating'],
             location_id: result['place_id']
         )
-        fetch_photos_for_place(place)
+        puts "#{place.name}"
+        fetch_photos(place)
       end
     end
   end
 
-  def fetch_photos_for_place(place)
+  def fetch_photos(place)
     place_detail = GoogleApiClient.search_place_detail(place.location_id)['result']
     Photo.transaction do
       place_detail['photos'].each do |photo|
@@ -65,8 +66,19 @@ class PlacesController < ApplicationController
             height: photo['height'],
             photo_reference: photo['photo_reference'],
         )
+        puts "#{place.name} - #{photo['photo_reference']}"
       end
     end if place_detail['photos']
+  end
+
+  def fetch_photo_manual()
+    Place.all.each_with_index do |place,i|
+      break if i == 10;
+      puts "#{place.id} - #{place.name}"
+      
+      place_detail = GoogleApiClient.search_place_detail(place.location_id)['result']
+      puts "#{place_detail['result']}"
+    end
   end
 
 end

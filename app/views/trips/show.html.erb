@@ -23,23 +23,24 @@
     <header class="entry-header animatedParent clearfix">
       <h3 class="pull-left tour-single-title animated growIn slower"><%= @trip.title %></h3>
       <span class="tour-price-single t-btn btn-red pull-right animated growIn slower">$<%= @trip.expected_budget %></span>
-      <%= link_to 'Edit', edit_trip_path(@trip) %> 
-      <%= link_to 'Back', trips_path %>
+     
     </header>
     <article class="tour-post-single clearfix">
       <div class="tour-single-slider animatedParent clearfix">
         <div class="slier tour-single-slider-for animated fadeInUpShort">
-        <% @trip.photos.each do |img| %>
-          <div class="item">
-          <%= image_tag(img.url) %>
-          </div>
-        <% end %>
+            <% @trip.photos.each do |img| %>
+              <div class="item">
+                <%= image_tag(img.url) %>
+              </div>
+            <% end %>
         </div>
-        <div class="slider tour-single-slider-nav animated fadeInUpShort">
-          <div class="item slick-active"><%= image_tag('where-we-go-single-img-2.jpg') %></div>
-          <div class="item"><%= image_tag('where-we-go-single-img-1.jpg') %></div>
 
-          <div class="item"><%= image_tag('where-we-go-single-img-3.jpg') %></div>
+        <div class="slider tour-single-slider-nav animated fadeInUpShort">
+          <% @trip.photos.each do |img| %>
+            <div class="item">
+              <%= image_tag(img.url) %>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="tour-single-contents animatedParent clearfix">
@@ -50,7 +51,10 @@
         </div>
         <p> <%= truncate(@trip.description, :length => 50, :separator => ' ') %></p>
         <footer class="tour-contents-footer clearfix">
+
           <% if user_signed_in? && !@trip.users.include?(current_user)%>
+            <%= link_to 'Edit', edit_trip_path(@trip), class: "t-btn btn-red pull-right" %> 
+          <%= link_to 'Back', trips_path , class: "t-btn btn-black-border pull-right" %>
             <%= link_to ">Booking Now", trip_join_path(trip_id: @trip.id), 
             class: "t-btn btn-red pull-right"%>
           <% end %>

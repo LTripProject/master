@@ -88,7 +88,6 @@ class TripsController < ApplicationController
       flash[:notice]= 'Trip was successfully updated.'
       redirect_to @trip
     else
-      sasa
       flash[:alert] = "Update trip errors"
       render :edit
     end

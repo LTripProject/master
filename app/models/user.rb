@@ -42,4 +42,12 @@ class User < ApplicationRecord
 
     self.invite_tokens.where(trip: trip).last.token
   end
+
+  def image_url
+    if self.provider 
+      self.image.url.gsub(/\A.+?image\/\w.+?\//, "").gsub(/\%3A/,":")
+    else
+      self.image.url
+    end
+  end
 end

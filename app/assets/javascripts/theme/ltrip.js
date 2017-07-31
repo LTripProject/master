@@ -213,12 +213,12 @@ $(window).on("load", function() {
     * Tooltips Functions
     * ....................................................................................*/
     if(jQuery().select2) {
-        $("#adv-search select, .sorting select, #trips_email, #schedule_detail_place_id").select2({
+        $("#adv-search select, .sorting select, #trips_email").select2({
             speed: 400
         });
         window.onresize = function() {
 
-            $("#adv-search select, .sorting select").select2({
+            $("#adv-search select, .sorting select, #trips_email").select2({
                 speed: 400
             });
         };

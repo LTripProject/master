@@ -1,8 +1,12 @@
 /*
   *= require vendor
   *= require_self
+  *= require select2-bootstrap
 */
-
+@import "blueimp-gallery";
+@import "bootstrap-image-gallery";
+@import "blueimp-gallery-indicator";
+@import "blueimp-gallery-video";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-material-design";
@@ -19,6 +23,9 @@ body{
 }
 .nav-tabs {
     background: #f16161 !important;
+}
+.modal input, button, select, textarea{
+  width: 100%;
 }
 footer{
   
@@ -172,11 +179,6 @@ footer{
   box-shadow: none;
   background: transparent;
 
-  select {
-    width: 324px;
-    height: 30px;
-    margin: 0 auto;
-  }
   label {
     font-size: 20px;
     display: block;

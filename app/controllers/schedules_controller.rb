@@ -4,22 +4,22 @@ class SchedulesController < ApplicationController
 
 	def index
 		@schedules = @trip.schedules
-		@places = Place.all.preload(:region)
+		@places = Place.all.limit(50).preload(:region).decorate
 	end
 
 	def new
-		@places = Place.all.preload(:region)
+		@places = Place.all.preload(:region).decorate
 		@schedule = @trip.schedules.build
 		@schedule.schedule_details.build
 	end
 
 	def places
-		@place = Place.all
+		@places = Place.all.preload(:region).decorate
 	end
 
 	def create
 		@schedule = @trip.schedules.create(index: next_index)
-		@places = Place.all.preload(:region)
+		@places = Place.all.preload(:region).decorate
 		respond_to :js
 	end
 
@@ -63,6 +63,6 @@ class SchedulesController < ApplicationController
 	def prepare_data
 		@schedule = @trip.schedules.last
 		@schedules = @trip.schedules
-		@places = Place.all.preload(:region)
+		@places = Place.all.preload(:region).decorate
 	end
 end

@@ -50,6 +50,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'tag-it-rails'
 gem 'yaml_db'
+gem "select2-rails"
   # http
 gem 'httparty'
 ####
@@ -67,5 +68,7 @@ gem 'omniauth-facebook'
 gem 'cocoon'
 gem 'carrierwave'
 gem 'carrierwave-aws'
+gem "twitter-bootstrap-rails"
+gem 'Bootstrap-Image-Gallery-rails'
 
 gem 'dotenv-rails', groups: [:development, :test]
