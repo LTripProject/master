@@ -12,7 +12,7 @@
 //= require ./theme/jquery.slicknav.min4bf4
 //= require ./theme/css3-animate-itc5da
 //= require ./theme/ltrip
-
+//= require bootstrap-material-design
 //= require jquery.easing
 //= require jquery-ui
 //= require tag-it

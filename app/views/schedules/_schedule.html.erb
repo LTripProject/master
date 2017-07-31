@@ -88,8 +88,7 @@
 
   $('.hot-action-button').click(function(){
     var form_popup = $(this).data('target');
-
-    setTimeout(function(){ $(form_popup).modal('toggle'); }, 1200);
+    setTimeout(function(){ $(form_popup).modal('toggle'); }, 500);
   });
   
   $('#attraction_<%= schedule.index %>').typeahead(

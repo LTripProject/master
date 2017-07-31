@@ -35,5 +35,6 @@ class Trip < ApplicationRecord
 
   def create_default
     self.schedules.create(index: 1)
+    self.create_budget_trip
   end
 end
