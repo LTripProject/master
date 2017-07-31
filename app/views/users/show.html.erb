@@ -1,1 +1,18 @@
-<%= image_tag @user.image if @user.image%>  <%= @user.email %>
+<div class="container">
+<% if @user.provider %>
+  <%= image_tag @user.image.url.gsub(/\A.+?image\/\w.+?\//, "").gsub(/\%3A/,":")%>
+<% else %>
+  <% if user_signed_in? && current_user == @user %>
+    <%= simple_form_for @user do |f| %>
+      <%= f.input :image, as: :file%>
+
+      <%= f.submit "update avatar" %>
+    <% end %>
+  <% end %>
+  <%= image_tag @user.image if @user.image %>
+<% end %>
+<p><strong>Name:</strong> <%= @user.name %></p>
+<p><strong>Email:</strong> <%= @user.email %></p>
+<p><strong>Phone number:</strong> <%= @user.phone_number %></p>
+
+</div>

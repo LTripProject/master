@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Edit information</h1>
+
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :name %>
+    <%= f.input :email, disabled: true %>
+    <%= f.input :phone_number %>
+
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

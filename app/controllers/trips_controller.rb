@@ -19,12 +19,13 @@ class TripsController < ApplicationController
   end
 
   def edit
+    session[:current_trip_id] = @trip.id
   end
 
 
   def create
     @trip = Trip.new(trip_params)
-
+    session[:current_trip_id] = @trip.id
     @trip.departure = Region.find_by(name: params[:trip][:departure])
 
     if @trip.save

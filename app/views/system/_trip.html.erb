@@ -1,19 +1,23 @@
 <div class="row form-group">
   <div class="col-xs-12">
     <ul class="nav nav-pills nav-justified thumbnail setup-panel">
-      <li class="<%= params[:controller]== "trips" ? 'active' : 'disabled' %>"><a href="#step-1">
+      <li class="<%= params[:controller]== "trips" ? 'active' : '' %>"><a href="/trips/new">
         <h4 class="list-group-item-heading">Trip Information</h4>
         <p class="list-group-item-text">Fill Information</p>
       </a></li>
-      <li class="<%= params[:controller] == "schedules" ? 'active' : 'disabled' %>"><a href="#step-2">
+      <li class="<%= params[:controller] == "schedules" ? 'active' : '' %>"><a href='<%= session[:current_trip_id].present? ? 
+        "trips/#{session[:current_trip_id]}/schedules" : "#" %>'>
         <h4 class="list-group-item-heading">Schedule</h4>
         <p class="list-group-item-text">Update Schedule (Day by day)</p>
       </a></li>
-      <li class="<%= params[:controller] == "budget_trips" ? 'active' : 'disabled' %>"><a href="#step-3">
+      <li class="<%= params[:controller] == "budget_trips" ? 'active' : '' %>"><a href="<%= session[:current_trip_id].present? ? 
+        "trips/#{session[:current_trip_id]}/budget_trips/new" : "#" %>">
         <h4 class="list-group-item-heading">Budget</h4>
         <p class="list-group-item-text">Manage budget</p>
       </a></li>
-      <li class="<%=  params[:controller] == "trips" && params[:action] == "upload_gallery" ? 'active' : 'disabled' %>"><a href="#step-4">
+      <li class="<%=  params[:controller] == "trips" && params[:action] == "upload_gallery" ? 'active' : '' %>">
+        <a href="<%= session[:current_trip_id].present? ? 
+        "trips/#{session[:current_trip_id]}/upload_gallery" : "#" %>">
         <h4 class="list-group-item-heading">Gallery</h4>
         <p class="list-group-item-text">Update Gallery of Trip</p>
       </a></li>    
