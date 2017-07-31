@@ -56,7 +56,7 @@ class TripsController < ApplicationController
   def add_photos
     @trip.photos += trip_params[:new_photos]
     @trip.update_attributes(:photos => @trip.photos)
-    redirect_to :upload_gallery
+    redirect_to upload_gallery_path
   end
 
   def upload_gallery

@@ -1,11 +1,11 @@
 <header id="masthead" class="site-header" role="banner">
   <div class="site-header-head clearfix">
     <div class="container header-user h-card">
-      <% if signed_in? %>
+      <% if user_signed_in? %>
         <div class="header-user-name pull-left">
           <%= link_to current_user do %>
             <span class="p-name"><%= current_user.email %> </span>
-            <% if current_user.image  %>
+            <% if current_user.image_url %>
               <%= image_tag current_user.image_url, style: "width: 20px; height: 20px;" %>
             <% else %>
               <i class="fa fa-user"></i>
