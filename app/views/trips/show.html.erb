@@ -28,9 +28,7 @@
     <article class="tour-post-single clearfix">
       <div class="tour-single-slider animatedParent clearfix">
         <div class="slier tour-single-slider-for animated fadeInUpShort">
-          <% unless @trip.photos.empty? %>
-            <%= image_tag(@trip.photos.first.url) %>
-          <% end %>
+            <%= image_tag(@trip.display_photo) %>
         </div>
 
         <div class="slider tour-single-slider-nav animated fadeInUpShort">
