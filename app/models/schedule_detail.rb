@@ -7,7 +7,7 @@ class ScheduleDetail < ApplicationRecord
   DEFAULT_PHOTO = 'https://media-cdn.tripadvisor.com/media/photo-o/05/c5/a3/bf/tropica-island-resort.jpg'
   
   def image_url(height = nil)
-    DEFAULT_PHOTO
+    puts "#{self.place.photos}"
   end
 
 

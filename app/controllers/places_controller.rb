@@ -7,9 +7,9 @@ class PlacesController < ApplicationController
     end
 
     def show
-		@place = Place.find(params[:id])
-        @photos = @place.photos
-	end
+	  	@place = Place.find(params[:id])
+      @photos = @place.photos
+  	end
 
     def map_url
         GoogleApiClient.get_map_frame(self.location_id)
@@ -58,7 +58,7 @@ class PlacesController < ApplicationController
   end
 
   def fetch_photos(place)
-    place_detail = GoogleApiClient.search_place_detail(place.location_id)['result']
+    place_detail = GoogleApiClient.search_place_detail(place.location_id)['results']
     Photo.transaction do
       place_detail['photos'].each do |photo|
         place.photos.create(
@@ -73,11 +73,18 @@ class PlacesController < ApplicationController
 
   def fetch_photo_manual()
     Place.all.each_with_index do |place,i|
-      break if i == 10;
       puts "#{place.id} - #{place.name}"
-      
+     
       place_detail = GoogleApiClient.search_place_detail(place.location_id)['result']
-      puts "#{place_detail['result']}"
+      Photo.transaction do
+      place_detail['photos'].each do |photo|
+        place.photos.create(
+            width: photo['width'],
+            height: photo['height'],
+            photo_reference: photo['photo_reference'],
+        )
+      end
+    end if place_detail['photos']
     end
   end
 
