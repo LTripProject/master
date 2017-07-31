@@ -2,7 +2,10 @@
   *= require vendor
   *= require_self
 */
-
+@import "blueimp-gallery";
+@import "bootstrap-image-gallery";
+@import "blueimp-gallery-indicator";
+@import "blueimp-gallery-video";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-material-design";

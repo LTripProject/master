@@ -67,5 +67,7 @@ gem 'omniauth-facebook'
 gem 'cocoon'
 gem 'carrierwave'
 gem 'carrierwave-aws'
+gem "twitter-bootstrap-rails"
+gem 'Bootstrap-Image-Gallery-rails'
 
 gem 'dotenv-rails', groups: [:development, :test]

@@ -30,7 +30,7 @@ class Trip < ApplicationRecord
   end
 
   def display_photo
-    photos.empty? ? DEFAULT_PHOTO : photos.first
+    photos.empty? ? DEFAULT_PHOTO : photos.first.url
   end
 
   def create_default
