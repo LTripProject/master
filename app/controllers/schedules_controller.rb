@@ -37,11 +37,6 @@ class SchedulesController < ApplicationController
 		respond_to :js
   	end
 
-
-	def show
-		@schedule = Schedule.find(params[:id])
-	end
-
 	def update
 		
 	end
