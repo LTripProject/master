@@ -9,8 +9,20 @@
 				
 		<% end %>
 	</div>
-  <%= simple_form_for @trip do |f| %>
-    <%= f.input :photos, as: :file, input_html: {multiple: true} %>
-    <%= f.submit "Upload", class: "btn btn-primary"%>
-  <% end %>
+
+<div class="row">
+	<%= form_for @trip, :url => trips_add_photos_path(@trip), :method => :post, :html => { :class => "", :id => "" } do |f| %>
+		<%=  f.file_field :new_photos, multiple: true %> 
+		<%= f.submit "Upload", class: "btn btn-primary"%>
+	<% end %>
+</div>
+	
+
+	<!-- <div class="row">
+		<%= simple_form_for @trip do |f| %>
+	    <%= f.input :new_photos, as: :file, input_html: {multiple: true} %>
+	    <%= f.submit "Upload", class: "btn btn-primary"%>
+	  <% end %>
+	</div> -->
+  
 </div>
