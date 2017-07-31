@@ -1,8 +1,7 @@
 class GoogleApiClient
   API_KEY = ENV['GOOGLE_API_KEY']
-  API_KEY_2 = ENV['GOOGLE_API_KEY_2']
-  API_KEY_3 = ENV['GOOGLE_API_KEY_3']
-  
+  API_KEY_2 = ENV['GOOGLE_API_KEY']
+  API_KEY_3 = ENV['GOOGLE_API_KEY']
   TYPES = 'zoo|park|museum|shopping_small|cafe|amusement_park|park|movie_theater|art_gallery'
   RADIUS = 20000
 

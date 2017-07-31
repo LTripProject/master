@@ -1,5 +1,12 @@
+
+<div id="tropical-banner" class=" text-center clearfix">
+        <%= image_tag('banner.jpg') %>
+        <div class="container banner-contents clearfix">
+            <h2 class="template-title p-name"><strong>New Trip</strong></h2>
+        </div>
+        <span class="overlay"></span>
+ </div>
 <div class="container">
-<h1>New Trip</h1>
 <%= render 'system/trip' %>
 <%= render 'form', trip: @trip %>
 

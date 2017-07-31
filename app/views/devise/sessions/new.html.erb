@@ -1,18 +1,60 @@
-<div class="container">
-  <h2>Log in</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :email, required: false, autofocus: true %>
-      <%= f.input :password, required: false %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-    </div>
+<style>body .site-content{
+      background: #e9e9e9;
+}</style>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
-    </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
-
+<div class="container ">
+	<div class="row">
+		
+<!-- Mixins-->
+<!-- Pen Title-->
+<div class="pen-title">
+  <h1>LTRIP Portal</h1>
+</div>
+<div class="container login">
+  <div class="card"></div>
+  <div class="card">
+    <h1 class="title">Login</h1>
+     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="input-container">
+        <input class="form-control string email optional" autofocus="autofocus" type="email" value="" name="user[email]" id="user_email">
+        <label for="user_email">Username</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input class="form-control password optional" type="password" name="user[password]" id="user_password">
+        <label for="Password">Password</label>
+        <div class="bar"></div>
+      </div>
+      <div class="button-container">
+        <%= f.button :submit, "Log in" %>
+      </div>
+      <div class="footer"><%= render "devise/shared/links" %></div>
+     <% end %>
+  </div>
+  <div class="card alt">
+    <div class="toggle"></div>
+    <h1 class="title">Register
+      <div class="close"></div>
+    </h1>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+      <div class="input-container">
+         <%= f.input :email, required: true, autofocus: true %>
+         <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+     <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <%= f.input :password_confirmation, required: true %>
+       <div class="bar"></div>
+      </div>
+      <div class="button-container">
+        <%= f.button :submit, "Sign up" %>
+      </div>
+      <% end %>
+  </div>
+</div></div>
 </div>

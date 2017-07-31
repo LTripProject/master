@@ -21,29 +21,7 @@
     </div>
   </div>
 
-  <form class="form-inline form-search" id="adv-search" method="get" action="/searchs">
-    <div class="container">
-      <fieldset>
-        <legend><span>Find the Tour</span></legend>
-        <div class="form-wrap clearfix">
-        <div class="form-group">
-          <label class="sr-only" for="fromPlace">From</label>
-          <input type="text" class="form-control home-search-box" id="fromPlace" name="departure" placeholder="Departure">
-        </div>
-        <div class="form-group">
-            <label class="sr-only" for="toPlace">To</label>
-            <input type="text" class="form-control home-search-box" id="toPlace" name="destination" placeholder="Destination">
-          </div>
-          <div class="input-group input-append date date-picker" >
-            <input type="text" class="form-control" name="date" value="Start DATE">
-            <span class="input-group-addon add-on"><i class="fa fa-calendar"></i></span>
-          </div>
-          <input name="search-tour" type="submit" value="Search Tours">
-        </div>
-
-      </fieldset>
-    </div>
-  </form>
+<%= render 'system/search' %>
 </div>
 <section class="home-services section-separator animatedParent">
   <div class="container">

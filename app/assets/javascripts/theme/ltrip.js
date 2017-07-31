@@ -14,7 +14,13 @@ $(window).on("load", function() {
     $(".main-menu .sub-menu,.main-menu  .mega-menu").animate({
         paddingTop: headerHeight
     });
+    $('.toggle').on('click', function() {
+        $('.container').stop().addClass('active');
+        });
 
+        $('.close').on('click', function() {
+        $('.container').stop().removeClass('active');
+    });
     $(".main-menu li,.main-menu li .sub-menu").on("hover", function () {
         $(this).children(".sub-menu").stop(true, true).fadeToggle();
         $(this).children(".inner-menu").stop(true, true).fadeToggle();
@@ -207,7 +213,7 @@ $(window).on("load", function() {
     * Tooltips Functions
     * ....................................................................................*/
     if(jQuery().select2) {
-        $("#adv-search select, .sorting select, #trips_email").select2({
+        $("#adv-search select, .sorting select, #trips_email, #schedule_detail_place_id").select2({
             speed: 400
         });
         window.onresize = function() {

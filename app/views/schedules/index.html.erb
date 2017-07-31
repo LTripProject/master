@@ -1,12 +1,19 @@
-<div class="container">
-<h2 class="fs-title short-border">Schedule</h2>
+
+<div id="tropical-banner" class=" text-center clearfix">
+        <%= image_tag('banner.jpg') %>
+        <div class="container banner-contents clearfix">
+            <h2 class="template-title p-name"><strong>Schedule</strong></h2>
+        </div>
+        <span class="overlay"></span>
+ </div>
+ <div class="container">
+<%= render 'system/trip' %>
 <div class="panel with-nav-tabs panel-default ">
   <div class="panel-heading">
     <ul class="nav nav-tabs" id="day-left-panel">
       <li>
         <%= link_to trip_schedules_path(@trip), method: :post,
-                    remote: true, class: 'btn-add-schedule' do %>
-            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add Schedule Detail
+                    remote: true, class: 'btn-add-schedule' do %> Add Schedule Detail
         <% end %>
       </li>
 
@@ -38,17 +45,20 @@
         map.fitBounds(bounds);
       }
     };
+    
+   
 
-    // Place engine
-    places = <%= raw @places.to_json %>;
+   places = <%= raw @places.to_json %>;
     placeEngine = new Bloodhound({
-       datumTokenizer: Bloodhound.tokenizers.whitespace,
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: places.map(function (place) {
-          console.log(place.name);
-          return place.name;
-        })
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('suggest_title'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      identify: function (obj) {
+        return obj.id;
+      },
+      local: places
     });
+
+    console.log(placeEngine);
   </script>
   <div class="panel-body">
     <div class="tab-content" id="itinerary-content">

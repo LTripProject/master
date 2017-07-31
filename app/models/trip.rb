@@ -22,12 +22,10 @@ class Trip < ApplicationRecord
   def self.search_trips(departure, destination, start_date)
     @departure = Region.find_by(name: departure)
     @destination = Region.find_by(name: destination)
+
+    puts @departure.id
     if @departure != nil && @destination == nil
       Trip.where(departure_id: @departure.id)
-    end
-
-    if start_date != nil
-      Trip.where("DATE(created_at) <= ?" , start_date)
     end
   end
 
@@ -37,5 +35,6 @@ class Trip < ApplicationRecord
 
   def create_default
     self.schedules.create(index: 1)
+    self.create_budget_trip
   end
 end

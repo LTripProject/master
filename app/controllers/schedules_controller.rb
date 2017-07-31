@@ -18,6 +18,7 @@ class SchedulesController < ApplicationController
 
 	def create
 		@schedule = @trip.schedules.create(index: next_index)
+		@place = Place.all
 		respond_to :js
 	end
 
@@ -35,11 +36,6 @@ class SchedulesController < ApplicationController
 	def sort
 		respond_to :js
   	end
-
-
-	def show
-		@schedule = Schedule.find(params[:id])
-	end
 
 	def update
 		

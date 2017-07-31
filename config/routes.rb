@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # resources :to_dos
 #  resources :schedule_details
   resources :searchs
-  
+  resources :home
   resources :notifications
   resources :trips do
     post "join" => "trips#join_trip"
@@ -21,14 +21,23 @@ Rails.application.routes.draw do
   resources :regions do
     collection do
       get :all
+      get :get_regions
     end
   end
 
  resources :schedules, only: [] do
-    resources :schedule_details, only: [:create, :destroy]
+    resources :schedule_details, only: [:create, :destroy, :delete]
+    member do
+      post :sort
+    end
   end
 
-  resources :places
+  resources :places do
+    collection do
+      get :all
+      get :loadDatabase
+    end
+  end
 
   post 'trips/:id/invite' => 'trips#invite', as: :trip_invite
   get "trips/:id/confirm_invite" => 'trips#confirm_invite', as: :trip_confirm_invite
