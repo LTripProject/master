@@ -60,11 +60,13 @@
               <div class="entry-contents hide clearfix">
                 <p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremo emque laudantium, totam rem aperiam, eaqueipsa quae ab illo inventore veritatis et oquasi architecto beatae vitae dicta sunt explicabo. </p>
               </div>
-              <%= link_to 'See tour detailsShow', trip , class: "more-details u-url" %>
+              <div class="row">
+                <%= link_to 'See tour detailsShow', trip , class: "more-details u-url" %>
+              </div>
               <% if user_signed_in? && trip.users.include?(current_user) %>
                 <div class="row">
-                  <div class="col-md-6" style="margin-left: -7px;"><%= link_to 'Edit', edit_trip_path(trip) , class: "t-btn btn-black-border pull-right" %></div>
-                  <div class="col-md-6"><%= link_to 'Destroy',   trip,  class: "t-btn btn-black-border pull-right",method: :delete, data: { confirm: 'Are you sure?' } %></div>
+                 <%= link_to 'Edit', edit_trip_path(trip) , class: "t-btn btn-black-border pull-right" %>
+                 <%= link_to 'Destroy',   trip,  class: "t-btn btn-black-border pull-right",method: :delete, data: { confirm: 'Are you sure?' } %>
                 </div>
               <% end %>
             </div>

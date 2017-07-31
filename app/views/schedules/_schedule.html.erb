@@ -17,7 +17,7 @@
           <!-- Delete button -->
           <%= link_to [@trip, schedule], class: 'btn delete-day-btn',
                       id: 'deleteDayBtn', remote: true, method: :delete do %>
-              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Schedule Detail
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete
           <% end %>
         </div>
       </div>
@@ -52,7 +52,7 @@
               </label>
               <input class="typeahead form-control" type="text" placeholder="Where you love to visit"
                      id="attraction_<%= schedule.index %>" autofocus>
-
+                     <% @places = Place.all unless @places  %>
                      <%= select(:schedule_detail, :place_id, @places.map {|v| [ v['name'], v['id'] ] }) %>
            </div>
 
