@@ -50,7 +50,11 @@
             </header>
             <div class="tour-contents clearfix">
               <figure class="tour-feature-img">
-                <a href="single-where-we-go.html"> <img src="images/tour-carousel-img-1.jpg" alt="Image"/></a>
+                <%= link_to [trip] do %> 
+                  <% if !(trip.photos.empty?) %>
+                    <%= image_tag(trip.photos[0].url) %>
+                  <% end %>
+                <% end %>
               </figure>
               <h5 class="entry-title p-name"><a href="single-where-we-go.html"><%= trip.title %></a></h5>
               <div class="entry-contents hide clearfix">
