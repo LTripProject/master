@@ -50,10 +50,14 @@
               <label for="attraction_<%= schedule.index %>" class="form-control-label">
                 Tourist Suggestion:
               </label>
-              <input class="typeahead form-control" type="text" placeholder="Where you love to visit"
-                     id="attraction_<%= schedule.index %>" autofocus>
+           
                      <% @places = Place.all unless @places  %>
-                     <%= select(:schedule_detail, :place_id, @places.map {|v| [ v['name'], v['id'] ] }) %>
+
+                     <select  id="attraction_<%= schedule.index %>" name="schedule_detail[place_id]" class="places2select">
+                        <% @places.each do |place| %>
+                          <option value="<%= place.id %>" ><%= place.suggest_title %></option>
+                        <% end %>
+                      </select>
            </div>
 
             <!-- Spending hours -->
@@ -90,20 +94,10 @@
     var form_popup = $(this).data('target');
     setTimeout(function(){ $(form_popup).modal('toggle'); }, 500);
   });
-  
-  $('#attraction_<%= schedule.index %>').typeahead(
-      {
-        hint: true,
-        highlight: true,
-        minLength: 1
-      },
-      {
-        name: 'states',
-        limit: 50,
-        source: placeEngine,
-        display: 'name',
-      }
-  );
+
+   $('#attraction_<%= schedule.index %>').select2({
+        theme: "bootstrap"
+    });
  
   // Sort attractions
   $("#sortable_<%= schedule.index %>").sortable();

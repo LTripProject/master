@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     collection do
       get :all
       get :loadDatabase
+      get :fetch_places_foreach_region
+      get :fetch_photo_manual
     end
   end
 

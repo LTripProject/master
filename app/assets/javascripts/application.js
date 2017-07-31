@@ -5,14 +5,15 @@
 //= require ./theme/jquery-migrate-1.2.11576
 //= require ./theme/respond.min8a54
 //= require ./theme/owl.carousel.min8a54
-//= require ./theme/select2.full.mincce7
 //= require ./theme/slick.min91ce
 //= require ./theme/moment.min5b0a
 //= require ./theme/fullcalendar.min254d
 //= require ./theme/jquery.slicknav.min4bf4
 //= require ./theme/css3-animate-itc5da
+//= require select2
 //= require ./theme/ltrip
 //= require bootstrap-material-design
+
 //= require jquery.easing
 //= require jquery-ui
 //= require tag-it
