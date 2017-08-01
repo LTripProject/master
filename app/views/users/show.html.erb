@@ -1,5 +1,10 @@
 <div class="container">
-  <%= image_tag @user.image_url if @user.image %>
+  <% if @user.facebook_avatar %>
+    <%= image_tag @user.facebook_avatar %>
+  <% else %>
+    <%= image_tag @user.image %>
+  <% end %>
+  
   <% if user_signed_in? && current_user == @user %>
     <div class="btn-group">
       <%= link_to "Change password", edit_user_registration_path, class: "btn btn-primary" %>

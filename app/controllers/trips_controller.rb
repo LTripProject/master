@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :confirm_invite]
-  before_action :set_trip, except: [:index, :new, :create]
+  before_action :set_trip, except: [:index, :new, :create, :join]
   before_action :check_permission, only: [:edit, :update, :destroy, :invite, :upload_gallery]
 
   def index
@@ -77,6 +77,8 @@ class TripsController < ApplicationController
   end
 
   def join
+    @trip = Trip.find(params[:trip_id])
+    
     if @trip.users.include?(current_user)
       flash[:alert] = "You have already in trip group"
     else
