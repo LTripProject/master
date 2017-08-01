@@ -22,7 +22,7 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name   # assuming the user model has a name
-      user.image = auth.info.image
+      user.facebook_avatar = auth.info.image
     end
   end
 
@@ -44,10 +44,6 @@ class User < ApplicationRecord
   end
 
   def image_url
-    if self.provider 
-      self.image.url.gsub(/\A.+?image\/\w.+?\//, "").gsub(/\%3A/,":")
-    else
-      self.image.url
-    end
+    self.provider.present? ? self.facebook_avatar : self.image.url
   end
 end

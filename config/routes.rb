@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :home
   resources :notifications
   resources :trips do
-    post "join" => "trips#join_trip"
+    post "join" => "trips#join"
 
     resources :budget_trips
 
