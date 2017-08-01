@@ -1,49 +1,80 @@
-<div class="container">
-<div class="one-column">
-  <div class="place-basic-info">
-    <h2>
-      <%= @place.name %>
-    </h2>
-    <% if @place.rating %>
-        <%
-          i = @place.rating.round
-          if i == 0
-        %>
-            No Rating
-        <% else
-             i.times do |x|
-        %>
-                <span class="rating-icon"></span>
-            <%
-              end
-              end %>
-    <% end %>
-  </div>
-  <div class="photo-place-detail">
-    <h2 class="fs-title short-border text-center">Gallery</h2>
+<div id="tropical-banner" class=" text-center clearfix">
+        <%= image_tag('banner.jpg') %>
+        <div class="container banner-contents clearfix">
+            <h2 class="template-title p-name"><strong><%= @place.name %></strong></h2>
+        </div>
+        <span class="overlay"></span>
+ </div>
 
-  <div class="map-place-detail">
-  <div class="row">
-    <h2 class="fs-title short-border">Maps</h2>
-    </div>
-    <div class="col-md-12">
-      <iframe src="<%= @place.map_url %>" width="100%" height="450"
-              frameborder="0" style="border:0" allowfullscreen></iframe>
-    </div>
-     <div class="col-md-4">
-    <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=256337051548023";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+ <section class="blog-single clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 col-sm-8">
+                        <article class="blog-post">
+                            <figure class="feature-img">
+                                <div class="col-md-12">
+                                    <iframe src="<%= @place.map_url %>" width="100%" height="450"
+                                            frameborder="0" style="border:0" allowfullscreen></iframe>
+                                  </div>
+                            </figure>
+                            <div class="entry-contents animatedParent clearfix">
+                             <div class="place-basic-info">
+                                  <% if @place.rating %>
+                                      <%
+                                        i = @place.rating.round
+                                        if i == 0
+                                      %>
+                                          No Rating
+                                      <% else
+                                          i.times do |x|
+                                      %>
+                                              <span class="rating-icon"></span>
+                                          <%
+                                            end
+                                            end %>
+                                  <% end %>
+                                </div>
+                             <div class="photo-place-detail">
+                                  <h2 class="fs-title short-border text-center">Gallery</h2>
 
-<div class="fb-comments" data-href="http://example.com" data-width="100%" data-num-posts="2"></div>
-    </div>
-  </div>
-</div>
-</div>
+                                  <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+                                
+
+                                  <div id="photos-place" class="row">
+                                    <%= render @photos  %>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="post-meta-single animatedParent clearfix">
+                               
+                                <span class="shares pull-right animated fadeInRightShort">
+                                  <div class="fb-like" data-href="<%= request.original_url  %>" data-layout="standard" data-action="recommend" data-size="large" data-show-faces="true" data-share="true"></div>
+                                </span>
+                            </div>
+                        </article>
+                        <section class="comments animatedParent clearfix">
+                            <h3 class="comments-title">Comment</h3>
+                               <article class="clearfix animated fadeInDownShort">
+                                     <div id="fb-root"></div>
+                                          <script>(function(d, s, id) {
+                                            var js, fjs = d.getElementsByTagName(s)[0];
+                                            if (d.getElementById(id)) return;
+                                            js = d.createElement(s); js.id = id;
+                                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=256337051548023";
+                                            fjs.parentNode.insertBefore(js, fjs);
+                                          }(document, 'script', 'facebook-jssdk'));</script>
+
+                                          <div class="fb-comments" data-href="<%= request.original_url  %>" data-width="100%" data-num-posts="2"></div>
+                                </article>
+                            </article>
+                        </section>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <%= render 'right' %>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
 

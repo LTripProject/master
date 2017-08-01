@@ -20,12 +20,4 @@ class PlaceDecorator < Draper::Decorator
     "#{object.name} - #{object.region.name}"
   end
 
-  def display_image_url(height = nil)
-    if object.photo
-      object.photo.url(height)
-    else
-      'https://www.mariecuriealumni.eu/sites/default/files/styles/50x50_avatar/public/pictures/picture-default.jpg?itok=uk4ugbrt'
-    end
-  end
-
 end

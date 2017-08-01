@@ -1,0 +1,40 @@
+ <aside class="sidebar">
+          <section class="search-widget animatedParent">
+            <h5 class="hidden animated fadeInDownShort">Title</h5>
+            <div class="search animated fadeInUpShort clearfix">
+              <form method="get" class="search-form" action="#">
+                <div>
+                  <input type="text" placeholder="Search Category" name="s" class="search-text">
+                  <input type="submit" class="search-submit" value="">
+                  <i class="fa fa-search"></i>
+                </div>
+              </form>
+            </div>
+          </section>
+          <section class="widget recent-post-widget animatedParent">
+            <h5 class="widget-title animated fadeInDownShort">Members list</h5>
+            <div class="members-list">
+              <% @trip.users.each do |user| %>
+                <div class="chip">
+                  <%= user.email %>
+                </div>
+              <% end %>
+            </div>
+            <hr>
+            <% if user_signed_in? && @trip.users.include?(current_user) %>
+              <div class="invite-form">
+                <%= simple_form_for :trips, url: trip_invite_path(id: @trip.id),
+                html: { autocomplete: "off" } do |f| %>
+                <div class="row">
+                  <%= f.input :email, collection: @user_emails, include_blank: false %>
+                  <%= f.submit "Invite", class: "btn btn-primary" %>
+                </div>
+                <% end %>
+              </div>
+            <% end %>
+          </section>
+          <section class="widget widget-text animatedParent">
+            <h5 class="widget-title animated fadeInDownShort">LTRIP</h5>
+            <p class="animated fadeInUpShort">  We are team 6 </p>
+          </section>
+        </aside>
