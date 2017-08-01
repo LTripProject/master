@@ -15,23 +15,9 @@
         </div>
       <% end %>
       <div class="header-tour-package pull-right">
-         <a id="nav-expander" class="nav-expander fixed">
+         <div id="showRightPush" class="">
           MENU &nbsp;<i class="fa fa-bars fa-lg white"></i>
-        </a>
-        <i class="fa fa-bars"></i>
-        <section class="header-tour-listing clearfix" style="display: none;">
-            <ul class="sub-menu" style="padding-top: 61px">
-              <li><%= link_to "Trips available", trips_path %></li>
-              <% if user_signed_in? %>
-                <li><%= link_to('My Account', current_user) %></li>
-                <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-                <li><%= link_to "Create trip", new_trip_path %></li>
-              <% else %>
-                <li><%= link_to('Sign in', new_user_session_path) %></li>
-                <li><%= link_to('Sign up', new_user_registration_path) %></li>
-              <% end %>
-            </ul>
-        </section>
+        </div>
       </div>
       <div class="header-user-tel pull-right">
         <i class="fa fa-mobile-phone fa-lg"></i>
@@ -80,3 +66,18 @@
     </div><!-- .container -->
   </div><!-- .site-branding -->
 </header><!-- .site-header -->
+
+<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+	<h3>LTRIP</h3>
+    <ul class="sub-menu" style="padding-top: 61px">
+        <li><%= link_to "Trips available", trips_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to('My Account', current_user) %></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+          <li><%= link_to "Create trip", new_trip_path %></li>
+        <% else %>
+          <li><%= link_to('Sign in', new_user_session_path) %></li>
+          <li><%= link_to('Sign up', new_user_registration_path) %></li>
+        <% end %>
+    </ul>
+</nav>

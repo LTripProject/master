@@ -13,7 +13,6 @@
 //= require ./theme/select2.full.mincce7
 //= require ./theme/ltrip
 //= require bootstrap-material-design
-
 //= require jquery.easing
 //= require jquery-ui
 //= require tag-it
