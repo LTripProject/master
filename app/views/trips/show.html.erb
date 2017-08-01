@@ -53,7 +53,7 @@
           <span><i class="fa fa-clock-o"></i><strong>Duration : &nbsp;</strong>3 days</span>
           <span><i class="fa fa-tags"></i><strong>Expected budget : &nbsp;</strong><%= format_price(@trip.expected_budget) %></span>
         </div>
-        <p> <%= truncate(@trip.description, :length => 50, :separator => ' ') %></p>
+        <p> <%= @trip.description.html_safe %></p>
         <footer class="tour-contents-footer clearfix">
           <% if user_signed_in?%>
             <% if @trip.users.include?(current_user) %>
