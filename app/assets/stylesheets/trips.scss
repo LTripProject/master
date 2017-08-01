@@ -18,13 +18,15 @@
 .invite-form{
   margin-top: 20px;
 }
-.gallary-container{
-    .video-container{
-        text-align: center;
-        .wrapper {
-            display: inline-block;
-        }
+.video-container{
+    padding: 25px 25px;
+    text-align: center;
+    .wrapper {
+        display: inline-block;
     }
+}
+.gallary-container{
+    
     .upload-gallery {
         -webkit-column-count: 3; /* Chrome, Safari, Opera */
         -moz-column-count: 3; /* Firefox */

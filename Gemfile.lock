@@ -63,11 +63,16 @@ GEM
     aws-sigv4 (1.0.1)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap-editable-rails (0.0.9)
+      railties (>= 3.1)
+      sass-rails
     bootstrap-material-design (0.2.2)
       bootstrap-sass (~> 3.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-wysihtml5-rails (0.3.3.8)
+      railties (>= 3.0)
     bootstrap3-datetimepicker-rails (4.17.47)
       momentjs-rails (>= 2.8.1)
     builder (3.2.3)
@@ -324,8 +329,10 @@ PLATFORMS
 
 DEPENDENCIES
   Bootstrap-Image-Gallery-rails
+  bootstrap-editable-rails
   bootstrap-material-design
   bootstrap-sass
+  bootstrap-wysihtml5-rails
   bootstrap3-datetimepicker-rails (~> 4.17.37)
   byebug
   capybara (~> 2.13)

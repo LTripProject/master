@@ -17,13 +17,11 @@
 </div>
 
 <section class="tour-single clearfix">
-  <div class="container">
+<div class="container">
 <div class="row">
   <div class="col-lg-9 col-sm-8">
     <header class="entry-header animatedParent clearfix">
       <h3 class="pull-left tour-single-title animated growIn slower"><%= @trip.title %></h3>
-      <span class="tour-price-single t-btn btn-red pull-right animated growIn slower">$<%= @trip.expected_budget %></span>
-     
     </header>
     <article class="tour-post-single clearfix">
       <div class="tour-single-slider animatedParent clearfix">
@@ -43,13 +41,19 @@
           <% end %>
         </div>
       </div>
+      <div class="video-container">
+        <div id="wrapper">  
+        <%= YouTubeRails.youtube_embed_url("https://www.youtube.com/watch?v=0yE4wEi8CFM", 560, 349).html_safe %>
+        </div>
+      </div>
+
       <div class="tour-single-contents animatedParent clearfix">
         <div class="tour-post-meta pull-right animated fadeInUpShort clearfix">
           <span><i class="fa fa-map-marker"></i><strong>Destination : &nbsp;</strong>Asia</span>
           <span><i class="fa fa-clock-o"></i><strong>Duration : &nbsp;</strong>3 days</span>
-          <span><i class="fa fa-tags"></i><strong>Price : &nbsp;</strong>&#36;547</span>
+          <span><i class="fa fa-tags"></i><strong>Expected budget : &nbsp;</strong><%= format_price(@trip.expected_budget) %></span>
         </div>
-        <p> <%= truncate(@trip.description, :length => 50, :separator => ' ') %></p>
+        <p> <%= @trip.description.html_safe %></p>
         <footer class="tour-contents-footer clearfix">
           <% if user_signed_in?%>
             <% if @trip.users.include?(current_user) %>
@@ -60,119 +64,8 @@
             <% end %>
           <% end %>
           <%= link_to 'Back', trips_path , class: "t-btn btn-black-border pull-right" %>
-          <a class="t-btn btn-black-border pull-right" href="#" data-toggle="modal" data-target="#ask-q-popup">Ask Question</a>
         </footer>
       </div>
-          <div class="tour-single-schedule animatedParent clearfix">
-            <ul class="nav nav-tabs animated fadeInUpShort" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#1" id="1-tab" role="tab" data-toggle="tab" aria-controls="1" aria-expanded="true">DAY-1</a>
-                <span></span>
-              </li>
-              <li role="presentation">
-                <a href="#2" role="tab" id="2-tab" data-toggle="tab" aria-controls="2">DAY-2</a>
-                <span></span>
-              </li>
-              <li role="presentation">
-                <a href="#3" role="tab" id="3-tab" data-toggle="tab" aria-controls="3">DAY-3</a>
-                <span></span>
-              </li>
-            </ul>
-            <div class="tab-content animated fadeInDownShort">
-              <div role="tabpanel" class="tab-pane fade clearfix in active" id="1" aria-labelledby="1-tab">
-                <%= image_tag('tab-img.jpg') %>
-                <div class="contents">
-                  <h5 class="p-title">Tropical paradise one</h5>
-                  <p>
-                    Maecenas faucibus mollis interdum. Nulla vitaeryr
-                    elit libero, a pharetra augue. Integer posuere erero  ante  leo venenatis dapibus posuere velit aliquete Aenean eu leo quam. Pellentesque ornare semirat lacinia quam venenatis vestibulum.
-                  </p>
-                </div>
-              </div>
-              <div role="tabpanel" class="tab-pane fade clearfix" id="2" aria-labelledby="2-tab">
-                <%= image_tag('tab-img.jpg') %>
-                <div class="contents">
-                  <h5 class="p-title">Tropical paradise two</h5>
-                  <p>
-                    Maecenas faucibus mollis interdum. Nulla vitaeryr
-                    elit libero, a pharetra augue. Integer posuere erero  ante  leo venenatis dapibus posuere velit aliquete Aenean eu leo quam. Pellentesque ornare semirat lacinia quam venenatis vestibulum.
-                  </p>
-                </div>
-              </div>
-              <div role="tabpanel" class="tab-pane fade clearfix" id="3" aria-labelledby="3-tab">
-                <%= image_tag('tab-img.jpg') %>
-                <div class="contents">
-                  <h5 class="p-title">Tropical paradise three</h5>
-                  <p>
-                    Maecenas faucibus mollis interdum. Nulla vitaeryr
-                    elit libero, a pharetra augue. Integer posuere erero  ante  leo venenatis dapibus posuere velit aliquete Aenean eu leo quam. Pellentesque ornare semirat lacinia quam venenatis vestibulum.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tour-single-rates animatedParent clearfix">
-            <div class="accommodation animated fadeInUpShort clearfix">
-              <ul class="clearfix">
-                <li><strong>Economy Accomodation</strong> <span class="circle-icon"></span></li>
-                <li><strong>type</strong><span class="circle-icon"></span></li>
-                <li><strong>Jan-May</strong><span class="circle-icon"></span></li>
-                <li><strong>June-dec</strong></li>
-              </ul>
-              <ul class="clearfix">
-                <li>Thai Island hopper Resort</li>
-                <li>Single</li>
-                <li>&#36;550</li>
-                <li>&#36;450</li>
-              </ul>
-              <ul class="clearfix">
-                <li>Summer lake Family Hotel</li>
-                <li>Double</li>
-                <li>&#36;449</li>
-                <li>&#36;399</li>
-              </ul>
-            </div>
-            <div class="accommodation animated fadeInDownShort clearfix">
-              <ul class="clearfix">
-                <li><strong>Economy Accomodation</strong> <span class="circle-icon"></span></li>
-                <li><strong>type</strong><span class="circle-icon"></span></li>
-                <li><strong>Jan-May</strong><span class="circle-icon"></span></li>
-                <li><strong>June-dec</strong></li>
-              </ul>
-              <ul class="clearfix">
-                <li>Thai Island hopper Resort</li>
-                <li>Single</li>
-                <li>&#36;550</li>
-                <li>&#36;450</li>
-              </ul>
-              <ul class="clearfix">
-                <li>Summer lake Family Hotel</li>
-                <li>Double</li>
-                <li>&#36;449</li>
-                <li>&#36;399</li>
-              </ul>
-            </div>
-            <div class="accommodation animated fadeInUpShort clearfix">
-              <ul class="clearfix">
-                <li><strong>Economy Accomodation</strong> <span class="circle-icon"></span></li>
-                <li><strong>type</strong><span class="circle-icon"></span></li>
-                <li><strong>Jan-May</strong><span class="circle-icon"></span></li>
-                <li><strong>June-dec</strong></li>
-              </ul>
-              <ul class="clearfix">
-                <li>Thai Island hopper Resort</li>
-                <li>Single</li>
-                <li>&#36;550</li>
-                <li>&#36;450</li>
-              </ul>
-              <ul class="clearfix">
-                <li>Summer lake Family Hotel</li>
-                <li>Double</li>
-                <li>&#36;449</li>
-                <li>&#36;399</li>
-              </ul>
-            </div>
-          </div>
         </article>
         <div class="related-tours clearfix">
           <header class="header-with-nav animatedParent clearfix">

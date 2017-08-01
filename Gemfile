@@ -71,5 +71,7 @@ gem 'carrierwave-aws'
 gem "twitter-bootstrap-rails"
 gem 'Bootstrap-Image-Gallery-rails'
 gem 'youtube_rails'
+gem 'bootstrap-editable-rails'
+gem 'bootstrap-wysihtml5-rails'
 
 gem 'dotenv-rails', groups: [:development, :test]

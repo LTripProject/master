@@ -18,11 +18,16 @@
 		<% end %>
 	</div>
 
+	<% if (user_signed_in?) && (@trip.users.include?(current_user)) %>
 	<div class="row">
-		<%= form_for @trip, :url => trips_add_photos_path(@trip), :method => :post, :html => { :class => "", :id => "" } do |f| %>
-			<%=  f.file_field :new_photos, multiple: true %> 
-			<%= f.submit "Upload", class: "btn btn-primary"%>
-		<% end %>
+		<div>Add more photos</div>
+		<div>
+			<%= form_for @trip, :url => trips_add_photos_path(@trip), :method => :post, :html => { :class => "", :id => "" } do |f| %>
+				<%=  f.file_field :new_photos, multiple: true %> 
+				<%= f.submit "Upload", class: "btn btn-primary"%>
+			<% end %>
+		</div>
+	
 	</div>
-  
+  <% end %>
 </div>
