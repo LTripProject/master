@@ -37,4 +37,8 @@ class Trip < ApplicationRecord
     self.schedules.create(index: 1)
     self.create_budget_trip
   end
+
+  def relative_trips
+    Trip.where(departure: self.departure).where.not(id: self.id)
+  end
 end

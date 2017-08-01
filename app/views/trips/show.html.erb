@@ -22,7 +22,7 @@
   <div class="col-lg-9 col-sm-8">
     <header class="entry-header animatedParent clearfix">
       <h3 class="pull-left tour-single-title animated growIn slower"><%= @trip.title %></h3>
-      <span class="tour-price-single t-btn btn-red pull-right animated growIn slower">$<%= @trip.expected_budget %></span>
+      <span class="tour-price-single t-btn btn-red pull-right animated growIn slower"><%= "#{format_price @trip.budget_trip.total_cost}/#{format_price @trip.expected_budget }"%></span>
      
     </header>
     <article class="tour-post-single clearfix">
@@ -45,9 +45,10 @@
       </div>
       <div class="tour-single-contents animatedParent clearfix">
         <div class="tour-post-meta pull-right animated fadeInUpShort clearfix">
-          <span><i class="fa fa-map-marker"></i><strong>Destination : &nbsp;</strong>Asia</span>
-          <span><i class="fa fa-clock-o"></i><strong>Duration : &nbsp;</strong>3 days</span>
-          <span><i class="fa fa-tags"></i><strong>Price : &nbsp;</strong>&#36;547</span>
+          <span><i class="fa fa-map-marker"></i><strong>Departure: &nbsp;</strong><%= @trip.departure.name %></span>
+          <span><i class="fa fa-clock-o"></i><strong>Duration : &nbsp;</strong>
+            <%= pluralize(@trip.schedules.count, 'day') %></span>
+          <span><i class="fa fa-tags"></i><strong>Price : &nbsp;</strong>&#36;<%= format_price @trip.budget_trip.total_cost %></span>
         </div>
         <p> <%= truncate(@trip.description, :length => 50, :separator => ' ') %></p>
         <footer class="tour-contents-footer clearfix">
@@ -64,166 +65,89 @@
         </footer>
       </div>
           <div class="tour-single-schedule animatedParent clearfix">
+          <% unless @trip.schedules.blank? %>
             <ul class="nav nav-tabs animated fadeInUpShort" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#1" id="1-tab" role="tab" data-toggle="tab" aria-controls="1" aria-expanded="true">DAY-1</a>
-                <span></span>
-              </li>
-              <li role="presentation">
-                <a href="#2" role="tab" id="2-tab" data-toggle="tab" aria-controls="2">DAY-2</a>
-                <span></span>
-              </li>
-              <li role="presentation">
-                <a href="#3" role="tab" id="3-tab" data-toggle="tab" aria-controls="3">DAY-3</a>
-                <span></span>
-              </li>
+                <% @trip.schedules.each_with_index do |schedule, i| %>
+                  <li role="presentation">
+                    <a href="#<%= schedule.index %>" id="<%= i+1 %>-tab" role="tab" data-toggle="tab" aria-controls="<%= i+1 %>" aria-expanded="true">DAY-<%= i+1 %></a>
+                    <span></span>
+                  </li>
+                <% end %>
             </ul>
             <div class="tab-content animated fadeInDownShort">
-              <div role="tabpanel" class="tab-pane fade clearfix in active" id="1" aria-labelledby="1-tab">
-                <%= image_tag('tab-img.jpg') %>
-                <div class="contents">
-                  <h5 class="p-title">Tropical paradise one</h5>
-                  <p>
-                    Maecenas faucibus mollis interdum. Nulla vitaeryr
-                    elit libero, a pharetra augue. Integer posuere erero  ante  leo venenatis dapibus posuere velit aliquete Aenean eu leo quam. Pellentesque ornare semirat lacinia quam venenatis vestibulum.
-                  </p>
+              <% @trip.schedules.each_with_index do |schedule, i| %>
+                <div role="tabpanel" class="tab-pane fade clearfix in"  
+                   id="<%= schedule.index %>" aria-labelledby="<%= i+1 %>-tab">
+                  <div class="contents">
+                    <ul>
+                      <% schedule.schedule_details.each do |schedule_detail| %>
+                        <li>
+                          <%= image_tag schedule_detail.image_url %>
+                          <%= schedule_detail.place.name unless schedule_detail.place.blank? %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div role="tabpanel" class="tab-pane fade clearfix" id="2" aria-labelledby="2-tab">
-                <%= image_tag('tab-img.jpg') %>
-                <div class="contents">
-                  <h5 class="p-title">Tropical paradise two</h5>
-                  <p>
-                    Maecenas faucibus mollis interdum. Nulla vitaeryr
-                    elit libero, a pharetra augue. Integer posuere erero  ante  leo venenatis dapibus posuere velit aliquete Aenean eu leo quam. Pellentesque ornare semirat lacinia quam venenatis vestibulum.
-                  </p>
-                </div>
-              </div>
-              <div role="tabpanel" class="tab-pane fade clearfix" id="3" aria-labelledby="3-tab">
-                <%= image_tag('tab-img.jpg') %>
-                <div class="contents">
-                  <h5 class="p-title">Tropical paradise three</h5>
-                  <p>
-                    Maecenas faucibus mollis interdum. Nulla vitaeryr
-                    elit libero, a pharetra augue. Integer posuere erero  ante  leo venenatis dapibus posuere velit aliquete Aenean eu leo quam. Pellentesque ornare semirat lacinia quam venenatis vestibulum.
-                  </p>
-                </div>
-              </div>
+              <% end %>
             </div>
+          <% end %>
           </div>
+          <h3>Budget details: <strong>
+            <%=format_price @trip.budget_trip.blank? ? 0 : @trip.budget_trip.total_cost %>
+          </strong> </h3>
           <div class="tour-single-rates animatedParent clearfix">
-            <div class="accommodation animated fadeInUpShort clearfix">
-              <ul class="clearfix">
-                <li><strong>Economy Accomodation</strong> <span class="circle-icon"></span></li>
-                <li><strong>type</strong><span class="circle-icon"></span></li>
-                <li><strong>Jan-May</strong><span class="circle-icon"></span></li>
-                <li><strong>June-dec</strong></li>
-              </ul>
-              <ul class="clearfix">
-                <li>Thai Island hopper Resort</li>
-                <li>Single</li>
-                <li>&#36;550</li>
-                <li>&#36;450</li>
-              </ul>
-              <ul class="clearfix">
-                <li>Summer lake Family Hotel</li>
-                <li>Double</li>
-                <li>&#36;449</li>
-                <li>&#36;399</li>
-              </ul>
-            </div>
-            <div class="accommodation animated fadeInDownShort clearfix">
-              <ul class="clearfix">
-                <li><strong>Economy Accomodation</strong> <span class="circle-icon"></span></li>
-                <li><strong>type</strong><span class="circle-icon"></span></li>
-                <li><strong>Jan-May</strong><span class="circle-icon"></span></li>
-                <li><strong>June-dec</strong></li>
-              </ul>
-              <ul class="clearfix">
-                <li>Thai Island hopper Resort</li>
-                <li>Single</li>
-                <li>&#36;550</li>
-                <li>&#36;450</li>
-              </ul>
-              <ul class="clearfix">
-                <li>Summer lake Family Hotel</li>
-                <li>Double</li>
-                <li>&#36;449</li>
-                <li>&#36;399</li>
-              </ul>
-            </div>
-            <div class="accommodation animated fadeInUpShort clearfix">
-              <ul class="clearfix">
-                <li><strong>Economy Accomodation</strong> <span class="circle-icon"></span></li>
-                <li><strong>type</strong><span class="circle-icon"></span></li>
-                <li><strong>Jan-May</strong><span class="circle-icon"></span></li>
-                <li><strong>June-dec</strong></li>
-              </ul>
-              <ul class="clearfix">
-                <li>Thai Island hopper Resort</li>
-                <li>Single</li>
-                <li>&#36;550</li>
-                <li>&#36;450</li>
-              </ul>
-              <ul class="clearfix">
-                <li>Summer lake Family Hotel</li>
-                <li>Double</li>
-                <li>&#36;449</li>
-                <li>&#36;399</li>
-              </ul>
+              <div class="accommodation animated fadeInUpShort clearfix">
+                <ul class="clearfix">
+                  <li>
+                    <strong>To buy</strong><span class="circle-icon"></span>
+                  </li>
+                  <li>
+                    <strong>Cost</strong><span class="circle-icon"></span>
+                  </li>
+                </ul>
+              <% unless @trip.budget_trip.blank? %>
+                <% @trip.budget_trip.budgets.each do |budget|%>
+                  <ul class="clearfix">
+                    <li><%=budget.name %></li>
+                    <li><strong><%= format_price(budget.price) %></strong> </li>
+                  </ul>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </article>
         <div class="related-tours clearfix">
           <header class="header-with-nav animatedParent clearfix">
             <h3 class="title pull-left animated growIn slower">Related Tours</h3>
-            <a class="pull-right animated growIn slower" href="#">SEE All Tours</a>
+            <%= link_to "See all tours", trips_path, class: "pull-right animated growIn slower" %>
           </header>
           <div class="row">
-            <div class="col-md-4 col-xs-6 animatedParent">
-              <article class="tour-post animated fadeInLeftShort">
-                <header class="tour-post-header clearfix">
-                  <span class="tour-price pull-left">&#36;299.00</span>
-                  <span class="tour-days pull-right"><i class="fa fa-clock-o"></i>&nbsp; 3 days</span>
-                </header>
-                <div class="tour-contents clearfix">
-                  <figure class="tour-feature-img">
-                    <img src="images/tour-carousel-img.jpg" alt="Image"/>
-                  </figure>
-                  <h5 class="entry-title p-name">Thai island hopper east</h5>
-                  <a class="more-details u-url" href="#">See tour details <i class="dashicons dashicons-arrow-right-alt2"></i></a>
-              </article>
-            </div>
-            <div class="col-md-4 col-xs-6 animatedParent">
-              <article class="tour-post animated fadeInUpShort">
-                <header class="tour-post-header clearfix">
-                  <span class="tour-price pull-left">&#36;299.00</span>
-                  <span class="tour-days pull-right"><i class="fa fa-clock-o"></i>&nbsp; 3 days</span>
-                </header>
-                <div class="tour-contents clearfix">
-                  <figure class="tour-feature-img">
-                    <img src="images/tour-carousel-img.jpg" alt="Image"/>
-                  </figure>
-                  <h5 class="entry-title p-name">Thai island hopper east</h5>
-                  <a class="more-details u-url" href="#">See tour details <i class="dashicons dashicons-arrow-right-alt2"></i></a>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-4 col-xs-6 animatedParent">
-              <article class="tour-post animated fadeInRightShort">
-                <header class="tour-post-header clearfix">
-                  <span class="tour-price pull-left">&#36;299.00</span>
-                  <span class="tour-days pull-right"><i class="fa fa-clock-o"></i>&nbsp; 3 days</span>
-                </header>
-                <div class="tour-contents clearfix">
-                  <figure class="tour-feature-img">
-                    <img src="images/tour-carousel-img.jpg" alt="Image"/>
-                  </figure>
-                  <h5 class="entry-title p-name">Thai island hopper east</h5>
-                  <a class="more-details u-url" href="#">See tour details <i class="dashicons dashicons-arrow-right-alt2"></i></a>
-                </div>
-              </article>
-            </div>
+          <% if @relative_trips.present? %>
+            <% @relative_trips.each do |trip|%>
+              <div class="col-md-4 col-xs-6 animatedParent">
+                <article class="tour-post animated fadeInLeftShort">
+                  <header class="tour-post-header clearfix">
+                    <span class="tour-price pull-left">&#36;
+                      <%= format_price(trip.expected_budget) %></span>
+                    <span class="tour-days pull-right"><i class="fa fa-clock-o"></i>&nbsp; <%= trip.schedules.count %>day</span>
+                  </header>
+                  <div class="tour-contents clearfix">
+                    <figure class="tour-feature-img">
+                      <%= image_tag @trip.photos.first unless @trip.photos.blank? %>
+                    </figure>
+                    <h5 class="entry-title p-name"><%= trip.title %></h5>
+                    <%= link_to trip do %>
+                      See tour details
+                      <i class="dashicons dashicons-arrow-right-alt2"></i>
+                    <% end %>
+                    <!-- <a class="more-details u-url" href="#">See tour details <i class="dashicons dashicons-arrow-right-alt2"></i></a> -->
+                </article>
+              </div>
+            <% end %>
+          <% else %>
+            <p>None relative trips </p>
+          <% end %>
           </div>
         </div>
       </div>

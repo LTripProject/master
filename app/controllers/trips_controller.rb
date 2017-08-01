@@ -5,6 +5,7 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.includes(:users).all
+
   end
 
 
@@ -12,6 +13,7 @@ class TripsController < ApplicationController
     if user_signed_in?
       @user_emails = User.where.not(id: @trip.user_ids).map(&:email)
     end
+    @relative_trips = @trip.relative_trips.limit(3)
   end
 
   def new
@@ -110,7 +112,7 @@ class TripsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
-      @trip = Trip.includes(:users).find(params[:id])
+      @trip = Trip.includes(:users).includes(budget_trip: :budgets).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -14,8 +14,12 @@
 @import "main";
 @import "responsive";
 @import "trips";
+
 body{
   background: white;
+}
+.accommodation li{
+  width: 60%;
 }
 .nav-tabs li.active{
   background: #ec3f3f;
