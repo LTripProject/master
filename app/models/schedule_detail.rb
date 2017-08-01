@@ -6,8 +6,9 @@ class ScheduleDetail < ApplicationRecord
   validates_numericality_of :hour_spend
   DEFAULT_PHOTO = 'https://media-cdn.tripadvisor.com/media/photo-o/05/c5/a3/bf/tropica-island-resort.jpg'
   
-  def image_url(height = nil)
-    DEFAULT_PHOTO
+  def image_url
+
+    self.place.photos.blank? ? DEFAULT_PHOTO : self.place.photos
   end
 
 

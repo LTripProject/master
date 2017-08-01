@@ -17,13 +17,12 @@
 </div>
 
 <section class="tour-single clearfix">
-  <div class="container">
+<div class="container">
 <div class="row">
   <div class="col-lg-9 col-sm-8">
     <header class="entry-header animatedParent clearfix">
       <h3 class="pull-left tour-single-title animated growIn slower"><%= @trip.title %></h3>
       <span class="tour-price-single t-btn btn-red pull-right animated growIn slower"><%= "#{format_price @trip.budget_trip.total_cost}/#{format_price @trip.expected_budget }"%></span>
-     
     </header>
     <article class="tour-post-single clearfix">
       <div class="tour-single-slider animatedParent clearfix">
@@ -43,6 +42,12 @@
           <% end %>
         </div>
       </div>
+      <div class="video-container">
+        <div id="wrapper">  
+        <%= YouTubeRails.youtube_embed_url("https://www.youtube.com/watch?v=0yE4wEi8CFM", 560, 349).html_safe %>
+        </div>
+      </div>
+
       <div class="tour-single-contents animatedParent clearfix">
         <div class="tour-post-meta pull-right animated fadeInUpShort clearfix">
           <span><i class="fa fa-map-marker"></i><strong>Departure: &nbsp;</strong><%= @trip.departure.name %></span>
@@ -50,7 +55,7 @@
             <%= pluralize(@trip.schedules.count, 'day') %></span>
           <span><i class="fa fa-tags"></i><strong>Price : &nbsp;</strong>&#36;<%= format_price @trip.budget_trip.total_cost %></span>
         </div>
-        <p> <%= truncate(@trip.description, :length => 50, :separator => ' ') %></p>
+        <p> <%= @trip.description.html_safe %></p>
         <footer class="tour-contents-footer clearfix">
           <% if user_signed_in?%>
             <% if @trip.users.include?(current_user) %>
@@ -61,7 +66,6 @@
             <% end %>
           <% end %>
           <%= link_to 'Back', trips_path , class: "t-btn btn-black-border pull-right" %>
-          <a class="t-btn btn-black-border pull-right" href="#" data-toggle="modal" data-target="#ask-q-popup">Ask Question</a>
         </footer>
       </div>
           <div class="tour-single-schedule animatedParent clearfix">
@@ -141,7 +145,6 @@
                       See tour details
                       <i class="dashicons dashicons-arrow-right-alt2"></i>
                     <% end %>
-                    <!-- <a class="more-details u-url" href="#">See tour details <i class="dashicons dashicons-arrow-right-alt2"></i></a> -->
                 </article>
               </div>
             <% end %>

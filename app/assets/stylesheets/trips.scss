@@ -18,18 +18,27 @@
 .invite-form{
   margin-top: 20px;
 }
-
-.upload-gallery {
-    -webkit-column-count: 3; /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
-    column-count: 3;
-    a > img{ width: 100%; padding: 7px 0;}
-}
-@media (max-width: 500px) {
-    .upload-gallery {
-        -webkit-column-count: 1; /* Chrome, Safari, Opera */
-        -moz-column-count: 1; /* Firefox */
-        column-count: 1;
+.video-container{
+    padding: 25px 25px;
+    text-align: center;
+    .wrapper {
+        display: inline-block;
     }
-        
+}
+.gallary-container{
+    
+    .upload-gallery {
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+        a > img{ width: 100%; padding: 7px 0;}
+    }
+    @media (max-width: 500px) {
+        .upload-gallery {
+            -webkit-column-count: 1; /* Chrome, Safari, Opera */
+            -moz-column-count: 1; /* Firefox */
+            column-count: 1;
+        }
+            
+    }
 }

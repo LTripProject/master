@@ -21,6 +21,8 @@ $(window).on("load", function() {
         $('.close').on('click', function() {
         $('.container').stop().removeClass('active');
     });
+
+    
     $(".main-menu li,.main-menu li .sub-menu").on("hover", function () {
         $(this).children(".sub-menu").stop(true, true).fadeToggle();
         $(this).children(".inner-menu").stop(true, true).fadeToggle();
