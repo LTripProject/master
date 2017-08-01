@@ -6,7 +6,7 @@
       <% end %>
       <input type="hidden" id="schedule_detail_index" value="<%= schedule_detail.index %>">
       <div class="day-place-detail">
-        <div class="col-img"></div>
+        <div class="col-img"><%= image_tag (schedule_detail.image_url(50))%></div>
 
         <div class="day-place-detail-middle col-name">
           <p class="day-place-name"><%= schedule_detail.place.name %></p>

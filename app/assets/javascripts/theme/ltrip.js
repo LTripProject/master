@@ -338,10 +338,9 @@ CustomMarker.prototype.draw = function () {
     // styling
     if (!root) {
         root = this.root = document.createElement('img');
-        root.className = 'img-circle';
         root.style.position = 'absolute';
         root.style.cursor = 'pointer';
-        root.style.border = '3px solid red';
+        root.style.border = '1px solid red';
         root.width = '50';
         root.height = '50';
         root.src = encodeURI(this.url.replace(/&amp;/g, '&'));
