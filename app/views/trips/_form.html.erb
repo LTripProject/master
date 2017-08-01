@@ -1,4 +1,3 @@
-
 <%= simple_form_for(@trip) do |f| %>
     <%= f.error_notification %>
 
@@ -44,7 +43,7 @@
           <div class="col-md-12">
             <fieldset class="form-group">
               <label for="description">Description</label>
-              <textarea class="form-control" id="description" rows="3" name="trip[description]"
+              <textarea class="wysihtml5 form-control" id="description" rows="3" name="trip[description]"
                         placeholder="Enter description"><%= @trip.description %></textarea>
             </fieldset>
             </div>

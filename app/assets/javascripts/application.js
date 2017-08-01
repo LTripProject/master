@@ -30,3 +30,4 @@
 //= require blueimp-gallery-youtube
 //= require jquery.blueimp-gallery
 //= require bootstrap-image-gallery
+//= require bootstrap-wysihtml5
