@@ -12,7 +12,7 @@ class Place < ApplicationRecord
             @photo = self.photos.first
             @photo.image_url(height)
         else
-            'https://www.mariecuriealumni.eu/sites/default/files/styles/50x50_avatar/public/pictures/picture-default.jpg?itok=uk4ugbrt'
+            'http://www.brother.in/AP/Handlers/ApHandler.ashx?m=rs&guid=&pr=100'
         end
     end
 end

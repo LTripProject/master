@@ -44,7 +44,7 @@
       </div>
       <div class="video-container">
         <div id="wrapper">  
-        <%= YouTubeRails.youtube_embed_url("https://www.youtube.com/watch?v=0yE4wEi8CFM", 560, 349).html_safe %>
+           <%= YouTubeRails.youtube_embed_url("https://www.youtube.com/watch?v=0yE4wEi8CFM", 560, 349).html_safe %>
         </div>
       </div>
 
@@ -72,7 +72,7 @@
           <% unless @trip.schedules.blank? %>
             <ul class="nav nav-tabs animated fadeInUpShort" role="tablist">
                 <% @trip.schedules.each_with_index do |schedule, i| %>
-                  <li role="presentation">
+                  <li class="<%= 'active' if i == 0 %>" role="presentation">
                     <a href="#<%= schedule.index %>" id="<%= i+1 %>-tab" role="tab" data-toggle="tab" aria-controls="<%= i+1 %>" aria-expanded="true">DAY-<%= i+1 %></a>
                     <span></span>
                   </li>

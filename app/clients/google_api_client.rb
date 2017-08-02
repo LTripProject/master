@@ -25,7 +25,7 @@ class GoogleApiClient
   end
 
   def self.get_place_photo(photo_reference, height)
-    params = "?maxheight=#{height}&photoreference=#{photo_reference}&key=#{API_KEY_2}"
+    params = "?maxheight=#{height}&photoreference=#{photo_reference}&key=#{API_KEY}"
     'https://maps.googleapis.com/maps/api/place/photo' + params
   end
 
