@@ -80,17 +80,37 @@
             </ul>
             <div class="tab-content animated fadeInDownShort">
               <% @trip.schedules.each_with_index do |schedule, i| %>
-                <div role="tabpanel" class="tab-pane fade clearfix in"  
+                <div role="tabpanel" class="tab-pane fade clearfix in <%= 'active' if i == 0 %>"  
                    id="<%= schedule.index %>" aria-labelledby="<%= i+1 %>-tab">
                   <div class="contents">
-                    <ul>
-                      <% schedule.schedule_details.each do |schedule_detail| %>
-                        <li>
-                          <%= image_tag schedule_detail.image_url %>
-                          <%= schedule_detail.place.name unless schedule_detail.place.blank? %>
-                        </li>
+                      <% schedule.schedule_details.each_with_index do |schedule_detail, i| %>
+                        <div class="row">
+                          <div class="col-md-4">
+                             <%= image_tag schedule_detail.image_url , class: "tab-img alignleft" %>
+                          </div>
+                          <div class="contents col-md-8">
+                              <h5 class="p-title"> <%= schedule_detail.place.name unless schedule_detail.place.blank? %></h5>
+                              <p>
+                                 <strong>Rating:</strong> 
+                                  <% if schedule_detail.place.rating %>
+                                    <%
+                                    i = schedule_detail.place.rating.round
+                                    if i == 0
+                                    %>
+                                        No Rating
+                                    <% else
+                                        i.times do |x|
+                                    %>
+                                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <%
+                                        end
+                                        end %>
+                                <% end %>
+                              </p>
+                              <p>Hour: <%= schedule_detail.hour_spend %></p>
+                          </div>
+                        </div>
                       <% end %>
-                    </ul>
                   </div>
                 </div>
               <% end %>

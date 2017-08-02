@@ -4,19 +4,19 @@
             <h2 class="template-title p-name"><strong><%= @place.name %></strong>
             <br/>
                <% if @place.rating %>
-                                      <%
-                                        i = @place.rating.round
-                                        if i == 0
-                                      %>
-                                          No Rating
-                                      <% else
-                                          i.times do |x|
-                                      %>
-                                              <i class="fa fa-star-o" aria-hidden="true"></i>
-                                          <%
-                                            end
-                                            end %>
-                                  <% end %>
+                        <%
+                        i = @place.rating.round
+                        if i == 0
+                        %>
+                            No Rating
+                        <% else
+                            i.times do |x|
+                        %>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <%
+                            end
+                            end %>
+                    <% end %>
             </h2>
         </div>
         <span class="overlay"></span>
@@ -34,10 +34,6 @@
                                   </div>
                             </figure>
                             <div class="entry-contents animatedParent clearfix">
-                             <div class="place-basic-info">
-                              <h2 class="fs-title short-border text-center">Score</h2>
-                              
-                                </div>
                              <div class="photo-place-detail">
                                   <h2 class="fs-title short-border text-center">Gallery</h2>
 
