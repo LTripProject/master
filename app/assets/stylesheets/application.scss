@@ -1540,4 +1540,7 @@ h2.home-info {
 .modal-content .modal-body {
     min-height: 500px;
 }
+.form-group .form-control:focus, .form-group-default .form-control:focus {
+    background-image: none;
+}
 
