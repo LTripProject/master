@@ -36,7 +36,7 @@ class TripsController < ApplicationController
       flash[:notice] = 'Trip was successfully created. Please set your schedule'
       redirect_to trip_schedules_path(@trip)
     else
-      flash.now[:alert] = "Create trip errors"
+      flash.now[:alert] = "Create trip errors #{@trip.errors.full_messages.to_sentence}"
       render :new
     end
   end
@@ -117,7 +117,7 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:start_date, :title, :description, :expected_budget, {new_photos: []})
+      params.require(:trip).permit(:start_date, :title, :description, :expected_budge, :video_link, :visible_scope, {new_photos: []})
     end
 
     def check_permission

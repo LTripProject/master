@@ -12,9 +12,11 @@ class Trip < ApplicationRecord
 
   # accepts_nested_attributes_for :photos, :reject_if => :all_blank
 
-  validates_presence_of :title
+  validates_presence_of :title, :departure_id, :expected_budget
   validates_numericality_of :expected_budget
+
   after_create :create_default
+
   mount_uploaders :photos, PhotoUploader
   serialize :photos, JSON
   DEFAULT_PHOTO = 'https://media-cdn.tripadvisor.com/media/photo-o/05/c5/a3/bf/tropica-island-resort.jpg'
