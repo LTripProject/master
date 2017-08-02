@@ -50,10 +50,10 @@
 
       <div class="tour-single-contents animatedParent clearfix">
         <div class="tour-post-meta pull-right animated fadeInUpShort clearfix">
-          <span><i class="fa fa-map-marker"></i><strong>Departure: &nbsp;</strong><%= @trip.departure.name %></span>
+          <span><i class="fa fa-map-marker"></i><strong>Departure: &nbsp;</strong><%= @trip.departure.name if @trip.departure %></span>
           <span><i class="fa fa-clock-o"></i><strong>Duration : &nbsp;</strong>
             <%= pluralize(@trip.schedules.count, 'day') %></span>
-          <span><i class="fa fa-tags"></i><strong>Price : &nbsp;</strong>&#36;<%= format_price @trip.budget_trip.total_cost %></span>
+          <span><i class="fa fa-tags"></i><strong>Price : &nbsp;</strong>&#36;<%= format_price @trip.budget_trip.total_cost unless @trip.budget_trip.nil? %></span>
         </div>
         <p> <%= @trip.description.html_safe %></p>
         <footer class="tour-contents-footer clearfix">

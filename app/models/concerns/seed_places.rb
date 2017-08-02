@@ -1,5 +1,5 @@
 module Concerns
-  class SeedPlaces  
+  class SeedPlaces
     def run
       fetch_places_foreach_region
     end

@@ -9,6 +9,6 @@ unless User.any?
   end
 end
 
-unless Region.any?
-  Concerns::SeedRegions.new().run
+unless Place.any?
+  Concerns::SeedPlaces.new().run
 end

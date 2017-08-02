@@ -36,7 +36,7 @@ class TripsController < ApplicationController
       flash[:notice] = 'Trip was successfully created. Please set your schedule'
       redirect_to trip_schedules_path(@trip)
     else
-      flash.now[:alert] = "Create trip errors"
+      flash.now[:alert] = "Create trip errors #{@trip.errors.full_messages.to_sentence}"
       render :new
     end
   end

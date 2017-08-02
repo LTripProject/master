@@ -7,7 +7,7 @@ class GoogleApiClient
 
   def self.search_address(address)
     params = "?address=#{address}&key=#{API_KEY}"
-    get_method('https://maps.googleapis.com/maps/api/geocode/json' + params)
+    get_method('https://maps.googleget_all_regionsapis.com/maps/api/geocode/json' + params)
   end
 
   def self.search_place_detail(place_id)
