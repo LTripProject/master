@@ -42,11 +42,13 @@
           <% end %>
         </div>
       </div>
+      <% unless @trip.video_link.empty? %>
       <div class="video-container">
         <div id="wrapper">  
-        <%= YouTubeRails.youtube_embed_url("https://www.youtube.com/watch?v=0yE4wEi8CFM", 560, 349).html_safe %>
+        <%= YouTubeRails.youtube_embed_url(@trip.video_link, 560, 349).html_safe %>
         </div>
       </div>
+      <% end %>
 
       <div class="tour-single-contents animatedParent clearfix">
         <div class="tour-post-meta pull-right animated fadeInUpShort clearfix">
