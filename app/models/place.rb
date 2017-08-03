@@ -10,13 +10,13 @@ class Place < ApplicationRecord
     Place.where(region: self.region).where.not(id: self.id)
   end
 
-     def display_image_url(height = nil)
-        if self.photos.first
-            @photo = self.photos.first
-            @photo.image_url(height)
-        else
-            'http://www.brother.in/AP/Handlers/ApHandler.ashx?m=rs&guid=&pr=100'
-        end
-    end
+   def display_image_url(height = nil)
+      if self.photos.first
+          @photo = self.photos.first
+          @photo.image_url(height)
+      else
+          'http://www.brother.in/AP/Handlers/ApHandler.ashx?m=rs&guid=&pr=100'
+      end
   end
+  
 end

@@ -1,6 +1,6 @@
 <div class="container gallary-container">
 
-	<% unless @trip.video_link.empty? %>
+	<% unless (@trip.video_link.nil? && @trip.video_link.empty?)%>
       <div class="video-container">
         <div id="wrapper">  
         <%= YouTubeRails.youtube_embed_url(@trip.video_link, 560, 349).html_safe %>
