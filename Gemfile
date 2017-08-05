@@ -75,3 +75,6 @@ gem 'bootstrap-editable-rails'
 gem 'bootstrap-wysihtml5-rails'
 
 gem 'dotenv-rails', groups: [:development, :test]
+
+# Facebook messager
+gem 'facebook-messenger'
