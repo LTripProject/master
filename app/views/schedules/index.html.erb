@@ -45,8 +45,6 @@
         map.fitBounds(bounds);
       }
     };
-    
-   
 
    places = <%= raw @places.to_json %>;
     placeEngine = new Bloodhound({
@@ -57,8 +55,6 @@
       },
       local: places
     });
-
-    console.log(placeEngine);
   </script>
   <div class="panel-body">
     <div class="tab-content" id="itinerary-content">
