@@ -896,6 +896,7 @@ h5 {
 }
 .nav-tabs li {
     position: relative;
+    background: #343434;
 }
 .tab-content .p-title {
     margin-top: 0;
@@ -914,12 +915,12 @@ h5 {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 19px 0 18px 12px;
+    border-width: 19px 0 14px 12px;
     border-color: transparent transparent transparent #333333;
     z-index: 99;
 }
 .nav-tabs li.active span {
-    border-color: transparent transparent transparent #fc4242;
+    border-color: transparent transparent transparent #ec4040;
 }
 .nav-tabs > li > a {
     margin-right: 0;

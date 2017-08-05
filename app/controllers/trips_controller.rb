@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :confirm_invite]
-  before_action :set_trip, except: [:index, :new, :create, :join]
+  before_action :set_trip, except: [:index, :new, :create, :join, :update_video_link]
   before_action :check_permission, only: [:edit, :update, :destroy, :invite, :upload_gallery]
 
   def index
@@ -58,7 +58,19 @@ class TripsController < ApplicationController
   def add_photos
     @trip.photos += trip_params[:new_photos]
     @trip.update_attributes(:photos => @trip.photos)
-    redirect_to upload_gallery_path
+    
+    redirect_to trips_upload_gallery_url
+  end
+
+
+  def update_video_link
+    puts "trip id  = #{params[:trip_id]}"
+    @trip = Trip.find(params[:trip_id])
+
+    @trip.update_attributes(:video_link => trip_params[:video_link])
+
+    redirect_to action: 'upload_gallery', id: params[:trip_id]
+
   end
 
   def upload_gallery
@@ -80,7 +92,7 @@ class TripsController < ApplicationController
 
   def join
     @trip = Trip.find(params[:trip_id])
-    
+
     if @trip.users.include?(current_user)
       flash[:alert] = "You have already in trip group"
     else
@@ -117,7 +129,7 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:start_date, :title, :description, :expected_budge, :video_link, :visible_scope, {new_photos: []})
+      params.require(:trip).permit(:start_date, :title, :description, :expected_budget, :video_link, :visible_scope, {new_photos: []})
     end
 
     def check_permission
