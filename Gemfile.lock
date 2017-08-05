@@ -121,6 +121,9 @@ GEM
       request_store (~> 1.0)
     erubi (1.6.1)
     execjs (2.7.0)
+    facebook-messenger (1.0.0)
+      httparty (~> 0.13, >= 0.13.7)
+      rack (>= 1.6.4)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffaker (2.6.0)
@@ -343,6 +346,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   draper
+  facebook-messenger
   ffaker
   font-awesome-rails
   handlebars_assets
