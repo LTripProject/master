@@ -8,7 +8,7 @@
             <%= image_tag place.display_image_url %>
           </figure>
           <h6 class="title">
-            <%= link_to place.name, place %>
+            <%= link_to place.name, place_path(place)%>
           </h6>
         </article>
       <% end %>

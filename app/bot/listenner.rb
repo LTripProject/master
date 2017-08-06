@@ -3,50 +3,35 @@ include Facebook::Messenger
 # include Facebook::Messenger::Thread
 
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
-# Facebook::Messenger::Profile.set({
-#   greeting: [
-#     {
-#       locale: 'default',
-#       text: 'Welcome to your new bot overlord!'
-#     }
-#   ]
-# }, access_token: ENV['ACCESS_TOKEN'])
-
 Facebook::Messenger::Profile.set({
   get_started: {
     payload: 'GET_STARTED_PAYLOAD'
   },
+  greeting: [
+    {
+      locale: 'default',
+      text: 'Please choose the option below to get more infomation!'
+    }
+  ],
   persistent_menu: [
     {
       locale: 'default',
       composer_input_disabled: false,
       call_to_actions: [
         {
-          title: 'My Account',
-          type: 'nested',
-          call_to_actions: [
-            {
-              title: 'What\'s a chatbot?',
-              type: 'postback',
-              payload: 'EXTERMINATE'
-            },
-            {
-              title: 'History',
-              type: 'postback',
-              payload: 'HISTORY_PAYLOAD'
-            },
-            {
-              title: 'Contact Info',
-              type: 'postback',
-              payload: 'CONTACT_INFO_PAYLOAD'
-            }
-          ]
+          type: 'postback',
+          title: '👌 get top trips(get top)',
+          payload: 'get top'
+        },
+        {
+          type: 'postback',
+          title: '☝ Trợ giúp nhanh (get help)',
+          payload: 'get help'
         },
         {
           type: 'web_url',
-          title: 'Get some help',
-          url: 'https://github.com/hyperoslo/facebook-messenger',
-          webview_height_ratio: 'full'
+          title: '📬  Góp ý, báo lỗi, xoạc :v',
+          url: 'https://m.me/dthtien'
         }
       ]
     }
@@ -54,12 +39,9 @@ Facebook::Messenger::Profile.set({
 }, access_token: ENV['ACCESS_TOKEN'])
 
 Bot.on :message do |message|
-  p message
+  MessengerCommand.new(message.sender, message.text).execute
+end
 
-  Bot.deliver({
-    recipient: message.sender,
-    message: {
-      text: message.text
-    }
-  }, access_token: ENV["ACCESS_TOKEN"])
+Bot.on :postback do |postback|
+  MessengerCommand.new(postback.sender, postback.payload).execute
 end
