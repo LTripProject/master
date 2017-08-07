@@ -11,12 +11,17 @@ class Trip < ApplicationRecord
   belongs_to :departure, class_name: "Region", foreign_key: :departure_id, optional: true
   has_one :budget_trip, dependent: :destroy
 
+  # scope :public_trips, ->{where(status: true)}
+  scope :availabe_trips, -> {where("start_date > ? AND status = true", Time.now)}
+
+  # enum status: {public: true, private: false}
+
   # accepts_nested_attributes_for :photos, :reject_if => :all_blank
 
   validates_presence_of :title, :departure_id, :expected_budget
   validates_numericality_of :expected_budget
 
-  after_create :create_default
+  after_create :create_default  
 
   mount_uploaders :photos, PhotoUploader
   serialize :photos, JSON

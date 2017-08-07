@@ -9,7 +9,7 @@ class MessengerCommand
     @sender = sender
     # @user = User.find_by(uid: @sender['id'])
     
-    if @words = text.try(:split)
+    if @words = text.downcase.try(:split)
       @action = @words[0]
       @command = @words[1]
       @arg = @words.last(@words.size - 2).join(" ") if @words.size > 2
@@ -76,7 +76,7 @@ class MessengerCommand
   end
 
   def missing_args
-    send_as_text "Your option unavailable! type get help to get more information"
+    send_as_text "Your option unavailable! Type -- get help -- to get more information"
   end
 
   def not_found
