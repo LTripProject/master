@@ -63,8 +63,14 @@ gem 'kaminari'
 
 gem 'devise'
 gem 'omniauth-facebook'
+<<<<<<< HEAD
 
 gem 'open-weather'
+=======
+gem 'sprockets', '>=3.0.0.beta'
+gem 'sprockets-es6'
+
+>>>>>>> c2b75dee7e9e684f5ead1c25b76ae5e53f963b02
 gem 'cocoon'
 gem 'carrierwave'
 gem 'carrierwave-aws'
@@ -73,5 +79,10 @@ gem 'Bootstrap-Image-Gallery-rails'
 gem 'youtube_rails'
 gem 'bootstrap-editable-rails'
 gem 'bootstrap-wysihtml5-rails'
-
+gem 'rpush'
+gem 'serviceworker-rails'
+gem "webpush"
 gem 'dotenv-rails', groups: [:development, :test]
+
+# Facebook messager
+gem 'facebook-messenger'
