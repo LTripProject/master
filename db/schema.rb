@@ -189,6 +189,7 @@ ActiveRecord::Schema.define(version: 20170805070107) do
     t.string "photos"
     t.string "video_link"
     t.string "visible_scope"
+    t.integer "user_trips_count", default: 0
     t.index ["departure_id"], name: "index_trips_on_departure_id"
   end
 

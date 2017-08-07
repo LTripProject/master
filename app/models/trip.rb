@@ -4,7 +4,8 @@ class Trip < ApplicationRecord
   has_many :users, through: :user_trips
   has_many :schedules, dependent: :destroy
   has_many :schedule_details, through: :schedules
-  has_many :places, through: :schedule_detail
+  has_many :places, through: :schedule_details
+  has_many :regions, through: :places
   has_many :invite_tokens, dependent: :destroy
   # has_many :photos, dependent: :destroy
   belongs_to :departure, class_name: "Region", foreign_key: :departure_id, optional: true

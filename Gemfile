@@ -78,3 +78,6 @@ gem 'rpush'
 gem 'serviceworker-rails'
 gem "webpush"
 gem 'dotenv-rails', groups: [:development, :test]
+
+# Facebook messager
+gem 'facebook-messenger'
