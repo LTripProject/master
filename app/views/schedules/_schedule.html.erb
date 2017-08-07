@@ -108,7 +108,6 @@
           .map(function (ui) {
             return ui.value
           });
-      showLoading();
       $.ajax({
         method: 'POST',
         data: {'indexes': indexes},

@@ -1,9 +1,6 @@
 <%= link_to schedule_detail.place do %>
     <li class="day_detail" id="day-detail_<%= schedule_detail.index %>">
-      <% if schedule_detail.index != 1 %>
-          <div class="transport-time">
-          </div>
-      <% end %>
+     
       <input type="hidden" id="schedule_detail_index" value="<%= schedule_detail.index %>">
       <div class="day-place-detail">
         <div class="col-img"><%= image_tag (schedule_detail.image_url(50))%></div>
@@ -11,6 +8,22 @@
         <div class="day-place-detail-middle col-name">
           <p class="day-place-name"><%= schedule_detail.place.name %></p>
           <h3 class="tag"><%= schedule_detail.hour_spend %> HOURs</h3>
+          
+             <% if schedule_detail.index != 1 %>
+              <div class="transport-time">
+                  <div class="day-transfer"><i class="fa fa-hdd-o" aria-hidden="true"></i><%= schedule_detail.distance %> &nbsp;/&nbsp; <i class="fa fa-clock-o" aria-hidden="true"></i><%= schedule_detail.duration %></div>
+                </div>
+                 <div class="transport-time">
+                  <div class="day-transfer">
+                  <i class="fa fa-sun-o" aria-hidden="true"></i>Morning: <%= schedule_detail.tempday %> &nbsp;/&nbsp; 
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>Afternoon: <%= schedule_detail.tempeve %>
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>Evening: <%= schedule_detail.tempeve %>
+                  <br/>
+                   <i class="fa fa-sun-o" aria-hidden="true"></i><%= schedule_detail.tempmain %> &nbsp;/&nbsp; 
+                  <i class="fa fa-clock-o" aria-hidden="true"></i> <%= schedule_detail.tempdesc  %>
+                  </div>
+                </div>
+            <% end %>
         </div>
 
         <div class="pull-right remove-itinerary col-remove">

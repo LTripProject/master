@@ -64,7 +64,7 @@ gem 'kaminari'
 gem 'devise'
 gem 'omniauth-facebook'
 
-
+gem 'open-weather'
 gem 'cocoon'
 gem 'carrierwave'
 gem 'carrierwave-aws'
