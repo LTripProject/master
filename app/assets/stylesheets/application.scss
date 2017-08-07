@@ -297,7 +297,7 @@ footer{
     color: #767676;
     font-size: 12px;
     line-height: 28px;
-    padding-left: 42px;
+    padding-left: 12px;
     position: relative;
     -webkit-transition: -webkit-transform .3s ease;
     transition: -webkit-transform .3s ease;
@@ -307,9 +307,6 @@ footer{
   }
   .day-transfer:before {
     margin-right: 39px;
-  }
-  .icn-driving:before {
-    content: '\e08f';
   }
 }
 

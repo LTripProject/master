@@ -63,8 +63,7 @@ gem 'kaminari'
 
 gem 'devise'
 gem 'omniauth-facebook'
-gem 'sprockets', '>=3.0.0.beta'
-gem 'sprockets-es6'
+gem 'open-weather'
 
 gem 'cocoon'
 gem 'carrierwave'

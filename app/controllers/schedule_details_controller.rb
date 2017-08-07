@@ -14,7 +14,11 @@ class ScheduleDetailsController < ApplicationController
     @attractions = Schedule.find(params[:schedule_id]).schedule_details
     @attraction = @attractions.new(schedule_detail_params)
     @attraction.index = @attractions.count + 1
+    
     if @attraction.save
+      last_attraction = @attractions.find_by(index:  @attraction.index - 1)
+      calculate_distances if last_attraction
+      
       respond_to :js
     end
     
@@ -37,31 +41,42 @@ class ScheduleDetailsController < ApplicationController
   end
 
 
-  def calculate_distance(current_schedule_detail, schedule_detail)
+  def calculate_distance(current_schedule_detail, schedule_detail, weathers)
+    
+    weather =  weathers["list"][0]
+    puts weather['temp']
+    puts weather['temp']['morn']
+   
     current_place, place = current_schedule_detail.place, schedule_detail.place
     response = GoogleApiClient.calculate_distance(
-        current_schedule_detail.latitude,
-        current_schedule_detail.longitude,
-        schedule_detail.latitude,
-        schedule_detail.longitude
+        current_place.latitude,
+        current_place.longitude,
+        place.latitude,
+        place.longitude
     )
     schedule_detail.update_attributes(
         distance: response['distance']['text'],
-        duration: response['duration']['text']
+        duration: response['duration']['text'],
+        tempday: weather['temp']['morn'],
+        tempeve: weather['temp']['eve'],
+        tempnight: weather['temp']['night'],
+        tempmain: weather['weather'][0]['main'],
+        tempdesc: weather['weather'][0]['description']
     )
   end
 
-  private
   def get_attrations(schedule_id)
-    @attractions = Schedule.find(schedule_id).attractions.preload(:place)
+    @attractions = Schedule.find(schedule_id).schedule_details.preload(:place)
   end
 
-  def calculate_attractions_distance
+  def calculate_distances
     ScheduleDetail.transaction do
       current_attraction = @attractions.first
       @attractions.drop(0).each do |attraction|
-        calculate_distance(current_attraction, attraction)
+        @weather = GoogleApiClient.get_weather_forecast(attraction.place.latitude, attraction.place.longitude)
+        calculate_distance(current_attraction, attraction , @weather)
         current_attraction = attraction
+        
       end
     end
   end

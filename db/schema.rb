@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20170805074218) do
+=======
 ActiveRecord::Schema.define(version: 20170805070107) do
+>>>>>>> c2b75dee7e9e684f5ead1c25b76ae5e53f963b02
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,6 +162,13 @@ ActiveRecord::Schema.define(version: 20170805070107) do
     t.decimal "hour_spend", default: "1.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "distance"
+    t.string "duration"
+    t.string "tempday"
+    t.string "tempeve"
+    t.string "tempnight"
+    t.string "tempmain"
+    t.string "tempdesc"
     t.index ["index"], name: "index_schedule_details_on_index"
     t.index ["place_id"], name: "index_schedule_details_on_place_id"
     t.index ["schedule_id"], name: "index_schedule_details_on_schedule_id"

@@ -1,4 +1,3 @@
-console.log('<%= @attraction.hour_spend %>');
 <% if @attraction %>
   $("#place_<%= @attraction.schedule.index %>").val('');
   $("#add-to-itinerary-form_<%= @attraction.schedule.index %>").modal('hide');
