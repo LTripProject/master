@@ -4,6 +4,7 @@ include Facebook::Messenger
 
 class MessengerCommand
   AVAILABLE_COMMANDs = %w(place trip region help)
+  HOST = 'https://ltrip.herokuapp.com'
 
   def initialize(sender, text)
     @sender = sender
@@ -69,7 +70,7 @@ class MessengerCommand
     text = @arg.nil? ? "" : "##### #{trips.size} #{'trip'.pluralize(trips.size)} found with: #{@arg.upcase} #####\n"
 
     trips.each do |trip|
-      text += "\n#{trip.title}: http://localhost:5000/trips/#{trip.id}\n"
+      text += "\n#{trip.title}: #{HOST}trips/#{trip.id}\n"
     end
 
     send_as_text(text)
@@ -80,7 +81,7 @@ class MessengerCommand
   end
 
   def not_found
-    send_as_text "We couldn't find any trip, click link below to see more details ### http://localhost:5000/trips ### "
+    send_as_text "We couldn't find any trip, click link below to see more details ### #{HOST}/trips ### "
   end
 
   def send_as_text(text)
