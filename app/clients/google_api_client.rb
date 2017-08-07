@@ -1,10 +1,14 @@
+require 'open_weather'
+require 'json'
 class GoogleApiClient
   API_KEY = ENV['GOOGLE_API_KEY']
   API_KEY_2 = ENV['GOOGLE_API_KEY_2']
   API_KEY_3 = ENV['GOOGLE_API_KEY']
   TYPES = 'zoo|park|museum|shopping_small|cafe|amusement_park|park|movie_theater|art_gallery'
   RADIUS = 20000
+  
 
+  
   def self.search_address(address)
     params = "?address=#{address}&key=#{API_KEY}"
     get_method('https://maps.googleget_all_regionsapis.com/maps/api/geocode/json' + params)
@@ -37,6 +41,14 @@ class GoogleApiClient
   def self.calculate_distance(origin_latitude, origin_longitude, des_latitude, des_longitude)
     params = "?units=metric&origins=#{origin_latitude},#{origin_longitude}&destinations=#{des_latitude},#{des_longitude}&key=#{API_KEY}"
     get_method('https://maps.googleapis.com/maps/api/distancematrix/json' + params)['rows'][0]['elements'][0]
+  end
+
+  def self.get_weather_forecast(latitude, longitude)
+    options = { units: "metric", APPID: ENV['WEATHER_MAP_KEY'] }
+    options[:lang] = "en"
+    options[:cnt] = 6
+    result = OpenWeather::ForecastDaily.geocode(latitude, longitude, options)
+    
   end
 
   private
