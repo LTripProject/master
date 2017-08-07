@@ -4,8 +4,7 @@ class TripsController < ApplicationController
   before_action :check_permission, only: [:edit, :update, :destroy, :invite, :upload_gallery]
 
   def index
-    @trips = Trip.includes(:users).all
-
+    @trips = Trip.availabe_trips
   end
 
 
