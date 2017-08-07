@@ -1,0 +1,14 @@
+{
+  "name": "LTrip",
+  "short_name": "LTrip",
+  "icons": [{
+    "src": "images/icon-192x192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }],
+  "start_url": "/",
+  "display": "standalone"
+}
+
+//   "gcm_sender_id": "335598805338",
+//   "gcm_user_visible_only": true

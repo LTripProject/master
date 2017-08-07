@@ -63,7 +63,8 @@ gem 'kaminari'
 
 gem 'devise'
 gem 'omniauth-facebook'
-
+gem 'sprockets', '>=3.0.0.beta'
+gem 'sprockets-es6'
 
 gem 'cocoon'
 gem 'carrierwave'
@@ -73,7 +74,9 @@ gem 'Bootstrap-Image-Gallery-rails'
 gem 'youtube_rails'
 gem 'bootstrap-editable-rails'
 gem 'bootstrap-wysihtml5-rails'
-
+gem 'rpush'
+gem 'serviceworker-rails'
+gem "webpush"
 gem 'dotenv-rails', groups: [:development, :test]
 
 # Facebook messager

@@ -2,14 +2,24 @@
 <html>
 <head>
   <title>Ltrip</title>
+  <link rel="manifest" href="/manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>"></script>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
 
-</head>
+<link rel="manifest" href="/manifest.json" />
+<meta name="apple-mobile-web-app-capable" content="yes"></head>
 <body>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script type="text/javascript">
+  window.publicKey = new Uint8Array(<%= WebpushClient.public_key_bytes %>);
+</script>
+<!-- a view -->
+<%= link_to 'Send message', push_path, method: :post, remote: :true %>
+
+
   <div id="page" class="hfeed site">
     <%= render 'system/navbar' %>
     <%= render 'system/login_user_menu' %>

@@ -30,3 +30,4 @@
 //= require jquery.blueimp-gallery
 //= require bootstrap-image-gallery
 //= require bootstrap-wysihtml5
+//= require serviceworker-companion
