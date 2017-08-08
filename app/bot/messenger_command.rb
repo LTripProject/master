@@ -49,12 +49,31 @@ class MessengerCommand
   def help
     text = "\t\t### Helper: get <command> <arg> ### \n- To find trip by \n\tPlace: get place <Place Name>\n\tRegion: get region <Region Name>\n- To get top trips have most views: get top <--options>"
 
-    quick_replies = %w(help top)
-    send_as_quick_replies(text, quick_replies)
+    quick_reply(text)
   end
 
   def places
     not_found
+  end
+
+  def trip
+    from = @words[2] if @words.size > 3
+    arg = @words.last(@words.size - 3).join(" ")
+
+    if from == 'from' && !arg.blank?
+      if (date = DateTime.parse(arg) rescue nil)
+        trips = Trip.where("start_date >= ?", date)
+      else
+        trips = Trip.joins(:places).joins(:regions)
+          .where("places.name iLIKE ? OR regions.name iLIKE ?", "%#{arg}%", 
+            "%#{arg}%")
+      end
+
+      trips.blank? ? not_found : send_trips_link(trips.limit(5))
+    else
+      missing_args
+    end
+
   end
 
   def top
@@ -70,18 +89,28 @@ class MessengerCommand
     text = @arg.nil? ? "" : "##### #{trips.size} #{'trip'.pluralize(trips.size)} found with: #{@arg.upcase} #####\n"
 
     trips.each do |trip|
-      text += "\n#{trip.title}: #{HOST}trips/#{trip.id}\n"
+      text += "\n#{trip.title}: #{HOST}/trips/#{trip.id}\n"
     end
 
     send_as_text(text)
   end
 
-  def missing_args
-    send_as_text "Your option unavailable! Type -- get help -- to get more information"
+  def quick_reply(text)
+    quick_replies = %w(help top)
+    send_as_quick_replies(text, quick_replies)
   end
 
+  def missing_args
+    text = "Your option unavailable! Type -- get help -- to get more information"
+
+    quick_reply text
+  end
+
+
   def not_found
-    send_as_text "We couldn't find any trip, click link below to see more details ### #{HOST}/trips ### "
+    text = "We couldn't find any trip, click link below to see more details ### #{HOST}/trips ### "
+
+    quick_reply text
   end
 
   def send_as_text(text)
