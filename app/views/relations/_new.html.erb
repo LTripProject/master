@@ -1,0 +1,48 @@
+<div class="modal fade trip-form" id="friend-form" tabindex="-1" role="dialog" aria-labelledby="friendFormLabel"
+     aria-hidden="true" xmlns="http://www.w3.org/1999/html">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="loginFormLabel">Add Friends</h4>
+      </div>
+
+      <div class="modal-body col-sm-12">
+        <div class="form-group">
+          <label for="search" class="form-control-label">Search:</label>
+          <input type="text" class="form-control" id="search_data" placeholder="Enter name or mail">
+        </div>
+
+        <div class="form-group">
+          <div id="result_users">
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#friend-form').on('hidden.bs.modal', function (e) {
+    $('#friend-error').html("");
+  });
+  $('#search_data').on('input', function (e) {
+    if ($('#search_data').val()) {
+      $('#selected_users').append("<p>" + $(this).val() + "</p>");
+      $.ajax({
+        method: 'GET',
+        url: '/users/friends.js',
+        data: {search_data: $('#search_data').val()},
+        success: function (data) {
+        }
+      });
+    }
+  });
+  $('#search_data #user').on('input', function (e) {
+  });
+</script>

@@ -10,12 +10,18 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:notice] = "Your infor was updated"
+      flash[:notice] = "Your information was updated"
       redirect_to @user
     else
       flash.now[:alert] = "errors: #{@user.errors.full_messages.to_sentence}"
       render :edit
     end
+  end
+
+  def friends
+    search_data = params[:search_data]
+    @friends = User.list_friend(current_user, search_data)
+    respond_to :js
   end
 
 
