@@ -11,13 +11,13 @@
           <!-- Add button -->
           <button type="button" data-backdrop="true" data-keyboard="true" type="button" class="btn hot-action-button" id="addAttractionItineraryBtn<%= schedule.index %>" 
                   data-target="#add-to-itinerary-form_<%= schedule.index %>" onclick="javascript: return false;" >
-            Add Details
+            Add Place
           </button>
 
           <!-- Delete button -->
           <%= link_to [@trip, schedule], class: 'btn delete-day-btn',
                       id: 'deleteDayBtn', remote: true, method: :delete do %>
-              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Day
           <% end %>
         </div>
       </div>
