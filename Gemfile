@@ -76,6 +76,7 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'rpush'
 gem 'serviceworker-rails'
 gem "webpush"
+gem 'one_signal'
 gem 'dotenv-rails', groups: [:development, :test]
 
 # Facebook messager

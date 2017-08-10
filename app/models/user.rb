@@ -5,8 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   devise :omniauthable, :omniauth_providers => [:facebook]
-
-
   has_many :user_trips, dependent: :destroy
   has_many :trips, through: :user_trips
   has_many :invite_tokens, dependent: :destroy
@@ -45,5 +43,10 @@ class User < ApplicationRecord
 
   def image_url
     self.provider.present? ? self.facebook_avatar : self.image.url
+  end
+
+  def self.list_friend(current_user, search_data)
+    where.not(id: Relation.where(user: current_user).pluck(:target_id)).where.not(id: current_user.id)
+        .where("name like ? OR email like ?", "%#{search_data}%", "%#{search_data}%").order(:name)
   end
 end
