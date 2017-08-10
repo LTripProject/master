@@ -50,7 +50,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
-    ansi (1.5.0)
     arel (8.0.0)
     autoprefixer-rails (7.1.2.3)
       execjs
@@ -104,7 +103,6 @@ GEM
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
-    connection_pool (2.2.1)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -139,7 +137,6 @@ GEM
       sprockets (>= 2.0.0)
       tilt (>= 1.2)
     hashie (3.5.6)
-    hkdf (0.3.0)
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
     i18n (0.8.6)
@@ -199,8 +196,6 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    net-http-persistent (3.0.0)
-      connection_pool (~> 2.2)
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
@@ -262,13 +257,6 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rpush (2.7.0)
-      activesupport
-      ansi
-      multi_json (~> 1.0)
-      net-http-persistent
-      railties
-      thor (>= 0.18.1, < 2.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.1)
@@ -287,8 +275,6 @@ GEM
     selenium-webdriver (3.4.4)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
-    serviceworker-rails (0.5.5)
-      railties (>= 3.1)
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
@@ -336,9 +322,6 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webpush (0.3.2)
-      hkdf (~> 0.2)
-      jwt
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -389,11 +372,9 @@ DEPENDENCIES
   rails (~> 5.1.2)
   rails-assets-tether (>= 1.1.0)!
   remotipart (~> 1.2)
-  rpush
   sass-rails (~> 5.0)
   select2-rails
   selenium-webdriver
-  serviceworker-rails
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -404,7 +385,6 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  webpush
   yaml_db
   youtube_rails
 

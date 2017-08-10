@@ -1,0 +1,110 @@
+
+<section class="home-services section-separator animatedParent">
+  <div class="container">
+    <header class="section-header header-with-nav clearfix">
+      <h3 class="title pull-left animated growIn slower">awesome tour features</h3>
+      <a class="pull-right animated growIn slower" href="#">SEE ALL</a>
+    </header>
+    <div class="row">
+      <div class="col-sm-4 col-xs-6">
+        <article class="service-var-1 animated fadeInRightShort">
+          <div class="wrapper text-center clearfix">
+            <figure class="feature-img clearfix">
+              <a class=" u-url u-photo" href="#">
+                <%= image_tag "features-img.jpg" %></a>
+                <span class="overlay"></span>
+                <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium.
+                  dolore semque laudant.</p>
+                </figure>
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <i class="fa fa-hospital-o"></i>
+                  </span>
+                </span>
+              </div>
+              <div class="contents clearfix">
+                <h5 class="entry-title p-name">Handpicked Hotels</h5>
+                <%= link_to "Join the trip now", trips_path, 
+                      class: "t-btn btn-red" %>
+              </div>
+            </article>
+          </div>
+          <div class="col-sm-4 col-xs-6">
+            <article class="service-var-1 animated fadeInUpShort">
+              <div class="wrapper text-center clearfix">
+                <figure class="feature-img clearfix">
+                  <a class=" u-url u-photo" href="#">
+                    <%= image_tag "features-img-2.jpg" %></a>
+                    <span class="overlay"></span>
+                    <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium.
+                      dolore semque laudant.</p>
+                    </figure>
+                    <span class="icon-wrapper">
+                      <span class="icon">
+                        <i class="fa fa-shield"></i>
+                      </span>
+                    </span>
+                  </div>
+                  <div class="contents clearfix">
+                    <h5 class="entry-title p-name">Secure booking</h5>
+                    <%= link_to "Join the trip now", trips_path, 
+                      class: "t-btn btn-red" %>
+                  </div>
+                </article>
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <article class="service-var-1 animated fadeInLeftShort">
+                  <div class="wrapper text-center clearfix">
+                    <figure class="feature-img clearfix">
+                      <a class=" u-url u-photo" href="#">
+                        <%= image_tag "features-img-3.jpg" %></a>
+                        <span class="overlay"></span>
+                        <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium.
+                          dolore semque laudant.</p>
+                        </figure>
+                        <span class="icon-wrapper">
+                          <span class="icon">
+                           <i class="fa fa-money"></i>
+                         </span>
+                       </span>
+                     </div>
+                     <div class="contents clearfix">
+                      <h5 class="entry-title p-name">Best price guarantee</h5>
+                      <%= link_to "Join the trip now", trips_path, 
+                      class: "t-btn btn-red" %>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>    </section>
+          
+             <section class="home-special-offers animatedParent clearfix">
+          <div class="container">
+            <header class="section-header header-with-nav clearfix">
+              <h3 class="title pull-left animated growIn">Latest Offers Tours</h3>
+              <a class="pull-right animated growIn" href="#">see more offers</a>
+            </header>
+            <div class="tour-carousel animated flipInX clearfix">
+             <% @trips.each do |trip| %>
+              <article class="tour-post">
+                <i class="circle-icon"></i>
+                <header class="tour-post-header clearfix">
+                  <span class="tour-price pull-left"><%= trip.expected_budget %></span>
+                  <span class="tour-price-off pull-right">New</span>
+                </header>
+                <div class="tour-contents clearfix">
+                  <figure class="tour-feature-img">
+                   <%= link_to [trip] do %> 
+                    <% if !(trip.photos.empty?) %>
+                        <%= image_tag(trip.photos[0].url) %>
+                    <% end %>
+                    <% end %>
+                  </figure>
+                  <h5 class="entry-title p-name"><%= trip.title %></h5>
+                   <%= link_to 'See tour detailsShow', trip , class: "more-details u-url" %>
+                </div>
+              </article>
+              <% end %>
+          </div>
+        </div>
+      </section>

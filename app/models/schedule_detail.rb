@@ -10,5 +10,9 @@ class ScheduleDetail < ApplicationRecord
     self.place.display_image_url(height)
   end
 
+   def self.list_of_attractions_by_departure(name)
+    ScheduleDetail.where(schedule_id: Schedule.list_of_schedule_day_by_departure(name).pluck(:id))
+  end
+
 
 end

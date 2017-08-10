@@ -18,4 +18,8 @@ class Schedule < ApplicationRecord
     count = self.schedule_details.size
     count >= 2 ? self.schedule_details[0..count-2].zip(self.schedule_details[1..count-1]) : []
   end
+
+  def self.list_of_schedule_day_by_departure(name)
+    Schedule.where(trip_id: Trip.trips_start_at_departure(name).pluck(:id))
+  end
 end
