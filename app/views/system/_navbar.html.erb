@@ -67,12 +67,13 @@
 
 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
 	<h3>LTRIP</h3>
-    <ul class="sub-menu" style="padding-top: 61px">
+    <ul class="sub-menu">
+        <li><%= link_to "Create trip", new_trip_path %></li>
         <li><%= link_to "Trips available", trips_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to('My Account', current_user) %></li>
           <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-          <li><%= link_to "Create trip", new_trip_path %></li>
+         
         <% else %>
           <li><%= link_to('Sign in', new_user_session_path) %></li>
           <li><%= link_to('Sign up', new_user_registration_path) %></li>

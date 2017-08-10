@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :trips do
     post "join" => "trips#join"
     post 'update_video_link' => "trips#update_video_link"
+    member do
+      get :clone
+    end
     resources :budget_trips
 
     resources :schedules do
@@ -22,6 +25,7 @@ Rails.application.routes.draw do
     collection do
       get :all
       get :get_regions
+      get :get_destinations
     end
   end
 
@@ -48,10 +52,6 @@ Rails.application.routes.draw do
   post 'trips/:id/add_photos' => 'trips#add_photos', as: :trips_add_photos
 
   resources :users
-
-  post "/push" => "push_notifications#create"
-  post "/subscribe" => "subscriptions#create"
-  delete "/unsubscribe" => "subscriptions#destroy"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   mount Facebook::Messenger::Server, at: "bot"
