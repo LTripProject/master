@@ -1,11 +1,10 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :confirm_invite]
   before_action :set_trip, except: [:index, :new, :create, :join, :update_video_link]
-  before_action :check_permission, only: [:edit, :update, :destroy, :invite, :upload_gallery]
+  before_action :check_permission, only: [:edit, :update, :destroy, :invite, :upload_gallery, :clone]
 
   def index
-    @trips = Trip.includes(:users).all
-
+    @trips = Trip.availabe_trips
   end
 
 
@@ -23,6 +22,11 @@ class TripsController < ApplicationController
 
   def edit
     set_current_trip(@trip)
+  end
+
+   def clone
+    new_trip = CloneService.new(@trip, current_user).execute
+    redirect_to edit_trip_path(new_trip)
   end
 
 
