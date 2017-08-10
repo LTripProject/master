@@ -21,6 +21,8 @@ class UsersController < ApplicationController
   def friends
     search_data = params[:search_data]
     @friends = User.list_friend(current_user, search_data)
+
+    puts @friends
     respond_to :js
   end
 

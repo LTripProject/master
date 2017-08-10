@@ -8,10 +8,14 @@ class User < ApplicationRecord
   has_many :user_trips, dependent: :destroy
   has_many :trips, through: :user_trips
   has_many :invite_tokens, dependent: :destroy
-
+  has_many :user_notifications
+  has_many :relations
+  has_many :notifications, through: :user_notifications, class_name: Notification, source: :notification
   mount_uploader :image, PhotoUploader
 
-
+  def notifications_with_senders
+    self.user_notifications.preload(:notification, :sender)
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -46,7 +50,8 @@ class User < ApplicationRecord
   end
 
   def self.list_friend(current_user, search_data)
-    where.not(id: Relation.where(user: current_user).pluck(:target_id)).where.not(id: current_user.id)
+    where.not(id: Relation.where(user: current_user).pluck(:tartget_id)).where.not(id: current_user.id)
         .where("name like ? OR email like ?", "%#{search_data}%", "%#{search_data}%").order(:name)
   end
+
 end

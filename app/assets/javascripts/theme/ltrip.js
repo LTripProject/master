@@ -21,6 +21,27 @@ $(window).on("load", function() {
         $('.close').on('click', function() {
         $('.container').stop().removeClass('active');
     });
+
+
+    $("#notificationLink").click(function()
+			{
+			$("#notificationContainer").fadeToggle(300);
+			$("#notification_count").fadeOut("slow");
+			return false;
+			});
+
+			//Document Click hiding the popup 
+			$(document).click(function()
+			{
+			$("#notificationContainer").hide();
+			});
+
+			//Popup on click
+			$("#notificationContainer").click(function()
+			{
+			return false;
+			});
+
     $(".modal-fullscreen").on('show.bs.modal', function () {
         setTimeout( function() {
             $(".modal-backdrop").addClass("modal-backdrop-fullscreen");

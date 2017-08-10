@@ -56,7 +56,21 @@ Rails.application.routes.draw do
   get 'trips/:id/upload_gallery' => 'trips#upload_gallery', as: :trips_upload_gallery
   post 'trips/:id/add_photos' => 'trips#add_photos', as: :trips_add_photos
 
-  resources :users
+  resources :users , only: [:create, :edit, :update, :show] do
+    collection do
+      get :friends
+      end
+  end
+
+  resources :relations do
+    collection do
+      get :friends
+      end
+  end
+
+  post 'relations/confirm' => 'relations#confirm'
+  post 'relations/reject' => 'relations#reject'
+  get  'relations/friends' => 'relations#friends'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   mount Facebook::Messenger::Server, at: "bot"

@@ -13,7 +13,24 @@
             <% end %>
           <% end %>
         </div>
+         <a href="#" id="notificationLink">Notifications</a>
+          <span id="notification_count"><%=  %></span>
+
+          <div id="notificationContainer">
+          <div id="notificationTitle">Notifications</div>
+          <div id="notificationsBody" class="notifications">
+            <%= render 'notifications/notification' %>
+          </div>
+          <div id="notificationFooter"><a href="#">See All</a></div>
+			</div>
       <% end %>
+
+
+     
+
+
+
+    </div>
       <div class="header-tour-package pull-right">
          <div id="showRightPush" class="">
           MENU &nbsp;<i class="fa fa-bars fa-lg white"></i>
