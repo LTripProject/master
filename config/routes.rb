@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     collection do
       get :all
       get :get_regions
+      get :get_destinations
     end
   end
 

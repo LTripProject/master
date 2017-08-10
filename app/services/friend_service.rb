@@ -27,7 +27,7 @@ class FriendService
 
   private
   def find_sender_relation(receiver_id, sender_id)
-    FriendRelation.where(target_id: receiver_id, user_id: sender_id).first
+    Relation.where(target_id: receiver_id, user_id: sender_id).first
   end
 
   def update_notification(target_id, current_user_id)
