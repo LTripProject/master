@@ -12,10 +12,7 @@
 <link rel="manifest" href="/manifest.json" />
 <meta name="apple-mobile-web-app-capable" content="yes"></head>
 <body>
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-<script type="text/javascript">
-  window.publicKey = new Uint8Array(<%= WebpushClient.public_key_bytes %>);
-</script>
+
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
   <script>
     var OneSignal = window.OneSignal || [];
@@ -27,9 +24,6 @@
       }
     }]);
   </script>
-<!-- a view -->
-<%= link_to 'Send message', push_path, method: :post, remote: :true %>
-
 
   <div id="page" class="hfeed site">
     <%= render 'system/navbar' %>

@@ -73,9 +73,6 @@ gem 'Bootstrap-Image-Gallery-rails'
 gem 'youtube_rails'
 gem 'bootstrap-editable-rails'
 gem 'bootstrap-wysihtml5-rails'
-gem 'rpush'
-gem 'serviceworker-rails'
-gem "webpush"
 gem 'one_signal'
 gem 'dotenv-rails', groups: [:development, :test]
 
