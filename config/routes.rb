@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   # resources :to_dos
 #  resources :schedule_details
   resources :searchs
-  resources :home
+  resources :home do
+    collection do
+      get :about
+    end
+  end
+
   resources :notifications
   resources :trips do
     post "join" => "trips#join"
