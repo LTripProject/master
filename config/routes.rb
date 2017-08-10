@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :trips do
     post "join" => "trips#join"
     post 'update_video_link' => "trips#update_video_link"
+    member do
+      get :clone
+    end
     resources :budget_trips
 
     resources :schedules do
@@ -22,6 +25,7 @@ Rails.application.routes.draw do
     collection do
       get :all
       get :get_regions
+      get :get_destinations
     end
   end
 

@@ -45,4 +45,32 @@
           });
     }
   });
+  $('#from').bind('typeahead:select', function(ev, suggestion) {
+    if ($('#from').val()) {
+      $.ajax({
+        method: 'GET',
+        url: '/regions/get_destinations',
+        data: {name: $('#from').val()},
+        success: function (data) {
+          var states = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: data.map(function (region) {
+              return region.name;
+            })
+          });
+
+          $('#toPlace').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1
+              },
+              {
+                name: 'states',
+                source: states
+              });
+        }
+      });
+    }
+  });
   </script>

@@ -10,6 +10,7 @@ class CloneService
       clone_pre_trip
       clone_schedules
       add_current_user
+      clone_budget
     end
     @new_trip
   end
@@ -20,15 +21,23 @@ class CloneService
     @new_trip.visible_scope = false
     @new_trip.save
     @new_trip.schedules.destroy_all
-    @new_trip.budget_trips.destroy_all
+    @new_trip.budget_trip.destroy_all
   end
 
   def add_current_user
     UserTrip.create(user_id: @current_user.id, trip_id: @new_trip.id)
   end
 
+  def clone_budget
+    Budget.transaction do
+      @new_trip.budgets.each do |budget_item|
+        
+      end
+    end
+  end
+
   def clone_schedules
-    @trip.scheduls.each do |day|
+    @trip.schedules.each do |day|
       new_day = day.dup
       new_day.trip_id = @new_trip.id
       if new_day.save

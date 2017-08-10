@@ -12,7 +12,7 @@ class Trip < ApplicationRecord
   has_one :budget_trip, dependent: :destroy
 
   # scope :public_trips, ->{where(status: true)}
-  scope :availabe_trips, -> {where("start_date > ? AND status = true", Time.now)}
+  scope :availabe_trips, -> {where("start_date >= ? AND status = true", Time.now)}
 
   # enum status: {public: true, private: false}
 
@@ -48,5 +48,9 @@ class Trip < ApplicationRecord
 
   def relative_trips
     Trip.where(departure: self.departure).where.not(id: self.id)
+  end
+
+  def self.trips_start_at_departure(name)
+    Trip.where(departure_id: Region.find_by(name: name).id).uniq
   end
 end

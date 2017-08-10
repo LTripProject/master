@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :confirm_invite]
   before_action :set_trip, except: [:index, :new, :create, :join, :update_video_link]
-  before_action :check_permission, only: [:edit, :update, :destroy, :invite, :upload_gallery, :clone]
+  before_action :check_permission, only: [:edit, :update, :destroy, :invite, :upload_gallery]
 
   def index
     @trips = Trip.availabe_trips

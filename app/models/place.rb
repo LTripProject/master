@@ -18,5 +18,9 @@ class Place < ApplicationRecord
           'http://www.brother.in/AP/Handlers/ApHandler.ashx?m=rs&guid=&pr=100'
       end
   end
+
+  def self.list_of_places_by_departure(name)
+    Place.where(id: ScheduleDetail.list_of_attractions_by_departure(name).pluck(:place_id))
+  end
   
 end
