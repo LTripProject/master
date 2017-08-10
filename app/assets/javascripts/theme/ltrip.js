@@ -21,7 +21,14 @@ $(window).on("load", function() {
         $('.close').on('click', function() {
         $('.container').stop().removeClass('active');
     });
-
+    $(".modal-fullscreen").on('show.bs.modal', function () {
+        setTimeout( function() {
+            $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+        }, 0);
+        });
+        $(".modal-fullscreen").on('hidden.bs.modal', function () {
+        $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+    });
     var showRightPush = document.getElementById( 'showRightPush' ),
 		body = document.body,
         menuRight = document.getElementById( 'cbp-spmenu-s2' )

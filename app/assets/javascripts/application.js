@@ -20,6 +20,7 @@
 //= require twitter/typeahead.min
 //= require handlebars
 //= require bootstrap
+//= require bootstrap/modal
 //= require_tree .
 //= require cocoon
 //= require blueimp-gallery
@@ -30,3 +31,4 @@
 //= require jquery.blueimp-gallery
 //= require bootstrap-image-gallery
 //= require bootstrap-wysihtml5
+
