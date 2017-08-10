@@ -47,7 +47,7 @@ class MessengerCommand
   end
 
   def help
-    text = "\t\t### Helper: get <command> <arg> ### \n- To find trip by \n\tPlace: get place <Place Name>\n\tRegion: get region <Region Name>\n- To get top trips have most views: get top <--options>"
+    text = "\t\t### Helper: get <command> <arg> ### \n- To find trip by \n\tPlace: get place <Place Name>\n\tRegion: get region <Region Name>\n- To get top trips have most views: get top <--options--->"
 
     quick_reply(text)
   end
