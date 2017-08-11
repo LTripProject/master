@@ -1,16 +1,15 @@
 class User < ApplicationRecord
+  include Concerns::Friendable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
   devise :omniauthable, :omniauth_providers => [:facebook]
   has_many :user_trips, dependent: :destroy
   has_many :trips, through: :user_trips
   has_many :invite_tokens, dependent: :destroy
   has_many :user_notifications
-  has_many :relations
-  has_many :notifications, through: :user_notifications, class_name: Notification, source: :notification
+  has_many :notifications, through: :user_notifications, class_name: 'Notification', source: :notification
   mount_uploader :image, PhotoUploader
 
   def notifications_with_senders
