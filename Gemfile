@@ -60,7 +60,7 @@ gem 'font-awesome-rails'
 gem 'simple_form'
 
 gem 'kaminari'
-
+gem 'notifyjs_rails', '~> 0.0.2'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'open-weather'

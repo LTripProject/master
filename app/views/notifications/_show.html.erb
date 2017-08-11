@@ -1,12 +1,19 @@
 <div class="notification">
+<div class="row">
+<div class="col-sm-6">
   <% if user_notification.notification.category.eql? "request" %>
     <p><b><%= user_notification.sender.email %></b></p>
   <%= user_notification.notification.description %>
-    <p>
+</div>
+<div class="col-sm-6">
       <span class="sender_id" style="display: none"><%= user_notification.sender.id %></span>
-      <button class="accept">Accept</button>
-      <button class="deny">Deny</button>
-    </p>
+      <button class="col-sm-6 accept ">Accept</button>
+      <button class="col-sm-6 deny">Deny</button>
+
+
+
+</div>
+</div>
   <% elsif user_notification.notification.category.eql? "news"%>
     <p><b><%= user_notification.sender.email %></b></p>
     <%= user_notification.notification.description %>

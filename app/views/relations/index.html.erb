@@ -7,7 +7,7 @@
  </div>
 
 <div class="container">
-
+    <div class="col-md-8">
     <div class="row">
      <div class="form-group">
           <label for="search" class="form-control-label">Search:</label>
@@ -35,19 +35,25 @@
             <% end %>
           
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-7">
           <h4><a href="#"><%= friend.email  %></a></h4>
           <p><a href="#"><%= friend.phone_number  %></a></p>
         </div>
-        <div class="col-sm-2">
-            <a class="request" data-id="<%= friend.id  %>" >Add Friend</a>
+        <div class="col-sm-3">
+            <a class="request t-btn btn-red" data-id="<%= friend.id  %>" >Add Friend</a>
         </div>
  </div>
         <% end %> 
      
       <div class="clearfix"></div>
+      </div>
+     
     </div>
+    
   </div>
+   <div class="col-md-4">
+         <%= render 'right' %>
+      </div>
 </div>
 
 <script>
@@ -63,8 +69,6 @@ $(".request").on("click", function(){
 	});
 });
 
-alert('vl');
-
- 
+ $.notify("Hello World");
 
 </script>
