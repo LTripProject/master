@@ -451,6 +451,7 @@ footer{
   border-radius: 5px;
   padding: 10px;
   margin: 5px;
+  color: black;
 }
 
 .notification-box {
@@ -1119,22 +1120,28 @@ h2.home-info {
   text-align: center;
   padding: 16px;
 }
+#notificationLink{
+    right: 11%;
+    top: 16px;
+    position: absolute;
+}
 #notification_li
 			{
 			position:relative
 			}
 			#notificationContainer 
 			{
-			background-color: #fff;
-			border: 1px solid rgba(100, 100, 100, .4);
-			-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
-			overflow: visible;
-			position: absolute;
-			top: 30px;
-			margin-left: -170px;
-			width: 400px;
-			z-index: 9999;
-			display: none; // Enable this after jquery implementation 
+        background-color: #fff;
+        border: 1px solid rgba(100, 100, 100, 0.4);
+        -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+        overflow: visible;
+        position: absolute;
+        top: 46px;
+        /* margin-left: 100px; */
+        width: 400px;
+        right: -5%;
+        z-index: 9999;
+        display: none;
 			}
 			// Popup Arrow
 			#notificationContainer:before {
@@ -1167,7 +1174,7 @@ h2.home-info {
 			}
 			#notificationFooter
 			{
-			background-color: #e9eaed;
+			background-color: #fc4242;
 			text-align: center;
 			font-weight: bold;
 			padding: 8px;

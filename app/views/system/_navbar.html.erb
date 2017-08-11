@@ -13,14 +13,13 @@
             <% end %>
           <% end %>
         </div>
-         <a href="#" id="notificationLink">Notifications</a>
+         <a href="#" id="notificationLink"><i data-count="2" class="glyphicon glyphicon-bell notification-icon"></i></a>
           <span id="notification_count"><%=  %></span>
 
           <div id="notificationContainer">
           <div id="notificationTitle">Notifications</div>
           <div id="notificationsBody" class="notifications">
             <%= render 'notifications/notification' %>
-          </div>
           <div id="notificationFooter"><a href="#">See All</a></div>
 			</div>
       <% end %>
@@ -82,10 +81,10 @@
         <% if user_signed_in? %>
           <li><%= link_to('My Account', current_user) %></li>
           <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-         
         <% else %>
           <li><%= link_to('Sign in', new_user_session_path) %></li>
           <li><%= link_to('Sign up', new_user_registration_path) %></li>
         <% end %>
+        <li><%= link_to "Find a companion", relations_path %></li>
     </ul>
 </nav>
