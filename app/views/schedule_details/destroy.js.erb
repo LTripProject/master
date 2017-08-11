@@ -1,2 +1,3 @@
 $('#sortable_<%=  @schedule.index %>').html('<%= j(render  @schedule.schedule_details) %>');
+$.notify("Delete attraction successful!", "info");
 <%= render(:partial => 'schedules/mapapi', locals: {schedule: @schedule}, :formats => [:js] ) %>

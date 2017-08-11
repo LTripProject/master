@@ -8,7 +8,7 @@ $("#day-left-panel").append("<%= j(render 'schedules/schedule_day', schedule: @s
 $("#itinerary-content").append("<%= j(render @schedule , places: @places) %>");
 $("#li-day<%= @schedule.index %>").addClass('active');
 $("#day<%= @schedule.index %>").addClass('active');
-
+$.notify("Add day successful!", "info");
 // map
 var map = maps["li_tab<%= @schedule.index %>"][0];
 google.maps.event.trigger(map, 'resize');
