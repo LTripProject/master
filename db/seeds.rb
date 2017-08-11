@@ -329,5 +329,45 @@ unless Region.any?
 end
 
 unless Place.any?
-  Concerns::SeedPlaces.new().run
+  # Concerns::SeedPlaces.new().run
+  puts "*"*100
+  Region.all.each do |region|
+    puts "#{region.id} - #{region.name}"
+    results = GoogleApiClient.get_nearby_places(region.latitude, region.longitude)['results']
+    puts results
+    create_places(results, region.id)
+  end
+
+ def create_places(results, region_id)
+      Place.transaction do
+        results.each do |result|
+          place = Place.create(
+            name: result['name'],
+            latitude: result['geometry']['location']['lat'],
+            longitude: result['geometry']['location']['lng'],
+            region_id: region_id,
+            rating: result['rating'],
+            location_id: result['place_id']
+            )
+          puts "#{place.name}"
+          fetch_photos(place)
+        end
+      end
+    end
+
+    def fetch_photos(place)
+      place_detail = GoogleApiClient.search_place_detail(place.location_id)['results']
+      unless place_detail.blank?
+        Photo.transaction do
+          place_detail['photos'].each do |photo|
+            place.photos.create(
+              width: photo['width'],
+              height: photo['height'],
+              photo_reference: photo['photo_reference'],
+              )
+            puts "#{place.name} - #{photo['photo_reference']}"
+          end
+        end 
+      end
+    end
 end
