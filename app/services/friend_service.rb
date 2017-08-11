@@ -11,10 +11,12 @@ class FriendService
   end
 
   def confirm
-    if find_sender_relation(@target_id, @current_user.id).blank?
+    @friend_relation = find_sender_relation(@target_id, @current_user.id)
+    if @friend_relation.blank?
       @current_user.relations.create(tartget_id: @target_id, status: 'accepted')
     else
-      find_sender_relation(@target_id, @current_user.id).update_attributes(status: 'accepted')
+      @friend_relation.update_attributes(status: 'accepted')
+      Relation.create(tartget_id: @current_user.id , user_id: @target_id, status: 'accepted')
     end
     find_sender_relation(@current_user.id, @target_id).update_attributes(status: 'accepted')
     update_notification(@target_id, @current_user.id)

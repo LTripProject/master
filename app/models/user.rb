@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :invite_tokens, dependent: :destroy
   has_many :user_notifications
   has_many :relations
+  has_many :friends , class_name: User , through: :relations, foreign_key: :tartget_id
   has_many :notifications, through: :user_notifications, class_name: Notification, source: :notification
   mount_uploader :image, PhotoUploader
 

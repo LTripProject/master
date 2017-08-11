@@ -21,6 +21,7 @@
 //= require handlebars
 //= require bootstrap
 //= require bootstrap/modal
+//= require notifyjs_rails
 //= require_tree .
 //= require cocoon
 //= require blueimp-gallery

@@ -4,7 +4,6 @@ $('#result_users').append("<%= j(render partial: 'users/result', collection: @fr
 
 $('#result_users .add_friend_result_wraper .add_to_query').on('click', function(){
 	$(this).parent().remove();
-    console.log('vl');
 	$.ajax({
 		type: "POST",
 		url: '/friend_relations',

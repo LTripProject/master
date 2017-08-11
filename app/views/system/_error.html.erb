@@ -2,4 +2,7 @@
     <div class="<%= key == 'alert' ? 'alert alert-danger' : 'alert alert-success' %>" style="margin-bottom: 0" role="alert">
       <%= value %>
     </div>
+    <script>
+      $.notify("BOOM!", "<%= value %>");
+    </script>
 <% end %>
