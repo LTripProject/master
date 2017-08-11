@@ -35,7 +35,7 @@
           <article class="tour-post animated fadeInDownShort">
             <header class="tour-post-header clearfix">
               <span class="tour-price pull-left"><%= trip.expected_budget %></span>
-              <span class="tour-days pull-right"><i class="fa fa-clock-o"></i>&nbsp; 3 days</span>
+              <span class="tour-days pull-right"><i class="fa fa-clock-o"></i>&nbsp; <%= time_ago_in_words trip.created_at %></span>
             </header>
             <div class="tour-contents clearfix">
               <figure class="tour-feature-img">

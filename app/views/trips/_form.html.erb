@@ -48,9 +48,9 @@
             </div>
           </div>
           <div class="row">
-            <%#= image_tag(@trip.thumbnail_image_url) if @trip.thumbnail_image? %>
-            <%#= f.file_field :thumbnail_image %>
-            <%#= f.hidden_field :thumbnail_image_cache %>
+            <div class="col-md-3">
+              <%= f.input :status, as: :select, include_blank: false, label: "Public" %>
+            </div>
           </div>
     </div>
     

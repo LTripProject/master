@@ -49,6 +49,10 @@ class User < ApplicationRecord
     self.provider.present? ? self.facebook_avatar : self.image.url
   end
 
+  def show_name
+    self.name.present? ? self.name : self.email
+  end
+
   def self.list_friend(current_user, search_data)
     where.not(id: Relation.where(user: current_user).pluck(:tartget_id)).where.not(id: current_user.id)
         .where("name like ? OR email like ?", "%#{search_data}%", "%#{search_data}%").order(:name)

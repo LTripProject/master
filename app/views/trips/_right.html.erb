@@ -16,7 +16,8 @@
             <div class="members-list">
               <% @trip.users.each do |user| %>
                 <div class="chip">
-                  <%= user.email %>
+                  <%= image_tag  user.image_url %>
+                  <%= link_to user.show_name, user %>
                 </div>
               <% end %>
             </div>
