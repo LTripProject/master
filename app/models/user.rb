@@ -53,9 +53,8 @@ class User < ApplicationRecord
   end
 
   def self.list_friend(current_user, search_data)
-    where.not(id: Relation.where(user: current_user).pluck(:tartget_id)).where.not(id: current_user.id)
+    where.not(id: Relation.where(user: current_user).pluck(:target_id)).where.not(id: current_user.id)
         .where("name like ? OR email like ?", "%#{search_data}%", "%#{search_data}%").order(:name)
   end
-
 end
  
