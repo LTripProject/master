@@ -4,7 +4,11 @@
       
       <%= image_tag "slide1.jpg" %>
       <div class="slide-details clearfix">
-        <h3 class="title"><span>Have adventure trip with</span><span> LTRIP </span></h3>
+        <h3 class="title"><span>Have adventure trip with</span></h3>
+        <div>
+          <a id="tripit-free-btn" class="btn-orange landing-btn open-slider-btn sohp-button" href="../users/sign_in">Sign Up — It's Free</a>
+          <a id="play_video" class="sohp-button landing-btn btn-transparent secondary-btn" data-toggle="modal" data-target="#modal-fullscreen" href="#">Watch Video</a>
+        </div>
       </div>
     </div>
     <div class="item">
@@ -24,3 +28,21 @@
 <%= render 'system/search' %>
 </div>
 <%= render 'system/slider' %>
+
+<!-- Modal fullscreen -->
+<div class="modal modal-fullscreen fade" id="modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,6 +22,34 @@ $(window).on("load", function() {
         $('.container').stop().removeClass('active');
     });
 
+
+    $("#notificationLink").click(function()
+			{
+			$("#notificationContainer").fadeToggle(300);
+			$("#notification_count").fadeOut("slow");
+			return false;
+			});
+
+			//Document Click hiding the popup 
+			$(document).click(function()
+			{
+			$("#notificationContainer").hide();
+			});
+
+			//Popup on click
+			$("#notificationContainer").click(function()
+			{
+			return false;
+			});
+
+    $(".modal-fullscreen").on('show.bs.modal', function () {
+        setTimeout( function() {
+            $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+        }, 0);
+        });
+        $(".modal-fullscreen").on('hidden.bs.modal', function () {
+        $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+    });
     var showRightPush = document.getElementById( 'showRightPush' ),
 		body = document.body,
         menuRight = document.getElementById( 'cbp-spmenu-s2' )
