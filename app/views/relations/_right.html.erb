@@ -1,6 +1,13 @@
 <aside class="sidebar">
   <section class="widget recent-post-widget animatedParent">
-    <h5 class="widget-title animated fadeInDownShort">My Friend List</h5>
+    <h5 class="widget-title animated fadeInDownShort">My friends</h5>
+      <% current_user.friends.each do |user| %>
+      <div class="chip">
+        <%= image_tag  user.image_url %>
+        <%= link_to user.show_name, user %>
+        <i><%= time_ago_in_words user.last_sign_in_at if user.last_sign_in_at %></i>
+      </div>
+    <% end %>
   </section>
   <section class="widget widget-text animatedParent">
     <h5 class="widget-title animated fadeInDownShort">LTRIP</h5>

@@ -1,4 +1,5 @@
 class RelationsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :get_service
 
   def create
@@ -8,7 +9,7 @@ class RelationsController < ApplicationController
 
   def index
       search_data = params[:search_data]
-      @friends = User.list_friend(current_user, search_data)
+      @friends = user_signed_in? ? User.list_friend(current_user, search_data) : User.all
   end  
 
   def confirm

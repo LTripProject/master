@@ -47,12 +47,8 @@ class User < ApplicationRecord
   end
 
   def image_url
-    @photo = self.provider.present? ? self.facebook_avatar : self.image.url
-    if @photo
-      @photo
-    else
-      DEFAULT_AVATAR
-    end
+    photo = self.provider.present? ? self.facebook_avatar : self.image.url
+    photo ||= DEFAULT_AVATAR
   end
 
   def show_name
