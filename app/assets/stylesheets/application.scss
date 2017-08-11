@@ -1059,40 +1059,10 @@ h2.home-info {
     }
   }
 }
-
-.landoan-photo {
-  background: image-url('landoan-photo.png') no-repeat;
-  display: block;
-  height: 100px;
-  width: 100px;
-  margin: 0 auto;
+.u-photo img{
+      max-height: 244px;
+    min-width: 372px;
 }
-
-.quanvu-photo {
-  background: image-url('quanvu-photo.png') no-repeat;
-  display: block;
-  height: 100px;
-  width: 100px;
-  margin: 0 auto;
-}
-
-.khanhdang-photo {
-  background: image-url('khanhdang-photo.png') no-repeat;
-  display: block;
-  height: 100px;
-  width: 100px;
-  margin: 0 auto;
-}
-
-/*attraction details*/
-.place-icon {
-  background: image-url('place_icon.png') no-repeat;
-  display: block;
-  height: 100px;
-  width: 100px;
-  margin: 0 auto;
-}
-
 .place-basic-info {
   text-align: center;
   padding: 16px;

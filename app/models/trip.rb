@@ -31,7 +31,6 @@ class Trip < ApplicationRecord
     @departure = Region.find_by(name: departure)
     @destination = Region.find_by(name: destination)
 
-    puts @departure.id
     if @departure != nil && @destination == nil
       Trip.where(departure_id: @departure.id)
     end

@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :notifications, through: :user_notifications, class_name: Notification, source: :notification
   mount_uploader :image, PhotoUploader
 
+  DEFAULT_AVATAR = "https://www.infrascan.net/demo/assets/img/avatar5.png"
+
   def notifications_with_senders
     self.user_notifications.preload(:notification, :sender)
   end
@@ -47,7 +49,12 @@ class User < ApplicationRecord
   end
 
   def image_url
-    self.provider.present? ? self.facebook_avatar : self.image.url
+    @photo = self.provider.present? ? self.facebook_avatar : self.image.url
+    if @photo
+      @photo
+    else
+      DEFAULT_AVATAR
+    end
   end
 
   def show_name
