@@ -11,6 +11,8 @@
 //= require ./theme/jquery.slicknav.min4bf4
 //= require ./theme/css3-animate-itc5da
 //= require ./theme/select2.full.mincce7
+//= require ./theme/classie
+//= require ./theme/modernizr.custom
 //= require ./theme/ltrip
 //= require bootstrap-material-design
 //= require jquery.easing
