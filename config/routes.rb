@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
  resources :schedules, only: [] do
     resources :schedule_details, only: [:create, :destroy, :delete]
+    
     member do
       post :sort
     end
