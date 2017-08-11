@@ -6,6 +6,7 @@ module ApplicationHelper
   def set_current_trip(trip_id)
     session[:current_trip] = trip_id
   end
+  
   def current_trip
     session[:current_trip]
   end

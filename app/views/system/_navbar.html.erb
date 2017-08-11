@@ -13,18 +13,28 @@
             <% end %>
           <% end %>
         </div>
+         <a href="#" id="notificationLink">Notifications</a>
+          <span id="notification_count"><%=  %></span>
+
+          <div id="notificationContainer">
+          <div id="notificationTitle">Notifications</div>
+          <div id="notificationsBody" class="notifications">
+            <%= render 'notifications/notification' %>
+          </div>
+          <div id="notificationFooter"><a href="#">See All</a></div>
+			</div>
       <% end %>
+
+
+     
+
+
+
+    </div>
       <div class="header-tour-package pull-right">
          <div id="showRightPush" class="">
           MENU &nbsp;<i class="fa fa-bars fa-lg white"></i>
         </div>
-      </div>
-      <div class="header-user-tel pull-right">
-        <i class="fa fa-mobile-phone fa-lg"></i>
-      </div>
-
-      <div class="header-user-email pull-right">
-        <i class="fa fa-envelope-o"></i>
       </div>
     </div>
   </div>
@@ -56,8 +66,7 @@
               <%= link_to "Where we go", trips_path %>
             </li>
             <li>
-            
-            <a href="../home/about">About us</a></li>
+            <%= link_to "About Us", about_home_index_path %></li>
           </ul>
         </div>
       </nav>

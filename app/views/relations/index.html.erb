@@ -1,0 +1,70 @@
+<div id="tropical-banner" class=" text-center clearfix">
+        <%= image_tag('banner.jpg') %>
+        <div class="container banner-contents clearfix">
+            <h2 class="template-title p-name"><strong>Friend's List</strong></h2>
+        </div>
+        <span class="overlay"></span>
+ </div>
+
+<div class="container">
+
+    <div class="row">
+     <div class="form-group">
+          <label for="search" class="form-control-label">Search:</label>
+          <input type="text" class="form-control" id="search_data" placeholder="Enter name or mail">
+        </div>
+
+        <div class="form-group">
+          <div id="result_users">
+          </div>
+        </div>
+    </div>
+
+  <div class="row">
+
+    <div class="shadow">
+      
+      <% @friends.each do |friend| %>
+          <div class="row">
+        <div class="col-sm-2">
+       
+           <% if friend.image_url %>
+               <%= image_tag friend.image_url, style: "width:60px", class: "img-circle" %>
+            <% else %>
+             <img src="https://www.infrascan.net/demo/assets/img/avatar5.png" class="img-circle" width="60px">
+            <% end %>
+          
+        </div>
+        <div class="col-sm-8">
+          <h4><a href="#"><%= friend.email  %></a></h4>
+          <p><a href="#"><%= friend.phone_number  %></a></p>
+        </div>
+        <div class="col-sm-2">
+            <a class="request" data-id="<%= friend.id  %>" >Add Friend</a>
+        </div>
+ </div>
+        <% end %> 
+     
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+$(".request").on("click", function(){
+	$(this).parent().parent().remove();
+	$.ajax({
+		type: "POST",
+		url: '/relations',
+		data: { 'target_id': $(this).data('id') },
+		success: function (){
+		}
+	});
+});
+
+alert('vl');
+
+ 
+
+</script>
