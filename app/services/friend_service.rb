@@ -17,15 +17,15 @@ class FriendService
     else
       @friend_relation.update_attributes(status: 'accepted')
       Relation.create(target_id: @current_user.id , user_id: @target_id, status: 'accepted')
+      Relation.create(tartget_id: @target_id , user_id: @current_user.id, status: 'accepted')
     end
     find_sender_relation(@current_user.id, @target_id).update_attributes(status: 'accepted')
     update_notification(@target_id, @current_user.id)
   end
 
   def reject
-    puts @current_user.id
-    puts @target_id
     find_sender_relation(@current_user.id, @target_id).destroy
+    find_sender_relation(@target_id, @current_user.id).destroy
     UserNotification.where(sender_id: @target_id, user_id: @current_user.id).first.notification.destroy
   end
 

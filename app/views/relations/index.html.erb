@@ -27,20 +27,17 @@
       <% @friends.each do |friend| %>
           <div class="row">
         <div class="col-sm-2">
-       
-           <% if friend.image_url %>
-               <%= image_tag friend.image_url, style: "width:60px", class: "img-circle" %>
-            <% else %>
-             <img src="https://www.infrascan.net/demo/assets/img/avatar5.png" class="img-circle" width="60px">
-            <% end %>
-          
+          <%= image_tag friend.image_url, style: "width:60px", class: "img-circle" %>
         </div>
         <div class="col-sm-7">
-          <h4><a href="#"><%= friend.email  %></a></h4>
+          <h4><%= link_to friend.show_name, friend %></h4>
           <p><a href="#"><%= friend.phone_number  %></a></p>
         </div>
         <div class="col-sm-3">
+          <% if user_signed_in? %>
             <a class="request t-btn btn-red" data-id="<%= friend.id  %>" >Add Friend</a>
+            
+          <% end %>
         </div>
  </div>
         <% end %> 
@@ -51,9 +48,10 @@
     </div>
     
   </div>
-   <div class="col-md-4">
-         <%= render 'right' %>
-      </div>
+  <div class="col-md-4">
+    <%= render 'right' if user_signed_in? %>
+  </div>
+   
 </div>
 
 <script>
@@ -68,7 +66,5 @@ $(".request").on("click", function(){
 		}
 	});
 });
-
- $.notify("Hello World");
 
 </script>
