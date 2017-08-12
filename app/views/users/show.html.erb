@@ -1,18 +1,55 @@
 <div class="container">
-  <% if @user.facebook_avatar %>
-    <%= image_tag @user.facebook_avatar %>
-  <% else %>
-    <%= image_tag @user.image %>
-  <% end %>
-  
-  <% if user_signed_in? && current_user == @user %>
-    <div class="btn-group">
-      <%= link_to "Change password", edit_user_registration_path, class: "btn btn-primary" %>
-      <%= link_to "Edit infor", edit_user_path(@user), class: "btn btn-primary"%>
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag @user.image_url %>
+    
+      <% if user_signed_in? && current_user == @user %>
+        <div class="btn-group">
+          <%= link_to "Change password", edit_user_registration_path, class: "btn btn-primary" %>
+          <%= link_to "Edit infor", edit_user_path(@user), class: "btn btn-primary"%>
+        </div>
+      <% end %>
+    
+      <p><strong>Name:</strong> <%= @user.name %></p>
+      <p><strong>Email:</strong> <%= @user.email %></p>
+      <p><strong>Phone number:</strong> <%= @user.phone_number %></p>
     </div>
-  <% end %>
-  
-  <p><strong>Name:</strong> <%= @user.name %></p>
-  <p><strong>Email:</strong> <%= @user.email %></p>
-  <p><strong>Phone number:</strong> <%= @user.phone_number %></p>
+    <div class="col-md-8">
+      <h4>Users Trips</h4>
+      <div class="row">
+       <% @trips.each do |trip| %>
+         <div class="tour-item col-md-4 col-sm-6 animatedParent">
+          <article class="tour-post animated fadeInDownShort">
+            <header class="tour-post-header clearfix">
+              <span class="tour-price pull-left"><%= trip.expected_budget %></span>
+              <span class="tour-days pull-right"><i class="fa fa-clock-o"></i>&nbsp; <%= pluralize trip.schedules.count, 'day' %></span>
+            </header>
+            <div class="tour-contents clearfix">
+              <figure class="tour-feature-img">
+                <%= link_to trip do %> 
+                  <% unless trip.photos.empty? %>
+                    <%= image_tag(trip.photos[0].url) %>
+                  <% end %>
+                <% end %>
+              </figure>
+              <h5 class="entry-title p-name"><a href="single-where-we-go.html"><%= trip.title %></a></h5>
+              <div class="entry-contents hide clearfix">
+                <p><%= trip.description %></p>
+              </div>
+              <div class="row">
+                <%= link_to 'See tour detailsShow', trip , class: "more-details u-url" %>
+              </div>
+              <% if user_signed_in? && trip.users.include?(current_user) %>
+                <div class="row">
+                 <%= link_to 'Edit', edit_trip_path(trip) , class: "t-btn btn-black-border pull-right" %>
+                 <%= link_to 'Destroy',   trip,  class: "t-btn btn-black-border pull-right",method: :delete, data: { confirm: 'Are you sure?' } %>
+                </div>
+              <% end %>
+            </div>
+          </article>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
 </div>
