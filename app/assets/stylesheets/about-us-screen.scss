@@ -1,4 +1,4 @@
-
+f
 .bg--photo {
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -746,31 +746,39 @@
 }
 
 .team-member--danhvo {
-    background-image: url(/assets/images/danhvo_thumb.jpg)
+<<<<<<< HEAD
+    background-image: url('http://imgur.com/phPyXMl')
+=======
+    background-image: url(http://i.imgur.com/phPyXMl.png)
+>>>>>>> 060b5be3f6b198da03018ae0e61697c07f18885b
 }
 
 @media screen and (min-width: 30em) {
     .team-member--danhvo {
-        background-image: url(/assets/images/danhvo.jpg)
+<<<<<<< HEAD
+        background-image: url('http://imgur.com/phPyXMl')
+=======
+        background-image: url(http://i.imgur.com/phPyXMl.png)
+>>>>>>> 060b5be3f6b198da03018ae0e61697c07f18885b
     }
 }
 
 .team-member--cuongnguyen {
-    background-image: url(/assets/images/cuongnguyen_thumb.jpg)
+    background-image: url(http://i.imgur.com/4A5mzRa.png)
 }
 
 @media screen and (min-width: 30em) {
     .team-member--cuongnguyen {
-        background-image: url(/assets/images/cuongnguyen.jpg)
+        background-image: url(http://i.imgur.com/4A5mzRa.png)
     }
 }
 
 .team-member--tiendau {
-    background-image: url(/assets/images/tiendau_thumb.jpg)
+    background-image: url(http://i.imgur.com/Ylv7G5g.png)
 }
 
 @media screen and (min-width: 30em) {
     .team-member--tiendau {
-        background-image: url(/assets/images/tiendau.jpg)
+        background-image: url(http://i.imgur.com/Ylv7G5g.png)
     }
 }
