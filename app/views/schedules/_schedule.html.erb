@@ -9,15 +9,15 @@
           </ul>
 
           <!-- Add button -->
-          <button type="button" data-backdrop="true" data-keyboard="true" type="button" class="btn hot-action-button" id="addAttractionItineraryBtn<%= schedule.index %>" 
+          <a type="button" data-backdrop="true" data-keyboard="true" type="button" class="cbtn cbtn-5 cbtn-5a icon-truck" id="addAttractionItineraryBtn<%= schedule.index %>" 
                   data-target="#add-to-itinerary-form_<%= schedule.index %>" onclick="javascript: return false;" >
-            Add Place
-          </button>
+            <span aria-hidden="true">Add Place</span>
+          </a>
 
           <!-- Delete button -->
-          <%= link_to [@trip, schedule], class: 'btn delete-day-btn',
+          <%= link_to [@trip, schedule], class: 'cbtn cbtn-5 cbtn-5a icon-remove',
                       id: 'deleteDayBtn', remote: true, method: :delete do %>
-              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Day
+              <span aria-hidden="true">Delete Day</span>
           <% end %>
         </div>
       </div>

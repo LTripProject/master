@@ -148,8 +148,8 @@
         </article>
         <div class="related-tours clearfix">
           <header class="header-with-nav animatedParent clearfix">
-            <h3 class="title pull-left animated growIn slower">Related Tours</h3>
-            <%= link_to "See all tours", trips_path, class: "pull-right animated growIn slower" %>
+            <h3 class="title pull-left animated growIn slower">Related trips</h3>
+            <%= link_to "See all trips", trips_path, class: "pull-right animated growIn slower" %>
           </header>
           <div class="row">
           <% if @relative_trips.present? %>
@@ -167,7 +167,7 @@
                     </figure>
                     <h5 class="entry-title p-name"><%= trip.title %></h5>
                     <%= link_to trip do %>
-                      See tour details
+                      Trip details
                       <i class="dashicons dashicons-arrow-right-alt2"></i>
                     <% end %>
                 </article>

@@ -1,0 +1,182 @@
+Searching 74 files for "TOUR"
+
+/Volumes/WS/studycase/ruby/ltrip/app/views/schedules/_schedule.html.erb:
+   48              <div class="form-group">
+   49                <label for="attraction_<%= schedule.index %>" class="form-control-label">
+   50:                 Tourist Suggestion:
+   51                </label>
+   52             
+
+/Volumes/WS/studycase/ruby/ltrip/app/views/system/_footer.html.erb:
+   16          <div class="col-sm-4">
+   17            <section class="widget widget_mc4wp_widget animated flipInX slower clearfix">
+   18:             <h5 class="widget-title">stay in the tourism</h5>
+   19              <div id="mc4wp-form-1" class="form mc4wp-form clearfix">
+   20                <p>Receive monthly cool ideas, inspiring stories,
+   ..
+   44            </div>
+   45            <div class="col-sm-4">
+   46:             <section class="widget tour-gallery animated flipInX slower clearfix">
+   47:               <h5 class="widget-title">Tour Gallery</h5>
+   48  
+   49              </section>
+
+/Volumes/WS/studycase/ruby/ltrip/app/views/system/_navbar.html.erb:
+   31  
+   32      </div>
+   33:       <div class="header-tour-package pull-right">
+   34           <div id="showRightPush" class="">
+   35            MENU &nbsp;<i class="fa fa-bars fa-lg white"></i>
+
+/Volumes/WS/studycase/ruby/ltrip/app/views/system/_search.html.erb:
+   16              <span class="input-group-addon add-on"><i class="fa fa-calendar"></i></span>
+   17            </div>
+   18:           <input name="search-tour" type="submit" value="Search Trip">
+   19          </div>
+   20  
+
+/Volumes/WS/studycase/ruby/ltrip/app/views/system/_slider.html.erb:
+   12              <figure class="feature-img clearfix">
+   13                <a class=" u-url u-photo" href="#">
+   14:                 <%= image_tag "https://static.mytour.vn/upload_images/Image/Quang%20Dia%20Danh/7/Th%C3%A1p_R%C3%B9a_6.jpg" %></a>
+   15                  <span class="overlay"></span>
+   16:                 <p>As a capital of the Social Republic of Vietnam, Hanoi is also a crucial center of culture, politics, trade, and tourism all over the country. Experiencing almost a thousand year of history, Hanoi is going to celebrate its important ceremony in October 2010 (1000 years).</p>
+   17                  </figure>
+   18                  <span class="icon-wrapper">
+   ..
+   79            <div class="container">
+   80              <header class="section-header header-with-nav clearfix">
+   81:               <h3 class="title pull-left animated growIn">Latest Offers Tours</h3>
+   82                <a class="pull-right animated growIn" href="#">see more offers</a>
+   83              </header>
+   84:             <div class="tour-carousel animated flipInX clearfix">
+   85               <% @trips.each do |trip| %>
+   86:               <article class="tour-post">
+   87                  <i class="circle-icon"></i>
+   88:                 <header class="tour-post-header clearfix">
+   89:                   <span class="tour-price pull-left"><%= trip.expected_budget %></span>
+   90:                   <span class="tour-price-off pull-right">New</span>
+   91                  </header>
+   92:                 <div class="tour-contents clearfix">
+   93:                   <figure class="tour-feature-img">
+   94                     <%= link_to [trip] do %> 
+   95                      <% if !(trip.photos.empty?) %>
+
+/Volumes/WS/studycase/ruby/ltrip/app/views/trips/_summary.html.erb:
+    3  
+    4   
+    5:  <div class="tour-item col-md-4 col-sm-6 animatedParent">
+    6:   <article class="tour-post animated fadeInDownShort">
+    7:     <header class="tour-post-header clearfix">
+    8:       <span class="tour-price pull-left"><%= trip.expected_budget %></span>
+    9:       <span class="tour-days pull-right"><i class="fa fa-clock-o"></i>&nbsp; 3 days</span>
+   10      </header>
+   11:     <div class="tour-contents clearfix">
+   12:       <figure class="tour-feature-img">
+   13:         <a href="single-where-we-go.html"> <img src="images/tour-carousel-img-1.jpg" alt="Image"/></a>
+   14        </figure>
+   15        <h5 class="entry-title p-name"><a href="single-where-we-go.html"><%= trip.title %></a></h5>
+
+/Volumes/WS/studycase/ruby/ltrip/app/views/trips/index.html.erb:
+   17  </div>
+   18  
+   19: <section class="tour-page clearfix">
+   20    <div class="container">
+   21  
+   ..
+   32  
+   33  
+   34:          <div class="tour-item col-md-4 col-sm-6 animatedParent">
+   35:           <article class="tour-post animated fadeInDownShort">
+   36:             <header class="tour-post-header clearfix">
+   37:               <span class="tour-price pull-left"><%= trip.expected_budget %></span>
+   38:               <span class="tour-days pull-right"><i class="fa fa-clock-o"></i>&nbsp; <%= pluralize trip.schedules.count, 'day' %></span>
+   39              </header>
+   40:             <div class="tour-contents clearfix">
+   41:               <figure class="tour-feature-img">
+   42                  <%= link_to [trip] do %> 
+   43                    <% if !(trip.photos.empty?) %>
+   ..
+   66      </div>
+   67      <div class="col-md-3 col-sm-4 animatedParent">
+   68:       <section class="advance-tour-filter animated fadeInRightShort clearfix">
+   69          <h5 class="widget-title">filter the result</h5>
+   70          <form method="get" method="get" action="/searchs" >
+   ..
+   83            </div>
+   84          </fieldset>
+   85:         <input class="btn btn-red tour-filter-btn" name="search-tour" type="submit" value="Filter">
+   86          </form>
+   87        </section>            
+
+/Volumes/WS/studycase/ruby/ltrip/app/views/trips/show.html.erb:
+   17  </div>
+   18  
+   19: <section class="tour-single clearfix">
+   20  <div class="container">
+   21  <div class="row">
+   22    <div class="col-lg-9 col-sm-8">
+   23      <header class="entry-header animatedParent clearfix">
+   24:       <h3 class="pull-left tour-single-title animated growIn slower"><%= @trip.title %></h3>
+   25:       <span class="tour-price-single t-btn btn-red pull-right animated growIn slower"><%= "#{format_price @trip.budget_trip.total_cost}/#{format_price @trip.expected_budget }"%></span>
+   26      </header>
+   27:     <article class="tour-post-single clearfix">
+   28:       <div class="tour-single-slider animatedParent clearfix">
+   29:         <div class="slier tour-single-slider-for animated fadeInUpShort">
+   30              <% @trip.photos.each do |img| %>
+   31                <div class="item">
+   ..
+   35          </div>
+   36  
+   37:         <div class="slider tour-single-slider-nav animated fadeInUpShort">
+   38            <% @trip.photos.each do |img| %>
+   39              <div class="item">
+   ..
+   51        <% end %>
+   52  
+   53:       <div class="tour-single-contents animatedParent clearfix">
+   54:         <div class="tour-post-meta pull-right animated fadeInUpShort clearfix">
+   55            <span><i class="fa fa-map-marker"></i><strong>Departure: &nbsp;</strong><%= @trip.departure.name if @trip.departure %></span>
+   56            <span><i class="fa fa-clock-o"></i><strong>Duration : &nbsp;</strong>
+   ..
+   59          </div>
+   60          <p> <%= @trip.description.html_safe %></p>
+   61:         <footer class="tour-contents-footer clearfix">
+   62            <% if user_signed_in?%>
+   63              <% if @trip.users.include?(current_user) %>
+   ..
+   74          </footer>
+   75        </div>
+   76:           <div class="tour-single-schedule animatedParent clearfix">
+   77            <% unless @trip.schedules.blank? %>
+   78              <ul class="nav nav-tabs animated fadeInUpShort" role="tablist">
+   ..
+  126              <%=format_price @trip.budget_trip.blank? ? 0 : @trip.budget_trip.total_cost %>
+  127            </strong> </h3>
+  128:           <div class="tour-single-rates animatedParent clearfix">
+  129                <div class="accommodation animated fadeInUpShort clearfix">
+  130                  <ul class="clearfix">
+  ...
+  147            </div>
+  148          </article>
+  149:         <div class="related-tours clearfix">
+  150            <header class="header-with-nav animatedParent clearfix">
+  151              <h3 class="title pull-left animated growIn slower">Related trips</h3>
+  152:             <%= link_to "See all tours", trips_path, class: "pull-right animated growIn slower" %>
+  153            </header>
+  154            <div class="row">
+  ...
+  156              <% @relative_trips.each do |trip|%>
+  157                <div class="col-md-4 col-xs-6 animatedParent">
+  158:                 <article class="tour-post animated fadeInLeftShort">
+  159:                   <header class="tour-post-header clearfix">
+  160:                     <span class="tour-price pull-left">&#36;
+  161                        <%= format_price(trip.expected_budget) %></span>
+  162:                     <span class="tour-days pull-right"><i class="fa fa-clock-o"></i>&nbsp; <%= trip.schedules.count %>day</span>
+  163                    </header>
+  164:                   <div class="tour-contents clearfix">
+  165:                     <figure class="tour-feature-img">
+  166                        <%= image_tag @trip.photos.first unless @trip.photos.blank? %>
+  167                      </figure>
+
+55 matches across 8 files

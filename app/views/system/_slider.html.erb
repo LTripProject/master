@@ -2,8 +2,8 @@
 <section class="home-services section-separator animatedParent">
   <div class="container">
     <header class="section-header header-with-nav clearfix">
-      <h3 class="title pull-left animated growIn slower">awesome tour features</h3>
-      <a class="pull-right animated growIn slower" href="#">SEE ALL</a>
+      <h3 class="title pull-left animated growIn slower">awesome trips</h3>
+      <a class="pull-right animated growIn slower" href="/trips">SEE ALL</a>
     </header>
     <div class="row">
       <div class="col-sm-4 col-xs-6">
@@ -17,14 +17,13 @@
                 </figure>
                 <span class="icon-wrapper">
                   <span class="icon">
-                    <i class="fa fa-hospital-o"></i>
+                    <i class="fa fa-flag-o"></i>
                   </span>
                 </span>
               </div>
               <div class="contents clearfix">
                 <h5 class="entry-title p-name">Ha Noi</h5>
-                <%= link_to "Trips trip in Ha Noi", '/searchs?departure=Hà+Nội', 
-                      class: "t-btn btn-red" %>
+                <%= link_to "Trips trip in Ha Noi", '/searchs?departure=Hà+Nội',class: "t-btn btn-red" %>
               </div>
             </article>
           </div>
@@ -39,7 +38,7 @@
                     </figure>
                     <span class="icon-wrapper">
                       <span class="icon">
-                        <i class="fa fa-shield"></i>
+                        <i class="fa fa-paper-plane-o"></i>
                       </span>
                     </span>
                   </div>
@@ -61,7 +60,7 @@
                         </figure>
                         <span class="icon-wrapper">
                           <span class="icon">
-                           <i class="fa fa-money"></i>
+                           <i class="fa fa-building-o"></i>
                          </span>
                        </span>
                      </div>
@@ -79,7 +78,7 @@
           <div class="container">
             <header class="section-header header-with-nav clearfix">
               <h3 class="title pull-left animated growIn">Latest Offers Tours</h3>
-              <a class="pull-right animated growIn" href="#">see more offers</a>
+              <a class="pull-right animated growIn" href="/trips">see more offers</a>
             </header>
             <div class="tour-carousel animated flipInX clearfix">
              <% @trips.each do |trip| %>
@@ -98,7 +97,7 @@
                     <% end %>
                   </figure>
                   <h5 class="entry-title p-name"><%= trip.title %></h5>
-                   <%= link_to 'See tour detailsShow', trip , class: "more-details u-url" %>
+                   <%= link_to 'Trip details', trip , class: "more-details u-url" %>
                 </div>
               </article>
               <% end %>
