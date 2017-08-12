@@ -12,10 +12,13 @@
 @import "bootstrap";
 @import "bootstrap-material-design";
 @import "font-awesome";
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
+@import "about-us-print";
+@import "about-us-screen";
 @import "main";
 @import "responsive";
+@import "button-component";
 @import "trips";
-@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 
 body{
   background: white;
