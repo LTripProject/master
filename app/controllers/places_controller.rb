@@ -72,7 +72,7 @@ class PlacesController < ApplicationController
     end if place_detail['photos']
   end
 
-  def fetch_photo_manual()
+  def fetch_photo_manual
     Place.all.each_with_index do |place,i|
       puts "#{place.id} - #{place.name}"
 
@@ -87,6 +87,8 @@ class PlacesController < ApplicationController
         end
       end if place_detail['photos']
     end
+
+    redirect_to root_path
   end
 
 end
