@@ -23,7 +23,7 @@
               </div>
               <div class="contents clearfix">
                 <h5 class="entry-title p-name">Ha Noi</h5>
-                <%= link_to "Trips trip in Ha Noi", '/searchs?departure=Hà+Nội',class: "t-btn btn-red" %>
+                <%= link_to "Trips in Ha Noi", '/searchs?departure=Hà+Nội',class: "t-btn btn-red" %>
               </div>
             </article>
           </div>
@@ -85,15 +85,14 @@
               <article class="tour-post">
                 <i class="circle-icon"></i>
                 <header class="tour-post-header clearfix">
-                  <span class="tour-price pull-left"><%= trip.expected_budget %></span>
+                  <span class="tour-price pull-left">
+                    <%= format_price trip.expected_budget %></span>
                   <span class="tour-price-off pull-right">New</span>
                 </header>
                 <div class="tour-contents clearfix">
                   <figure class="tour-feature-img">
-                   <%= link_to [trip] do %> 
-                    <% if !(trip.photos.empty?) %>
-                        <%= image_tag(trip.photos[0].url) %>
-                    <% end %>
+                   <%= link_to trip do %> 
+                      <%= image_tag trip.trip_image %>
                     <% end %>
                   </figure>
                   <h5 class="entry-title p-name"><%= trip.title %></h5>

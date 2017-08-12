@@ -8,7 +8,7 @@
     <div class="container">
       <ol class="breadcrumb">
         <li><a href="<=% root_path %>" >Home</a></li>
-        <li><a href="where-we-go.html" >Where We Go</a></li>
+        <li><a href="<%= trips_path %>" >Where We Go</a></li>
         <li class="active"><%= @trip.title %></li>
       </ol>
     </div>
@@ -27,11 +27,15 @@
     <article class="tour-post-single clearfix">
       <div class="tour-single-slider animatedParent clearfix">
         <div class="slier tour-single-slider-for animated fadeInUpShort">
+          <% if @trip.photos.any? %>
             <% @trip.photos.each do |img| %>
               <div class="item">
                 <%= image_tag(img.url) %>
               </div>
             <% end %>
+          <% else %>
+            <%= image_tag @trip.trip_image %>
+          <% end %>
         </div>
 
         <div class="slider tour-single-slider-nav animated fadeInUpShort">

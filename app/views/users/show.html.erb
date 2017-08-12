@@ -21,7 +21,7 @@
          <div class="tour-item col-md-4 col-sm-6 animatedParent">
           <article class="tour-post animated fadeInDownShort">
             <header class="tour-post-header clearfix">
-              <span class="tour-price pull-left"><%= trip.expected_budget %></span>
+              <span class="tour-price pull-left"><%= format_price trip.expected_budget %></span>
               <span class="tour-days pull-right"><i class="fa fa-clock-o"></i>&nbsp; <%= pluralize trip.schedules.count, 'day' %></span>
             </header>
             <div class="tour-contents clearfix">
@@ -32,7 +32,7 @@
                   <% end %>
                 <% end %>
               </figure>
-              <h5 class="entry-title p-name"><a href="single-where-we-go.html"><%= trip.title %></a></h5>
+              <h5 class="entry-title p-name"><a href="<%= trips_path %>"><%= trip.title %></a></h5>
               <div class="entry-contents hide clearfix">
                 <p><%= trip.description %></p>
               </div>

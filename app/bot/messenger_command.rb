@@ -47,7 +47,7 @@ class MessengerCommand
   end
 
   def help
-    text = "\t\t### Helper: get <command> <arg> ### \n- To find trip by \n\tPlace: get place <Place Name>\n\tRegion: get region <Region Name>\n- To get top trips have most views: get top <--options--->\n\t To get trip that start at place or date: get trip form <place - date>"
+    text = "\t\t### Helper: get <command> <arg> ### \n- To find trip by \n\tPlace: get place <Place Name>\n\tRegion: get region <Region Name>\n- To get top trips have most views: get top <--options--->\n\t To get trip that start at place or date: get trip form <place or date(mm/dd)>"
 
     quick_reply(text)
   end
@@ -69,7 +69,7 @@ class MessengerCommand
             "%#{arg}%")
       end
 
-      trips.blank? ? not_found : send_trips_link(trips.limit(5))
+      trips.blank? ? not_found : send_trips_link(trips.distinct.limit(5))
     else
       missing_args
     end
