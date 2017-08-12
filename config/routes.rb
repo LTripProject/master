@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     #   get :loadDatabase
     #   get :fetch_places_foreach_region
     #   get :fetch_photo_manual
-    # end
+    end
   end
 
   post 'trips/:id/invite' => 'trips#invite', as: :trip_invite

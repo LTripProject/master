@@ -39,10 +39,8 @@
             </header>
             <div class="tour-contents clearfix">
               <figure class="tour-feature-img">
-                <%= link_to [trip] do %> 
-                  <% if !(trip.photos.empty?) %>
-                    <%= image_tag(trip.photos[0].url) %>
-                  <% end %>
+                <%= link_to trip do %> 
+                  <%= image_tag trip.trip_image %>
                 <% end %>
               </figure>
               <h5 class="entry-title p-name"><a href="single-where-we-go.html"><%= trip.title %></a></h5>

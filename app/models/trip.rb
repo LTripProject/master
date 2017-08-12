@@ -26,6 +26,7 @@ class Trip < ApplicationRecord
   mount_uploaders :photos, PhotoUploader
   serialize :photos, JSON
   DEFAULT_PHOTO = 'https://media-cdn.tripadvisor.com/media/photo-o/05/c5/a3/bf/tropica-island-resort.jpg'
+  DEFAULT_IMAGE = 'http://amazingdanang.com/wp-content/uploads/2015/04/8693738209_1ba2034976_k.jpg'
 
   def self.search_trips(departure, destination, start_date)
     @departure = Region.find_by(name: departure)
@@ -38,6 +39,10 @@ class Trip < ApplicationRecord
 
   def display_photo
     photos.empty? ? DEFAULT_PHOTO : photos.first.url
+  end
+
+  def trip_image
+    photos.empty? ? DEFAULT_IMAGE : photos.first.url
   end
 
   def create_default
