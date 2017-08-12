@@ -50,7 +50,7 @@
                 <p><%= trip.description %></p>
               </div>
               <div class="row">
-                <%= link_to 'See tour detailsShow', trip , class: "more-details u-url" %>
+                <%= link_to 'Trip details', trip , class: "more-details u-url" %>
               </div>
               <% if user_signed_in? && trip.users.include?(current_user) %>
                 <div class="row">
