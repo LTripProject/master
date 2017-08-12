@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   before_action :check_authorize!, except: :show
 
   def show
+    if user_signed_in? && current_user == @user
+      @trips = @user.trips
+    else
+      @trips = @user.public_trips
+    end
   end
 
   def  edit 
@@ -29,7 +34,7 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      @user = User.find(params[:id])
+      @user = User.includes(:trips).find(params[:id])
     end
 
     def user_params

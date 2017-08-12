@@ -59,5 +59,9 @@ class User < ApplicationRecord
     where.not(id: Relation.where(user: current_user).pluck(:target_id)).where.not(id: current_user.id)
         .where("name like ? OR email like ?", "%#{search_data}%", "%#{search_data}%").order(:name)
   end
+
+  def public_trips
+    self.trips.where(status: true)
+  end
 end
  
