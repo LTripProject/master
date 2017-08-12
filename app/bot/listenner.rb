@@ -30,7 +30,7 @@ Facebook::Messenger::Profile.set({
         },
         {
           type: 'web_url',
-          title: '📬  Góp ý, báo lỗi, xoạc :v',
+          title: '📬  Góp ý, báo lỗi :v',
           url: 'https://m.me/dthtien'
         }
       ]

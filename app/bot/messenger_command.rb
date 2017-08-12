@@ -69,7 +69,7 @@ class MessengerCommand
             "%#{arg}%")
       end
 
-      trips.blank? ? not_found : send_trips_link(trips.limit(5))
+      trips.blank? ? not_found : send_trips_link(trips.distinct.limit(5))
     else
       missing_args
     end
