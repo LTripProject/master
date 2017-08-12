@@ -85,7 +85,8 @@
               <article class="tour-post">
                 <i class="circle-icon"></i>
                 <header class="tour-post-header clearfix">
-                  <span class="tour-price pull-left"><%= trip.expected_budget %></span>
+                  <span class="tour-price pull-left">
+                    <%= format_price trip.expected_budget %></span>
                   <span class="tour-price-off pull-right">New</span>
                 </header>
                 <div class="tour-contents clearfix">
