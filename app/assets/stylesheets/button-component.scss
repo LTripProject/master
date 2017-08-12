@@ -11,23 +11,24 @@
 
 /* General button style (reset) */
 .cbtn {
-	border: none;
-	font-family: inherit;
-	font-size: inherit;
-	color: inherit;
-	background: none;
-	cursor: pointer;
-	padding: 25px 80px;
-	display: inline-block;
-	margin: 15px 30px;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-weight: 700;
-	outline: none;
-	position: relative;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
+	    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 25px 80px;
+    padding-top: 13px;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
 .cbtn:after {
@@ -672,7 +673,7 @@
 .cbtn-5 {
 	background: #f16161;
 	color: #fff;
-	height: 70px;
+	height: 50px;
 	min-width: 260px;
 	line-height: 24px;
 	font-size: 16px;
@@ -700,7 +701,7 @@
 }
 
 .cbtn-5:before {
-	background: #fc4242;
+	background: #f16161 !important;
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -724,12 +725,13 @@
 }
 
 .cbtn-5a:before {
-	left: 0;
-	top: -100%;
+	left: 45%;
+    top: -100%;
+    color: white;
 }
 
 .cbtn-5a:hover:before {
-	top: 0;
+	top: -11px;
 }
 
 /* Button 5b */
