@@ -45,7 +45,7 @@
               </figure>
               <h5 class="entry-title p-name"><a href="single-where-we-go.html"><%= trip.title %></a></h5>
               <div class="entry-contents hide clearfix">
-                <p><%= trip.description %></p>
+                <p><%= trip.description[0..50] %></p>
               </div>
               <div class="row">
                 <%= link_to 'Trip details', trip , class: "more-details u-url" %>
