@@ -16,10 +16,6 @@ f
     }
 }
 
-.page {
-    background-color: #252525
-}
-
 @media screen and (min-width: 58.75em) {
     .page-welcome {
         width: 100%;
@@ -643,6 +639,119 @@ f
     letter-spacing: 2px
 }
 
+
+.page {
+    position: relative
+}
+
+.page--centre {
+    text-align: center
+}
+
+.page--overflow {
+    overflow-x: hidden
+}
+
+.page--blog {
+    min-height: 54em
+}
+
+.page__body {
+    margin-bottom: 4em
+}
+
+@media screen and (min-width: 58.75em) {
+    .page__body {
+        margin-top: 10em;
+        margin-bottom: 10em
+    }
+}
+
+.bg--map .page__body {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important
+}
+
+@media screen and (min-width: 58.75em) {
+    .bg--map .page__body {
+        margin-top: 10em !important
+    }
+}
+
+.page__body.page__body--pad-top {
+    margin-top: 4em;
+    margin-bottom: 1em !important
+}
+
+@media screen and (min-width: 58.75em) {
+    .page__body.page__body--pad-top {
+        margin-top: 10em
+    }
+}
+
+.page__body--pad {
+    margin-top: 4em;
+    margin-bottom: 4em
+}
+
+@media screen and (min-width: 30em) {
+    .page__body--pad {
+        margin-top: 5em;
+        margin-bottom: 6em
+    }
+}
+
+@media screen and (min-width: 68em) {
+    .page__body--pad {
+        margin-top: 13em;
+        margin-bottom: 13em
+    }
+}
+
+.page__body--short {
+    margin-top: 2em;
+    margin-bottom: 3em
+}
+
+@media screen and (min-width: 30em) {
+    .page__body--short {
+        margin-top: 3em;
+        margin-bottom: 4em
+    }
+}
+
+@media screen and (min-width: 68em) {
+    .page__body--short {
+        margin-top: 6em;
+        margin-bottom: 6em
+    }
+}
+
+.page__body--lift {
+    margin: 0 auto;
+    margin-top: -622px
+}
+
+.body__inner {
+    max-width: 50em;
+    margin: 0 auto
+}
+
+.page:first-child .page__body {
+    margin-top: 1em
+}
+
+@media screen and (min-width: 30em) {
+    .page:first-child .page__body {
+        margin-top: 3em
+    }
+}
+
+@media screen and (min-width: 58.75em) {
+    .page:first-child .page__body {
+        margin-top: 8em
+    }
+}
 .team-member {
     color: #252525;
     -moz-background-size: contain;
@@ -650,7 +759,7 @@ f
     -webkit-background-size: contain;
     background-size: contain;
     background-repeat: no-repeat;
-    padding-top: 70%
+    padding-top: 80%
 }
 
 @media screen and (min-width: 30em) {
@@ -746,7 +855,7 @@ f
 }
 
 .team-member--danhvo {
-    background-image: url(http://i.imgur.com/phPyXMl.png)
+    background-image: url(http://bit.ly/2fzvuhQ)
 }
 
 @media screen and (min-width: 30em) {
@@ -756,7 +865,7 @@ f
 }
 
 .team-member--cuongnguyen {
-    background-image: url(http://i.imgur.com/4A5mzRa.png)
+    background-image: url(http://bit.ly/2uzEXbE)
 }
 
 @media screen and (min-width: 30em) {
@@ -766,7 +875,7 @@ f
 }
 
 .team-member--tiendau {
-    background-image: url(http://i.imgur.com/Ylv7G5g.png)
+    background-image: url(http://bit.ly/2vsGeo0)
 }
 
 @media screen and (min-width: 30em) {

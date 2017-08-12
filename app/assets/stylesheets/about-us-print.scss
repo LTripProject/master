@@ -1970,7 +1970,6 @@ a.logo {
 
 .icon-list {
     font-family: "brandon-grotesque", sans-serif;
-    text-transform: uppercase;
     font-weight: bold;
     font-size: 1.15em;
     letter-spacing: .1em;
@@ -2313,6 +2312,7 @@ a.logo {
 .list-unset,
 .nav,
 .icon-list {
+    padding-left: 0px;
     list-style: none !important;
     margin-left: 0 !important
 }
