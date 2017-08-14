@@ -43,7 +43,9 @@
                   <%= image_tag trip.trip_image %>
                 <% end %>
               </figure>
-              <h5 class="entry-title p-name"><a href="single-where-we-go.html"><%= trip.title %></a></h5>
+              <h5 class="entry-title p-name">
+              <%= link_to trip.title, trip , class: "trip-title" %>
+              </h5>
               <div class="entry-contents hide clearfix">
                 <p><%#= trip.description[0..50].html_safe %></p>
               </div>

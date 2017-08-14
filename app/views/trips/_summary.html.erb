@@ -12,7 +12,9 @@
       <figure class="tour-feature-img">
         <a href="<%= trips_path %>"> <img src="images/tour-carousel-img-1.jpg" alt="Image"/></a>
       </figure>
-      <h5 class="entry-title p-name"><a href="<%= trips_path %>"><%= trip.title %></a></h5>
+      <h5 class="entry-title p-name">
+        <%= link_to trip.title, trip , class: "trip-title" %>
+      </h5>
       <div class="entry-contents hide clearfix">
         <p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremo emque laudantium, totam rem aperiam, eaqueipsa quae ab illo inventore veritatis et oquasi architecto beatae vitae dicta sunt explicabo. </p>
       </div>
