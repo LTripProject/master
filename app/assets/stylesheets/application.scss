@@ -22,11 +22,18 @@
 @import "about-us-print";
 @import "about-us-screen";
 
-.slick-slide img {
+.slick-slide {
+  img {
     display: block;
-    height: 160px;
     width: 100%;
+  }
+  .tour-feature-img {
+    img {
+      height: 160px;
+    } 
+  }
 }
+
 .tour-post .p-name {
     margin-bottom: 22px;
     min-height: 40px;
